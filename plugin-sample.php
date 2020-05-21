@@ -28,18 +28,6 @@ along with [Plugin Name]. If not, see https://www.gnu.org/licenses/gpl-2.0.html
 if ( !defined( 'ABSPATH' ) )
     exit;
 
-if ( !defined( 'PLUGIN_VERSION' ) )
-    define( 'PLUGIN_VERSION', '1.0' );
-
-if ( !defined( 'LANG_DIR' ) )
-    define( 'LANG_DIR', basename( dirname( __FILE__ ) ) . '/languages' );
-
-if ( !defined( 'PLUGIN_DIR' ) )
-    define( 'PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
-
-if ( !defined( 'PLUGIN_URL' ) )
-    define( 'PLUGIN_URL', plugin_dir_url( __FILE__ ) );
-
 function jmc87_plugin_install()
 {
     if ( !current_user_can( 'activate_plugins' ) )
