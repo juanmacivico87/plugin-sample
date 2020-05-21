@@ -19,8 +19,8 @@ class JMC87_PluginConfig
     {
         if ( !is_admin() )
         {
-            wp_enqueue_script( 'custom-scripts', PLUGIN_URL . 'inc/js/custom-scripts.js', array(), false, true );
-            wp_enqueue_style( 'custom-styles', PLUGIN_URL . 'inc/css/custom-styles.css' );
+            wp_enqueue_script( 'custom-scripts', PLUGIN_URL . 'inc/js/custom-scripts.js', array(), PLUGIN_VERSION, true );
+            wp_enqueue_style( 'custom-styles', PLUGIN_URL . 'inc/css/custom-styles.css', array(), PLUGIN_VERSION );
         }
     }
 }

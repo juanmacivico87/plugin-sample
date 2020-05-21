@@ -35,11 +35,11 @@ class JMC87_SampleMetabox
     {
         $value = get_post_meta( $post->ID, $this->metabox_key, true ); ?>
 
-        <label for="<?php echo $this->metabox_id ?>"><?php _e( 'Description for this metabox', 'jmc87_plugin_textdomain' ) ?></label>
-        <select name="<?php echo $this->metabox_id ?>" id="<?php echo $this->metabox_id ?>">
-            <option value="-1"><?php _e( 'Select an option', 'jmc87_plugin_textdomain' ) ?></option>
-            <option value="1" <?php selected( $value, '1' ); ?>><?php _e( 'Option 1', 'jmc87_plugin_textdomain' ) ?></option>
-            <option value="2" <?php selected( $value, '2' ); ?>><?php _e( 'Option 2', 'jmc87_plugin_textdomain' ) ?></option>
+        <label for="<?php echo esc_attr( $this->metabox_id ) ?>"><?php esc_html_e( 'Description for this metabox', 'jmc87_plugin_textdomain' ) ?></label>
+        <select name="<?php echo esc_attr( $this->metabox_id ) ?>" id="<?php echo esc_attr( $this->metabox_id ) ?>">
+            <option value="-1"><?php esc_html_e( 'Select an option', 'jmc87_plugin_textdomain' ) ?></option>
+            <option value="1" <?php selected( $value, '1' ); ?>><?php esc_html_e( 'Option 1', 'jmc87_plugin_textdomain' ) ?></option>
+            <option value="2" <?php selected( $value, '2' ); ?>><?php esc_html_e( 'Option 2', 'jmc87_plugin_textdomain' ) ?></option>
         </select>
         
         <?php
@@ -47,8 +47,9 @@ class JMC87_SampleMetabox
 
     public function jmc87_save_sample_metabox( $post_id )
     {
-        if ( array_key_exists( $this->metabox_id, $_POST ) && $_POST[$this->metabox_id] != -1 )
-            update_post_meta( $post_id, $this->metabox_key, $_POST[$this->metabox_id] );
-        else delete_post_meta( $post_id, $this->metabox_key );
+        if ( array_key_exists( $this->metabox_id, $_POST ) && $_POST[$this->metabox_id] != -1 ) {
+            $metabox_id = sanitize_meta( $this->metabox_key, $_POST[$this->metabox_id], 'post' );
+            update_post_meta( $post_id, $this->metabox_key, $metabox_id );
+        } else delete_post_meta( $post_id, $this->metabox_key );
     }
 }

@@ -28,6 +28,9 @@ along with [Plugin Name]. If not, see https://www.gnu.org/licenses/gpl-2.0.html
 if ( !defined( 'ABSPATH' ) )
     exit;
 
+if ( !defined( 'PLUGIN_VERSION' ) )
+    define( 'PLUGIN_VERSION', '1.0' );
+
 if ( !defined( 'LANG_DIR' ) )
     define( 'LANG_DIR', basename( dirname( __FILE__ ) ) . '/languages' );
 
@@ -40,21 +43,21 @@ if ( !defined( 'PLUGIN_URL' ) )
 function jmc87_plugin_install()
 {
     if ( !current_user_can( 'activate_plugins' ) )
-        wp_die( __( 'Don\'t have enough permissions to install this plugin.', 'jmc87_plugin_textdomain' ) . '<br /><a href="' . admin_url( 'plugins.php' ) . '">&laquo; ' . __( 'Back to plugins page.', 'jmc87_plugin_textdomain' ) . '</a>' );
+        wp_die( sprintf( esc_html__( 'Don\'t have enough permissions to install this plugin.<br /><a href="%s">Back to plugins page.</a>', 'jmc87_plugin_textdomain' ), esc_url( admin_url( 'plugins.php' ) ) ) );
 }
 register_activation_hook( __FILE__, 'jmc87_plugin_install' );
 
 function jmc87_plugin_deactivation()
 {
     if ( !current_user_can( 'activate_plugins' ) )
-        wp_die( __( 'Don\'t have enough permissions to disable this plugin.', 'jmc87_plugin_textdomain' ) . '<br /><a href="' . admin_url( 'plugins.php' ) . '">&laquo; ' . __( 'Back to plugins page.', 'jmc87_plugin_textdomain' ) . '</a>' );
+        wp_die( sprintf( esc_html__( 'Don\'t have enough permissions to disable this plugin.<br /><a href="%s">Back to plugins page.</a>', 'jmc87_plugin_textdomain' ), esc_url( admin_url( 'plugins.php' ) ) ) );
 }
 register_deactivation_hook( __FILE__, 'jmc87_plugin_deactivation' );
 
 function jmc87_plugin_uninstall()
 {
     if ( !current_user_can( 'activate_plugins' ) )
-        wp_die( __( 'Don\'t have enough permissions to uninstall this plugin.', 'jmc87_plugin_textdomain' ) . '<br /><a href="' . admin_url( 'plugins.php' ) . '">&laquo; ' . __( 'Back to plugins page.', 'jmc87_plugin_textdomain' ) . '</a>' );
+        wp_die( sprintf( esc_html__( 'Don\'t have enough permissions to uninstall this plugin.<br /><a href="%s">Back to plugins page.</a>', 'jmc87_plugin_textdomain' ), esc_url( admin_url( 'plugins.php' ) ) ) );
 }
 register_uninstall_hook( __FILE__, 'jmc87_plugin_uninstall' );
 
