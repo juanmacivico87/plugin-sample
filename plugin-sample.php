@@ -8,7 +8,7 @@ Author: Your Name
 Author URI: https://www.yourwebsite.com
 License: GPLv2 or later
 License URI:  https://www.gnu.org/licenses/gpl-2.0.html
-Text Domain:  jmc87_plugin_textdomain
+Text Domain:  plugin-textdomain
 Domain Path:  /languages
 
 [Plugin Name] is free software: you can redistribute it and/or modify
@@ -43,9 +43,9 @@ if ( !defined( 'PLUGIN_DIR' ) )
 if ( !defined( 'PLUGIN_URL' ) )
     define( 'PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
-register_activation_hook( __FILE__, array( 'JMC87_PluginConfig', 'jmc87_plugin_install' ) );
-register_deactivation_hook( __FILE__, array( 'JMC87_PluginConfig', 'jmc87_plugin_deactivate' ) );
-register_uninstall_hook( __FILE__, array( 'JMC87_PluginConfig', 'jmc87_plugin_uninstall' ) );
+register_activation_hook( __FILE__, array( 'JMC87_PluginConfig', 'plugin_install' ) );
+register_deactivation_hook( __FILE__, array( 'JMC87_PluginConfig', 'plugin_deactivate' ) );
+register_uninstall_hook( __FILE__, array( 'JMC87_PluginConfig', 'plugin_uninstall' ) );
 
 require 'src/customizerSection/customizer.php';
 $customizer = new JMC87_Customizer();

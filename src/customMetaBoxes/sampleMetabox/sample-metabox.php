@@ -15,37 +15,37 @@ class JMC87_SampleMetabox
 
     public function __construct()
     {
-        add_action( 'add_meta_boxes', array( $this, 'jmc87_add_sample_metabox' ) );
-        add_action( 'save_post', array( $this, 'jmc87_save_sample_metabox' ) );
+        add_action( 'add_meta_boxes', array( $this, 'add_sample_metabox' ) );
+        add_action( 'save_post', array( $this, 'save_sample_metabox' ) );
     }
 
-    public function jmc87_add_sample_metabox()
+    public function add_sample_metabox()
     {
         add_meta_box(
             $this->metabox_id,
-            __( 'Sample Meta Box Title', 'jmc87_plugin_textdomain' ),
-            array( $this, 'jmc87_render_sample_metabox' ),
+            __( 'Sample Meta Box Title', 'plugin-textdomain' ),
+            array( $this, 'render_sample_metabox' ),
             $this->screen,
             'side',
             'default'
         );
     }
 
-    public function jmc87_render_sample_metabox( $post )
+    public function render_sample_metabox( $post )
     {
         $value = get_post_meta( $post->ID, $this->metabox_key, true ); ?>
 
-        <label for="<?php echo esc_attr( $this->metabox_id ) ?>"><?php esc_html_e( 'Description for this metabox', 'jmc87_plugin_textdomain' ) ?></label>
+        <label for="<?php echo esc_attr( $this->metabox_id ) ?>"><?php esc_html_e( 'Description for this metabox', 'plugin-textdomain' ) ?></label>
         <select name="<?php echo esc_attr( $this->metabox_id ) ?>" id="<?php echo esc_attr( $this->metabox_id ) ?>">
-            <option value="-1"><?php esc_html_e( 'Select an option', 'jmc87_plugin_textdomain' ) ?></option>
-            <option value="1" <?php selected( $value, '1' ); ?>><?php esc_html_e( 'Option 1', 'jmc87_plugin_textdomain' ) ?></option>
-            <option value="2" <?php selected( $value, '2' ); ?>><?php esc_html_e( 'Option 2', 'jmc87_plugin_textdomain' ) ?></option>
+            <option value="-1"><?php esc_html_e( 'Select an option', 'plugin-textdomain' ) ?></option>
+            <option value="1" <?php selected( $value, '1' ); ?>><?php esc_html_e( 'Option 1', 'plugin-textdomain' ) ?></option>
+            <option value="2" <?php selected( $value, '2' ); ?>><?php esc_html_e( 'Option 2', 'plugin-textdomain' ) ?></option>
         </select>
         
         <?php
     }
 
-    public function jmc87_save_sample_metabox( $post_id )
+    public function save_sample_metabox( $post_id )
     {
         if ( array_key_exists( $this->metabox_id, $_POST ) && $_POST[$this->metabox_id] != -1 ) {
             $metabox_id = sanitize_meta( $this->metabox_key, $_POST[$this->metabox_id], 'post' );

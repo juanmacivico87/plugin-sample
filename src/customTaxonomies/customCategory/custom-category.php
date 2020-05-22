@@ -23,29 +23,29 @@ class JMC87_CustomCategory
 
     public function __construct()
     {
-        add_action( 'init', array( $this, 'jmc87_add_custom_category' ) );
-        add_filter( 'taxonomy_template', array( $this, 'jmc87_get_custom_category_template' ) );
+        add_action( 'init', array( $this, 'add_custom_category' ) );
+        add_filter( 'taxonomy_template', array( $this, 'get_custom_category_template' ) );
     }
 
-    public function jmc87_add_custom_category()
+    public function add_custom_category()
     {
         $args = array(
-            'label'  => __( 'Custom Categories', 'jmc87_plugin_textdomain' ),
+            'label'  => __( 'Custom Categories', 'plugin-textdomain' ),
             'labels' => array(
-                'name'                       => __( 'Custom Categories', 'jmc87_plugin_textdomain' ),
-                'singular_name'              => __( 'Custom Category', 'jmc87_plugin_textdomain' ),
-                'menu_name'                  => __( 'Custom Categories', 'jmc87_plugin_textdomain' ),
-                'all_items'                  => __( 'All Custom Categories', 'jmc87_plugin_textdomain' ),
-                'edit_item'                  => __( 'Edit Custom Category', 'jmc87_plugin_textdomain' ),
-                'view_item'                  => __( 'View Custom Category', 'jmc87_plugin_textdomain' ),
-                'update_item'                => __( 'Update Custom Category', 'jmc87_plugin_textdomain' ),
-                'add_new_item'               => __( 'Add new Custom Category', 'jmc87_plugin_textdomain' ),
-                'new_item_name'              => __( 'New Custom Category Name', 'jmc87_plugin_textdomain' ),
-                'parent_item'                => __( 'Parent Custom Category', 'jmc87_plugin_textdomain' ),
-                'parent_item_colon'          => __( 'Parent Custom Category:', 'jmc87_plugin_textdomain' ),
-                'search_items'               => __( 'Search Custom Categories', 'jmc87_plugin_textdomain' ),
-                'not_found'                  => __( 'Custom Categories not Found', 'jmc87_plugin_textdomain' ),
-                'back_to_items'              => __( 'Back to Custom Categories', 'jmc87_plugin_textdomain' ),
+                'name'                       => __( 'Custom Categories', 'plugin-textdomain' ),
+                'singular_name'              => __( 'Custom Category', 'plugin-textdomain' ),
+                'menu_name'                  => __( 'Custom Categories', 'plugin-textdomain' ),
+                'all_items'                  => __( 'All Custom Categories', 'plugin-textdomain' ),
+                'edit_item'                  => __( 'Edit Custom Category', 'plugin-textdomain' ),
+                'view_item'                  => __( 'View Custom Category', 'plugin-textdomain' ),
+                'update_item'                => __( 'Update Custom Category', 'plugin-textdomain' ),
+                'add_new_item'               => __( 'Add new Custom Category', 'plugin-textdomain' ),
+                'new_item_name'              => __( 'New Custom Category Name', 'plugin-textdomain' ),
+                'parent_item'                => __( 'Parent Custom Category', 'plugin-textdomain' ),
+                'parent_item_colon'          => __( 'Parent Custom Category:', 'plugin-textdomain' ),
+                'search_items'               => __( 'Search Custom Categories', 'plugin-textdomain' ),
+                'not_found'                  => __( 'Custom Categories not Found', 'plugin-textdomain' ),
+                'back_to_items'              => __( 'Back to Custom Categories', 'plugin-textdomain' ),
             ),
             'public' => true,
             'publicly_queryable' => true,
@@ -56,7 +56,7 @@ class JMC87_CustomCategory
             'rest_base' => $this->rest_base,
             'show_in_quick_edit' => true,
             'show_admin_column' => false,
-            'description' => __( 'Custom Category Description', 'jmc87_plugin_textdomain' ),
+            'description' => __( 'Custom Category Description', 'plugin-textdomain' ),
             'hierarchical' => true,
             'query_var' => $this->query_var,
             'rewrite' => $this->rewrite
@@ -65,7 +65,7 @@ class JMC87_CustomCategory
         register_taxonomy( $this->taxonomy, $this->post_type, $args );
     }
 
-    public function jmc87_get_custom_category_template( $template )
+    public function get_custom_category_template( $template )
     {
         if ( get_query_var( 'taxonomy' ) === $this->taxonomy )
             $template = PLUGIN_DIR . 'src/customTaxonomies/customCategory/views/taxonomy-category.php';

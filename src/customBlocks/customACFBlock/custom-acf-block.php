@@ -11,18 +11,18 @@ class JMC87_CustomACFGutenbergBlock
 {
     public function __construct()
     {
-        add_action( 'acf/init', array( $this, 'jmc87_add_custom_block' ) );
-        add_action( 'init', array( $this, 'jmc87_add_block_fields' ) );
+        add_action( 'acf/init', array( $this, 'add_custom_block' ) );
+        add_action( 'init', array( $this, 'add_block_fields' ) );
     }
     
-    public function jmc87_add_custom_block()
+    public function add_custom_block()
     {
         if ( function_exists( 'acf_register_block_type' ) ) {
             acf_register_block_type(
                 array(
                     'name'				=> 'sample',
-                    'title'				=> __( 'Sample Block', 'jmc87_plugin_textdomain' ),
-                    'description'		=> __( 'A Gutenbetg sample block', 'jmc87_plugin_textdomain' ),
+                    'title'				=> __( 'Sample Block', 'plugin-textdomain' ),
+                    'description'		=> __( 'A Gutenbetg sample block', 'plugin-textdomain' ),
                     'category'			=> 'formatting',
                     'icon'				=> 'admin-comments',
                     'keywords'			=> array( 'sample', 'block' ),
@@ -46,17 +46,17 @@ class JMC87_CustomACFGutenbergBlock
         }
     }
 
-    public function jmc87_add_block_fields()
+    public function add_block_fields()
     {
         if( function_exists( 'acf_add_local_field_group' ) ) :
             acf_add_local_field_group(
                 array(
                     'key' => 'group_5cf76f0e4cde3',
-                    'title' => __( 'Sample', 'jmc87_plugin_textdomain' ),
+                    'title' => __( 'Sample', 'plugin-textdomain' ),
                     'fields' => array(
                         array(
                             'key' => 'field_5cf76f15f55e8',
-                            'label' => __( 'Title', 'jmc87_plugin_textdomain' ),
+                            'label' => __( 'Title', 'plugin-textdomain' ),
                             'name' => 'sample_title',
                             'type' => 'text',
                             'instructions' => '',
@@ -75,7 +75,7 @@ class JMC87_CustomACFGutenbergBlock
                         ),
                         array(
                             'key' => 'field_5cf76f28f55e9',
-                            'label' => __( 'Subtitle', 'jmc87_plugin_textdomain' ),
+                            'label' => __( 'Subtitle', 'plugin-textdomain' ),
                             'name' => 'sample_subtitle',
                             'type' => 'text',
                             'instructions' => '',
@@ -94,7 +94,7 @@ class JMC87_CustomACFGutenbergBlock
                         ),
                         array(
                             'key' => 'field_5cf76f3bf55ea',
-                            'label' => __( 'Button', 'jmc87_plugin_textdomain' ),
+                            'label' => __( 'Button', 'plugin-textdomain' ),
                             'name' => 'sample_button',
                             'type' => 'link',
                             'instructions' => '',

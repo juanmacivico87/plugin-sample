@@ -6,16 +6,16 @@ class JMC87_PluginConfig
 {
     public function __construct()
     {
-        add_action( 'plugins_loaded', array( $this, 'jmc87_load_textdomain' ) );
-        add_action( 'wp_enqueue_scripts', array( $this, 'jmc87_load_includes' ) );
+        add_action( 'plugins_loaded', array( $this, 'load_textdomain' ) );
+        add_action( 'wp_enqueue_scripts', array( $this, 'load_includes' ) );
     }
 
-    public function jmc87_load_textdomain()
+    public function load_textdomain()
     {
-        load_plugin_textdomain( 'jmc87_plugin_textdomain', false, LANG_DIR );
+        load_plugin_textdomain( 'plugin-textdomain', false, LANG_DIR );
     }
 
-    public function jmc87_load_includes()
+    public function load_includes()
     {
         if ( !is_admin() )
         {
@@ -24,24 +24,24 @@ class JMC87_PluginConfig
         }
     }
 
-    public static function jmc87_plugin_install()
+    public static function plugin_install()
     {
         if ( !current_user_can( 'activate_plugins' ) ) {
-            wp_die( sprintf( __( 'Don\'t have enough permissions to install this plugin. <a href="%s">Back to plugins page.</a>', 'jmc87_plugin_textdomain' ), esc_url( admin_url( 'plugins.php' ) ) ) );
+            wp_die( sprintf( __( 'Don\'t have enough permissions to install this plugin. <a href="%s">Back to plugins page.</a>', 'plugin-textdomain' ), esc_url( admin_url( 'plugins.php' ) ) ) );
         }
     }
 
-    public static function jmc87_plugin_deactivate()
+    public static function plugin_deactivate()
     {
         if ( !current_user_can( 'activate_plugins' ) ) {
-            wp_die( sprintf( __( 'Don\'t have enough permissions to deactivate this plugin. <a href="%s">Back to plugins page.</a>', 'jmc87_plugin_textdomain' ), esc_url( admin_url( 'plugins.php' ) ) ) );
+            wp_die( sprintf( __( 'Don\'t have enough permissions to deactivate this plugin. <a href="%s">Back to plugins page.</a>', 'plugin-textdomain' ), esc_url( admin_url( 'plugins.php' ) ) ) );
         }
     }
 
-    public static function jmc87_plugin_uninstall()
+    public static function plugin_uninstall()
     {
         if ( !current_user_can( 'activate_plugins' ) ) {
-            wp_die( sprintf( __( 'Don\'t have enough permissions to uninstall this plugin. <a href="%s">Back to plugins page.</a>', 'jmc87_plugin_textdomain' ), esc_url( admin_url( 'plugins.php' ) ) ) );
+            wp_die( sprintf( __( 'Don\'t have enough permissions to uninstall this plugin. <a href="%s">Back to plugins page.</a>', 'plugin-textdomain' ), esc_url( admin_url( 'plugins.php' ) ) ) );
         }
     }
 }
