@@ -28,7 +28,7 @@ along with [Plugin Name]. If not, see https://www.gnu.org/licenses/gpl-2.0.html
 if ( !defined( 'ABSPATH' ) )
     exit;
 
-require 'config/Config.php';
+require 'config/PluginConfig.php';
 $config = new JMC87_PluginConfig();
 
 if ( !defined( 'PLUGIN_VERSION' ) )
