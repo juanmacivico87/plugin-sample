@@ -68,7 +68,7 @@ class JMC87_CustomCategory
     public function get_custom_category_template( $template )
     {
         if ( get_query_var( 'taxonomy' ) === $this->taxonomy )
-            $template = PLUGIN_DIR . 'src/customTaxonomies/customCategory/views/taxonomy-category.php';
+            $template = PLUGIN_DIR . 'src/CustomTaxonomies/CustomCategory/views/taxonomy-category.php';
 
         return $template;
     }

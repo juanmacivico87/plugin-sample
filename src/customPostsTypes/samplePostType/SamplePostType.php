@@ -93,10 +93,10 @@ class JMC87_SamplePostType
             switch( true ) 
             {
                 case is_archive() && !is_tax():
-                    $template = PLUGIN_DIR . 'src/customPostsTypes/samplePostType/views/archive-sample.php';
+                    $template = PLUGIN_DIR . 'src/CustomPostsTypes/SamplePostType/views/archive-sample.php';
                     break;
                 case is_single():
-                    $template = PLUGIN_DIR . 'src/customPostsTypes/samplePostType/views/single-sample.php';
+                    $template = PLUGIN_DIR . 'src/CustomPostsTypes/SamplePostType/views/single-sample.php';
                     break;
             }
         }

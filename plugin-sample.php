@@ -28,7 +28,7 @@ along with [Plugin Name]. If not, see https://www.gnu.org/licenses/gpl-2.0.html
 if ( !defined( 'ABSPATH' ) )
     exit;
 
-require 'config/config.php';
+require 'config/Config.php';
 $config = new JMC87_PluginConfig();
 
 if ( !defined( 'PLUGIN_VERSION' ) )
@@ -47,20 +47,20 @@ register_activation_hook( __FILE__, array( 'JMC87_PluginConfig', 'plugin_install
 register_deactivation_hook( __FILE__, array( 'JMC87_PluginConfig', 'plugin_deactivate' ) );
 register_uninstall_hook( __FILE__, array( 'JMC87_PluginConfig', 'plugin_uninstall' ) );
 
-require 'src/customizerSection/customizer.php';
-$customizer = new JMC87_Customizer();
+require 'src/Customizer/CustomizerSection.php';
+$customizer = new JMC87_CustomizerSection();
 
-require 'src/customPostsTypes/samplePostType/sample-post-type.php';
+require 'src/CustomPostsTypes/SamplePostType/SamplePostType.php';
 $custom_post_type = new JMC87_SamplePostType();
 
-require 'src/customTaxonomies/customCategory/custom-category.php';
+require 'src/CustomTaxonomies/CustomCategory/CustomCategory.php';
 $custom_category = new JMC87_CustomCategory();
 
-require 'src/customTaxonomies/customTag/custom-tag.php';
+require 'src/CustomTaxonomies/customTag/CustomTag.php';
 $custom_tag = new JMC87_CustomTag();
 
-require 'src/customMetaboxes/sampleMetabox/sample-metabox.php';
+require 'src/CustomMetaboxes/SampleMetabox/SampleMetabox.php';
 $custom_metabox = new JMC87_SampleMetabox();
 
-require 'src/customBlocks/customACFBlock/custom-acf-block.php';
+require 'src/CustomBlocks/CustomACFBlock/CustomACFBlock.php';
 $custom_acf_block = new JMC87_CustomACFGutenbergBlock();

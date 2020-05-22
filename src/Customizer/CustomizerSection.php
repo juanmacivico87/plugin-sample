@@ -7,7 +7,7 @@
  * @package jmc87_plugin
  */
 
-class JMC87_Customizer
+class JMC87_CustomizerSection
 {
     public $panel      = 'panel_name';
     public $section    = 'section_name';

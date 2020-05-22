@@ -71,7 +71,7 @@ class JMC87_CustomTag
     public function get_custom_tag_template( $template )
     {
         if ( get_query_var( 'taxonomy' ) === $this->taxonomy )
-            $template = PLUGIN_DIR . 'src/customTaxonomies/customTag/views/taxonomy-tag.php';
+            $template = PLUGIN_DIR . 'src/CustomTaxonomies/CustomTag/views/taxonomy-tag.php';
 
         return $template;
     }
