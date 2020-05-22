@@ -9,9 +9,7 @@
 
 class JMC87_CustomizerSection
 {
-    public $panel      = 'panel_name';
-    public $section    = 'section_name';
-    public $control    = 'control_name';
+    public $panel = 'panel_name';
 
     public function __construct()
     {
@@ -31,8 +29,15 @@ class JMC87_CustomizerSection
             )
         );
 
+        $this->add_new_customizer_section();
+    }
+
+    public function add_new_customizer_section()
+    {
+        global $wp_customize;
+
         $wp_customize->add_section( 
-            $this->section,
+            'section_name',
             array(
                 'title'         => __( 'Section Name', 'plugin-textdomain' ),
                 'priority'      => 1,
@@ -41,9 +46,16 @@ class JMC87_CustomizerSection
                 'panel'         => $this->panel,
             )
         );
+        $this->add_new_customizer_control();
+    }
+
+    public function add_new_customizer_control()
+    {
+        global $wp_customize;
+        $control = '_control_name';
 
         $wp_customize->add_setting(
-            $this->control,
+            $control,
             array(
                 'default'       => '',
                 'type'          => 'option',
@@ -53,11 +65,11 @@ class JMC87_CustomizerSection
         );
 
         $wp_customize->add_control(
-            $this->control,
+            $control,
             array(
                 'label'       => __( 'Control Name', 'plugin-textdomain' ),
                 'description' => __( 'A little control description', 'plugin-textdomain' ),
-                'section'     => $this->section,
+                'section'     => 'section_name',
                 'priority'    => 1,
                 'type'        => 'text',
             )
