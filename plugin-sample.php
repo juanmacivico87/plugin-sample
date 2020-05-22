@@ -50,17 +50,17 @@ register_uninstall_hook( __FILE__, array( 'JMC87_PluginConfig', 'plugin_uninstal
 require 'src/Customizer/CustomizerSection.php';
 $customizer = new JMC87_CustomizerSection();
 
-require 'src/CustomPostsTypes/SamplePostType/SamplePostType.php';
+require 'src/PostsTypes/SamplePostType/SamplePostType.php';
 $custom_post_type = new JMC87_SamplePostType();
 
-require 'src/CustomTaxonomies/CustomCategory/CustomCategory.php';
+require 'src/Taxonomies/CustomCategory/CustomCategory.php';
 $custom_category = new JMC87_CustomCategory();
 
-require 'src/CustomTaxonomies/customTag/CustomTag.php';
+require 'src/Taxonomies/customTag/CustomTag.php';
 $custom_tag = new JMC87_CustomTag();
 
-require 'src/CustomMetaboxes/SampleMetabox/SampleMetabox.php';
+require 'src/Metaboxes/SampleMetabox/SampleMetabox.php';
 $custom_metabox = new JMC87_SampleMetabox();
 
-require 'src/CustomBlocks/CustomACFBlock/CustomACFBlock.php';
+require 'src/Blocks/CustomACFBlock/CustomACFBlock.php';
 $custom_acf_block = new JMC87_CustomACFGutenbergBlock();

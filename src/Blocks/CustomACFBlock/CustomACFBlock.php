@@ -28,12 +28,12 @@ class JMC87_CustomACFGutenbergBlock
                     'keywords'			=> array( 'sample', 'block' ),
                     'post_types'        => array( 'post', 'page', 'sample' ),
                     'mode'              => 'edit',
-                    'render_template'   => PLUGIN_DIR . 'src/CustomBlocks/CustomACFBlock/views/template-acf-block.php',
+                    'render_template'   => PLUGIN_DIR . 'src/Blocks/CustomACFBlock/views/template-acf-block.php',
                     'enqueue_assets'    => function() {
                         if ( !is_admin() )
                         {
-                            wp_enqueue_style( 'sample-block-css', PLUGIN_URL . 'src/CustomBlocks/CustomACFBlock/styles.css', array(), PLUGIN_VERSION );
-                            wp_enqueue_script( 'sample-block-js', PLUGIN_URL . 'src/CustomBlocks/CustomACFBlock/scripts.js', array(), PLUGIN_VERSION, true );
+                            wp_enqueue_style( 'sample-block-css', PLUGIN_URL . 'src/Blocks/CustomACFBlock/styles.css', array(), PLUGIN_VERSION );
+                            wp_enqueue_script( 'sample-block-js', PLUGIN_URL . 'src/Blocks/CustomACFBlock/scripts.js', array(), PLUGIN_VERSION, true );
                             $args = array(
                                 'ajax_url' => admin_url( 'admin-ajax.php' ),
                             );
