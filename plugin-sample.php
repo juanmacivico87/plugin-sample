@@ -47,23 +47,20 @@ register_activation_hook( __FILE__, array( 'JMC87_PluginConfig', 'plugin_install
 register_deactivation_hook( __FILE__, array( 'JMC87_PluginConfig', 'plugin_deactivate' ) );
 register_uninstall_hook( __FILE__, array( 'JMC87_PluginConfig', 'plugin_uninstall' ) );
 
-require 'src/Customizer/CustomizerSection.php';
-$customizer = new JMC87_CustomizerSection();
+require 'src/BlocksCategories/BlocksCategories.php';
+$custom_blocks_categories = new JMC87_BlocksCategories();
 
-require 'src/PostsTypes/SamplePostType/SamplePostType.php';
-$custom_post_type = new JMC87_SamplePostType();
+require 'src/Blocks/Blocks.php';
+$custom_blocks = new JMC87_Blocks();
 
-require 'src/Taxonomies/CustomCategory/CustomCategory.php';
-$custom_category = new JMC87_CustomCategory();
+require 'src/Customizer/Customizer.php';
+$customizer = new JMC87_Customizer();
 
-require 'src/Taxonomies/customTag/CustomTag.php';
-$custom_tag = new JMC87_CustomTag();
+require 'src/Metaboxes/Metaboxes.php';
+$custom_metaboxes = new JMC87_Metaboxes();
 
-require 'src/Metaboxes/SampleMetabox/SampleMetabox.php';
-$custom_metabox = new JMC87_SampleMetabox();
+require 'src/PostsTypes/PostsTypes.php';
+$custom_posts_type = new JMC87_PostsTypes();
 
-require 'src/BlocksCategories/CustomBlocksCategory/CustomBlocksCategory.php';
-$custom_blocks_category = new JMC87_CustomBlocksCategory();
-
-require 'src/Blocks/CustomACFBlock/CustomACFBlock.php';
-$custom_acf_block = new JMC87_CustomACFGutenbergBlock();
+require 'src/Taxonomies/Taxonomies.php';
+$custom_taxonomies = new JMC87_Taxonomies();
