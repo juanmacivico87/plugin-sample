@@ -23,7 +23,7 @@ class JMC87_CustomACFGutenbergBlock
                     'name'				=> 'sample',
                     'title'				=> __( 'Sample Block', 'plugin-textdomain' ),
                     'description'		=> __( 'A Gutenbetg sample block', 'plugin-textdomain' ),
-                    'category'			=> 'formatting',
+                    'category'			=> 'custom-blocks-category',
                     'icon'				=> 'admin-comments',
                     'keywords'			=> array( 'sample', 'block' ),
                     'post_types'        => array( 'post', 'page', 'sample' ),

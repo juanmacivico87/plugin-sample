@@ -62,5 +62,8 @@ $custom_tag = new JMC87_CustomTag();
 require 'src/Metaboxes/SampleMetabox/SampleMetabox.php';
 $custom_metabox = new JMC87_SampleMetabox();
 
+require 'src/BlocksCategories/CustomBlocksCategory/CustomBlocksCategory.php';
+$custom_blocks_category = new JMC87_CustomBlocksCategory();
+
 require 'src/Blocks/CustomACFBlock/CustomACFBlock.php';
 $custom_acf_block = new JMC87_CustomACFGutenbergBlock();
