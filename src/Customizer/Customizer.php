@@ -2,10 +2,13 @@
 /**
  * Load Customizer sections.
  *
- * @package jmc87_plugin
+ * @package plugin-sample
  */
 
-class JMC87_Customizer
+if ( !defined( 'ABSPATH' ) )
+    exit;
+
+class Customizer
 {
     public function __construct()
     {
@@ -15,6 +18,6 @@ class JMC87_Customizer
     public function load_customizer_sections()
     {
         require 'CustomizerSection/CustomizerSection.php';
-        $customizer_section = new JMC87_CustomizerSection();
+        $customizer_section = new CustomizerSection();
     }
 }

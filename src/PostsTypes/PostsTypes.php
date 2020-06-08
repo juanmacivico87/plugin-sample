@@ -2,10 +2,13 @@
 /**
  * Load custom posts types.
  *
- * @package jmc87_plugin
+ * @package plugin-sample
  */
 
-class JMC87_PostsTypes
+if ( !defined( 'ABSPATH' ) )
+    exit;
+
+class PostsTypes
 {
     public function __construct()
     {
@@ -15,6 +18,6 @@ class JMC87_PostsTypes
     public function load_custom_posts_types()
     {
         require 'SamplePostType/SamplePostType.php';
-        $custom_post_type = new JMC87_SamplePostType();
+        $custom_post_type = new SamplePostType();
     }
 }

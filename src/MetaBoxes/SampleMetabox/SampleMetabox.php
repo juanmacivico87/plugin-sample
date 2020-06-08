@@ -4,10 +4,13 @@
  *
  * @link https://developer.wordpress.org/plugins/metadata/custom-meta-boxes/
  *
- * @package jmc87_plugin
+ * @package plugin-sample
  */
 
-class JMC87_SampleMetabox
+if ( !defined( 'ABSPATH' ) )
+    exit;
+
+class SampleMetabox
 {
     public $screen      = 'sample';
     public $metabox_id  = 'sample_metabox';

@@ -4,10 +4,13 @@
  *
  * @link https://codex.wordpress.org/Function_Reference/register_taxonomy
  *
- * @package jmc87_plugin
+ * @package plugin-sample
  */
 
-class JMC87_CustomTag
+if ( !defined( 'ABSPATH' ) )
+    exit;
+
+class CustomTag
 {
     public $taxonomy   = 'custom_tag';
     public $post_type  = 'sample';

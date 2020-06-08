@@ -4,10 +4,13 @@
  *
  * @link https://codex.wordpress.org/Theme_Customization_API
  *
- * @package jmc87_plugin
+ * @package plugin-sample
  */
 
-class JMC87_CustomizerSection
+if ( !defined( 'ABSPATH' ) )
+    exit;
+
+class CustomizerSection
 {
     public $panel = 'panel_name';
 

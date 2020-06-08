@@ -4,10 +4,13 @@
  *
  * @link https://developer.wordpress.org/block-editor/developers/filters/block-filters/#managing-block-categories
  *
- * @package jmc87_plugin
+ * @package plugin-sample
  */
 
-class JMC87_CustomBlocksCategory
+if ( !defined( 'ABSPATH' ) )
+    exit;
+
+class CustomBlocksCategory
 {
     public function __construct()
     {

@@ -29,7 +29,7 @@ if ( !defined( 'ABSPATH' ) )
     exit;
 
 require 'config/PluginConfig.php';
-$config = new JMC87_PluginConfig();
+$config = new PluginConfig();
 
 if ( !defined( 'PLUGIN_VERSION' ) )
     define( 'PLUGIN_VERSION', '1.0' );
@@ -43,24 +43,24 @@ if ( !defined( 'PLUGIN_DIR' ) )
 if ( !defined( 'PLUGIN_URL' ) )
     define( 'PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
-register_activation_hook( __FILE__, array( 'JMC87_PluginConfig', 'plugin_install' ) );
-register_deactivation_hook( __FILE__, array( 'JMC87_PluginConfig', 'plugin_deactivate' ) );
-register_uninstall_hook( __FILE__, array( 'JMC87_PluginConfig', 'plugin_uninstall' ) );
+register_activation_hook( __FILE__, array( 'PluginConfig', 'plugin_install' ) );
+register_deactivation_hook( __FILE__, array( 'PluginConfig', 'plugin_deactivate' ) );
+register_uninstall_hook( __FILE__, array( 'PluginConfig', 'plugin_uninstall' ) );
 
 require 'src/BlocksCategories/BlocksCategories.php';
-$custom_blocks_categories = new JMC87_BlocksCategories();
+$custom_blocks_categories = new BlocksCategories();
 
 require 'src/Blocks/Blocks.php';
-$custom_blocks = new JMC87_Blocks();
+$custom_blocks = new Blocks();
 
 require 'src/Customizer/Customizer.php';
-$customizer = new JMC87_Customizer();
+$customizer = new Customizer();
 
 require 'src/Metaboxes/Metaboxes.php';
-$custom_metaboxes = new JMC87_Metaboxes();
+$custom_metaboxes = new Metaboxes();
 
 require 'src/PostsTypes/PostsTypes.php';
-$custom_posts_type = new JMC87_PostsTypes();
+$custom_posts_type = new PostsTypes();
 
 require 'src/Taxonomies/Taxonomies.php';
-$custom_taxonomies = new JMC87_Taxonomies();
+$custom_taxonomies = new Taxonomies();

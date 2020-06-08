@@ -4,10 +4,13 @@
  *
  * @link https://codex.wordpress.org/Function_Reference/register_post_type
  *
- * @package jmc87_plugin
+ * @package plugin-sample
  */
 
-class JMC87_SamplePostType
+if ( !defined( 'ABSPATH' ) )
+    exit;
+
+class SamplePostType
 {
     public $post_type  = 'sample';
 

@@ -4,10 +4,13 @@
  *
  * @link https://www.advancedcustomfields.com/resources/acf_register_block_type/
  *
- * @package jmc87_plugin
+ * @package plugin-sample
  */
 
-class JMC87_CustomACFGutenbergBlock
+if ( !defined( 'ABSPATH' ) )
+    exit;
+
+class CustomACFGutenbergBlock
 {
     public function __construct()
     {

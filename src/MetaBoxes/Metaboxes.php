@@ -2,10 +2,13 @@
 /**
  * Load custom metaboxes.
  *
- * @package jmc87_plugin
+ * @package plugin-sample
  */
 
-class JMC87_Metaboxes
+if ( !defined( 'ABSPATH' ) )
+    exit;
+
+class Metaboxes
 {
     public function __construct()
     {
@@ -15,6 +18,6 @@ class JMC87_Metaboxes
     public function load_custom_metaboxes()
     {
         require 'SampleMetabox/SampleMetabox.php';
-        $custom_metabox = new JMC87_SampleMetabox();
+        $custom_metabox = new SampleMetabox();
     }
 }

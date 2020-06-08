@@ -2,10 +2,13 @@
 /**
  * Load custom categories to Gutenberg blocks.
  *
- * @package jmc87_plugin
+ * @package plugin-sample
  */
 
-class JMC87_BlocksCategories
+if ( !defined( 'ABSPATH' ) )
+    exit;
+
+class BlocksCategories
 {
     public function __construct()
     {
@@ -15,6 +18,6 @@ class JMC87_BlocksCategories
     public function load_custom_blocks_categories()
     {
         require 'CustomBlocksCategory/CustomBlocksCategory.php';
-        $custom_blocks_category = new JMC87_CustomBlocksCategory();
+        $custom_blocks_category = new CustomBlocksCategory();
     }
 }

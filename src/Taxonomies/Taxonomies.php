@@ -2,10 +2,13 @@
 /**
  * Load custom taxonomies.
  *
- * @package jmc87_plugin
+ * @package plugin-sample
  */
 
-class JMC87_Taxonomies
+if ( !defined( 'ABSPATH' ) )
+    exit;
+
+class Taxonomies
 {
     public function __construct()
     {
@@ -15,9 +18,9 @@ class JMC87_Taxonomies
     public function load_custom_taxonomies()
     {
         require 'CustomCategory/CustomCategory.php';
-        $custom_category = new JMC87_CustomCategory();
+        $custom_category = new CustomCategory();
 
         require 'CustomTag/CustomTag.php';
-        $custom_tag = new JMC87_CustomTag();
+        $custom_tag = new CustomTag();
     }
 }

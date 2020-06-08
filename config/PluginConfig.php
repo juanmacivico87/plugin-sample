@@ -2,7 +2,7 @@
 if ( !defined( 'ABSPATH' ) )
     exit;
 
-class JMC87_PluginConfig
+class PluginConfig
 {
     public function __construct()
     {

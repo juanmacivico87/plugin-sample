@@ -2,10 +2,13 @@
 /**
  * Load custom Gutenberg blocks.
  *
- * @package jmc87_plugin
+ * @package plugin-sample
  */
 
-class JMC87_Blocks
+if ( !defined( 'ABSPATH' ) )
+    exit;
+
+class Blocks
 {
     public function __construct()
     {
@@ -15,6 +18,6 @@ class JMC87_Blocks
     public function load_custom_blocks()
     {
         require 'CustomACFBlock/CustomACFBlock.php';
-        $custom_acf_block = new JMC87_CustomACFGutenbergBlock();
+        $custom_acf_block = new CustomACFGutenbergBlock();
     }
 }
