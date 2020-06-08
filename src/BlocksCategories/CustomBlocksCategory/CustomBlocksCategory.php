@@ -26,7 +26,7 @@ class JMC87_CustomBlocksCategory
             array(
                 array(
                     'slug' => 'custom-blocks-category',
-                    'title' => __( 'Custom Blocks Category', 'plugin-textdomain' ),
+                    'title' => __( 'Custom Blocks Category', 'plugin-sample' ),
                     'icon'  => '',
                 ),
             )

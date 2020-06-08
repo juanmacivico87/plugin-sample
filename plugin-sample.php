@@ -8,7 +8,7 @@ Author: Your Name
 Author URI: https://www.yourwebsite.com
 License: GPLv2 or later
 License URI:  https://www.gnu.org/licenses/gpl-2.0.html
-Text Domain:  plugin-textdomain
+Text Domain:  plugin-sample
 Domain Path:  /languages
 
 [Plugin Name] is free software: you can redistribute it and/or modify

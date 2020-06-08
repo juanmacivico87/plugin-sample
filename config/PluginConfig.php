@@ -16,7 +16,7 @@ class JMC87_PluginConfig
 
     public function load_textdomain()
     {
-        load_plugin_textdomain( 'plugin-textdomain', false, LANG_DIR );
+        load_plugin_textdomain( 'plugin-sample', false, LANG_DIR );
     }
 
     public function load_includes()
@@ -47,7 +47,7 @@ class JMC87_PluginConfig
     public function render_activate_plugin_notice()
     {
         ?><div class="notice notice-error is-dismissible">
-            <p><?php _e( 'Don\'t have enough permissions to install this plugin.', 'plugin-textdomain' ); ?></p>
+            <p><?php _e( 'Don\'t have enough permissions to install this plugin.', 'plugin-sample' ); ?></p>
         </div><?php
     }
 
@@ -71,7 +71,7 @@ class JMC87_PluginConfig
     public function render_deactivate_plugin_notice()
     {
         ?><div class="notice notice-error is-dismissible">
-            <p><?php _e( 'Don\'t have enough permissions to deactivate this plugin.', 'plugin-textdomain' ); ?></p>
+            <p><?php _e( 'Don\'t have enough permissions to deactivate this plugin.', 'plugin-sample' ); ?></p>
         </div><?php
     }
 
@@ -90,7 +90,7 @@ class JMC87_PluginConfig
     public function render_uninstall_plugin_notice()
     {
         ?><div class="notice notice-error is-dismissible">
-            <p><?php _e( 'Don\'t have enough permissions to uninstall this plugin.', 'plugin-textdomain' ); ?></p>
+            <p><?php _e( 'Don\'t have enough permissions to uninstall this plugin.', 'plugin-sample' ); ?></p>
         </div><?php
     }
 }

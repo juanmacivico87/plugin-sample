@@ -23,7 +23,7 @@ class JMC87_SampleMetabox
     {
         add_meta_box(
             $this->metabox_id,
-            __( 'Sample Meta Box Title', 'plugin-textdomain' ),
+            __( 'Sample Meta Box Title', 'plugin-sample' ),
             array( $this, 'render_sample_metabox' ),
             $this->screen,
             'side',
@@ -35,11 +35,11 @@ class JMC87_SampleMetabox
     {
         $value = get_post_meta( $post->ID, $this->metabox_key, true ); ?>
 
-        <label for="<?php echo esc_attr( $this->metabox_id ) ?>"><?php esc_html_e( 'Description for this metabox', 'plugin-textdomain' ) ?></label>
+        <label for="<?php echo esc_attr( $this->metabox_id ) ?>"><?php esc_html_e( 'Description for this metabox', 'plugin-sample' ) ?></label>
         <select name="<?php echo esc_attr( $this->metabox_id ) ?>" id="<?php echo esc_attr( $this->metabox_id ) ?>">
-            <option value="-1"><?php esc_html_e( 'Select an option', 'plugin-textdomain' ) ?></option>
-            <option value="1" <?php selected( $value, '1' ); ?>><?php esc_html_e( 'Option 1', 'plugin-textdomain' ) ?></option>
-            <option value="2" <?php selected( $value, '2' ); ?>><?php esc_html_e( 'Option 2', 'plugin-textdomain' ) ?></option>
+            <option value="-1"><?php esc_html_e( 'Select an option', 'plugin-sample' ) ?></option>
+            <option value="1" <?php selected( $value, '1' ); ?>><?php esc_html_e( 'Option 1', 'plugin-sample' ) ?></option>
+            <option value="2" <?php selected( $value, '2' ); ?>><?php esc_html_e( 'Option 2', 'plugin-sample' ) ?></option>
         </select>
         
         <?php
