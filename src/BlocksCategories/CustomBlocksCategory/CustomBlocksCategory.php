@@ -7,6 +7,8 @@
  * @package plugin-sample
  */
 
+namespace Source\BlocksCategories\CustomBlocksCategory;
+
 if ( !defined( 'ABSPATH' ) )
     exit;
 

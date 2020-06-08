@@ -1,0 +1,13 @@
+{
+    "name": "plugin/sample",
+    "description": "A little plugin description",
+    "require": {
+        "php": ">=7.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Config\\": "config/",
+            "Source\\": "src/"
+        }
+    }
+}

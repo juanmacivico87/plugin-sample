@@ -7,6 +7,8 @@
  * @package plugin-sample
  */
 
+namespace Source\PostsTypes\SamplePostType;
+
 if ( !defined( 'ABSPATH' ) )
     exit;
 

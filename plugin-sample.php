@@ -28,8 +28,10 @@ along with [Plugin Name]. If not, see https://www.gnu.org/licenses/gpl-2.0.html
 if ( !defined( 'ABSPATH' ) )
     exit;
 
-require 'config/PluginConfig.php';
-$config = new PluginConfig();
+require_once 'vendor/autoload.php';
+
+use Config\PluginConfig;
+$config = new PluginConfig;
 
 if ( !defined( 'PLUGIN_VERSION' ) )
     define( 'PLUGIN_VERSION', '1.0' );
@@ -43,24 +45,28 @@ if ( !defined( 'PLUGIN_DIR' ) )
 if ( !defined( 'PLUGIN_URL' ) )
     define( 'PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
-register_activation_hook( __FILE__, array( 'PluginConfig', 'plugin_install' ) );
-register_deactivation_hook( __FILE__, array( 'PluginConfig', 'plugin_deactivate' ) );
-register_uninstall_hook( __FILE__, array( 'PluginConfig', 'plugin_uninstall' ) );
+function plugin_install()
+{
+    if ( !current_user_can( 'activate_plugins' ) ) {
+        add_option( '__prefix_activate_plugin', 'plugin-sample' );
+    }
+}
+register_activation_hook( __FILE__, 'plugin_install' );
 
-require 'src/BlocksCategories/BlocksCategories.php';
-$custom_blocks_categories = new BlocksCategories();
+function plugin_deactivate()
+{
+    if ( !current_user_can( 'activate_plugins' ) ) {
+        add_option( '__prefix_not_deactivate_plugin', 'plugin-sample' );
+        wp_redirect( admin_url( 'plugins.php' ) );
+        die();
+    }
+}
+register_deactivation_hook( __FILE__, 'plugin_deactivate' );
 
-require 'src/Blocks/Blocks.php';
-$custom_blocks = new Blocks();
-
-require 'src/Customizer/Customizer.php';
-$customizer = new Customizer();
-
-require 'src/Metaboxes/Metaboxes.php';
-$custom_metaboxes = new Metaboxes();
-
-require 'src/PostsTypes/PostsTypes.php';
-$custom_posts_type = new PostsTypes();
-
-require 'src/Taxonomies/Taxonomies.php';
-$custom_taxonomies = new Taxonomies();
+function plugin_uninstall()
+{
+    if ( current_user_can( 'activate_plugins' ) ) {
+        
+    }
+}
+// register_uninstall_hook( __FILE__, 'plugin_uninstall' );

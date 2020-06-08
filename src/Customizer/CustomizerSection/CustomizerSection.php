@@ -7,6 +7,8 @@
  * @package plugin-sample
  */
 
+namespace Source\Customizer\CustomizerSection;
+
 if ( !defined( 'ABSPATH' ) )
     exit;
 

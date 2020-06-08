@@ -5,6 +5,8 @@
  * @package plugin-sample
  */
 
+namespace Source\BlocksCategories;
+
 if ( !defined( 'ABSPATH' ) )
     exit;
 
@@ -17,7 +19,6 @@ class BlocksCategories
 
     public function load_custom_blocks_categories()
     {
-        require 'CustomBlocksCategory/CustomBlocksCategory.php';
-        $custom_blocks_category = new CustomBlocksCategory();
+        $custom_blocks_category = new \Source\BlocksCategories\CustomBlocksCategory\CustomBlocksCategory;
     }
 }

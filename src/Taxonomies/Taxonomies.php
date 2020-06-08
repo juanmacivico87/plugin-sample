@@ -5,6 +5,8 @@
  * @package plugin-sample
  */
 
+namespace Source\Taxonomies;
+
 if ( !defined( 'ABSPATH' ) )
     exit;
 
@@ -17,10 +19,7 @@ class Taxonomies
 
     public function load_custom_taxonomies()
     {
-        require 'CustomCategory/CustomCategory.php';
-        $custom_category = new CustomCategory();
-
-        require 'CustomTag/CustomTag.php';
-        $custom_tag = new CustomTag();
+        $custom_category = new \Source\Taxonomies\CustomCategory\CustomCategory;
+        $custom_tag      = new \Source\Taxonomies\CustomTag\CustomTag;
     }
 }

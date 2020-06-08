@@ -5,6 +5,8 @@
  * @package plugin-sample
  */
 
+namespace Source\Blocks;
+
 if ( !defined( 'ABSPATH' ) )
     exit;
 
@@ -17,7 +19,6 @@ class Blocks
 
     public function load_custom_blocks()
     {
-        require 'CustomACFBlock/CustomACFBlock.php';
-        $custom_acf_block = new CustomACFGutenbergBlock();
+        $custom_acf_block = new \Source\Blocks\CustomACFBlock\CustomACFBlock;
     }
 }

@@ -5,6 +5,8 @@
  * @package plugin-sample
  */
 
+namespace Source\PostsTypes;
+
 if ( !defined( 'ABSPATH' ) )
     exit;
 
@@ -17,7 +19,6 @@ class PostsTypes
 
     public function load_custom_posts_types()
     {
-        require 'SamplePostType/SamplePostType.php';
-        $custom_post_type = new SamplePostType();
+        $custom_post_type = new \Source\PostsTypes\SamplePostType\SamplePostType;
     }
 }

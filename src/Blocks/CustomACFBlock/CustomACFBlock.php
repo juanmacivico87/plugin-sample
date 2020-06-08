@@ -7,10 +7,12 @@
  * @package plugin-sample
  */
 
+namespace Source\Blocks\CustomACFBlock;
+
 if ( !defined( 'ABSPATH' ) )
     exit;
 
-class CustomACFGutenbergBlock
+class CustomACFBlock
 {
     public function __construct()
     {

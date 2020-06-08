@@ -7,6 +7,8 @@
  * @package plugin-sample
  */
 
+namespace Source\Taxonomies\CustomCategory;
+
 if ( !defined( 'ABSPATH' ) )
     exit;
 

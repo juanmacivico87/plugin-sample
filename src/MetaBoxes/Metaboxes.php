@@ -5,6 +5,8 @@
  * @package plugin-sample
  */
 
+namespace Source\Metaboxes;
+
 if ( !defined( 'ABSPATH' ) )
     exit;
 
@@ -17,7 +19,6 @@ class Metaboxes
 
     public function load_custom_metaboxes()
     {
-        require 'SampleMetabox/SampleMetabox.php';
-        $custom_metabox = new SampleMetabox();
+        $custom_metabox = new \Source\Metaboxes\SampleMetabox\SampleMetabox;
     }
 }

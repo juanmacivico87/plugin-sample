@@ -5,6 +5,8 @@
  * @package plugin-sample
  */
 
+namespace Source\Customizer;
+
 if ( !defined( 'ABSPATH' ) )
     exit;
 
@@ -17,7 +19,6 @@ class Customizer
 
     public function load_customizer_sections()
     {
-        require 'CustomizerSection/CustomizerSection.php';
-        $customizer_section = new CustomizerSection();
+        $customizer_section = new \Source\Customizer\CustomizerSection\CustomizerSection;
     }
 }
