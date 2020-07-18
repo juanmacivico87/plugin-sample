@@ -33,12 +33,12 @@ class CustomACFBlock
                     'keywords'			=> array( 'sample', 'block' ),
                     'post_types'        => array( 'post', 'page', 'sample' ),
                     'mode'              => 'edit',
-                    'render_template'   => PLUGIN_DIR . 'src/Blocks/CustomACFBlock/views/template-acf-block.php',
+                    'render_template'   => PREFIX_PLUGIN_DIR . 'src/Blocks/CustomACFBlock/views/template-acf-block.php',
                     'enqueue_assets'    => function() {
                         if ( !is_admin() )
                         {
-                            wp_enqueue_style( 'sample-block-css', PLUGIN_URL . 'src/Blocks/CustomACFBlock/css/styles.css', array(), PLUGIN_VERSION );
-                            wp_enqueue_script( 'sample-block-js', PLUGIN_URL . 'src/Blocks/CustomACFBlock/js/scripts.js', array(), PLUGIN_VERSION, true );
+                            wp_enqueue_style( 'sample-block-css', PREFIX_PLUGIN_URL . 'src/Blocks/CustomACFBlock/css/styles.css', array(), PREFIX_PLUGIN_VERSION );
+                            wp_enqueue_script( 'sample-block-js', PREFIX_PLUGIN_URL . 'src/Blocks/CustomACFBlock/js/scripts.js', array(), PREFIX_PLUGIN_VERSION, true );
                             $args = array(
                                 'ajax_url' => admin_url( 'admin-ajax.php' ),
                             );

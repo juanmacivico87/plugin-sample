@@ -73,7 +73,7 @@ class CustomCategory
     public function get_custom_category_template( $template )
     {
         if ( get_query_var( 'taxonomy' ) === $this->taxonomy )
-            $template = PLUGIN_DIR . 'src/Taxonomies/CustomCategory/views/taxonomy-category.php';
+            $template = PREFIX_PLUGIN_DIR . 'src/Taxonomies/CustomCategory/views/taxonomy-category.php';
 
         return $template;
     }

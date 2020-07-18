@@ -98,10 +98,10 @@ class SamplePostType
             switch( true ) 
             {
                 case is_archive() && !is_tax():
-                    $template = PLUGIN_DIR . 'src/PostsTypes/SamplePostType/views/archive-sample.php';
+                    $template = PREFIX_PLUGIN_DIR . 'src/PostsTypes/SamplePostType/views/archive-sample.php';
                     break;
                 case is_single():
-                    $template = PLUGIN_DIR . 'src/PostsTypes/SamplePostType/views/single-sample.php';
+                    $template = PREFIX_PLUGIN_DIR . 'src/PostsTypes/SamplePostType/views/single-sample.php';
                     break;
             }
         }

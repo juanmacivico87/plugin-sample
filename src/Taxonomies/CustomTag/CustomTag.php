@@ -76,7 +76,7 @@ class CustomTag
     public function get_custom_tag_template( $template )
     {
         if ( get_query_var( 'taxonomy' ) === $this->taxonomy )
-            $template = PLUGIN_DIR . 'src/Taxonomies/CustomTag/views/taxonomy-tag.php';
+            $template = PREFIX_PLUGIN_DIR . 'src/Taxonomies/CustomTag/views/taxonomy-tag.php';
 
         return $template;
     }

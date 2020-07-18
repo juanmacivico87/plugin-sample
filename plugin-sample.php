@@ -33,17 +33,17 @@ require_once 'vendor/autoload.php';
 use Config\PluginConfig;
 $config = new PluginConfig;
 
-if ( !defined( 'PLUGIN_VERSION' ) )
-    define( 'PLUGIN_VERSION', '1.0' );
+if ( !defined( 'PREFIX_PLUGIN_VERSION' ) )
+    define( 'PREFIX_PLUGIN_VERSION', '1.0' );
 
-if ( !defined( 'LANG_DIR' ) )
-    define( 'LANG_DIR', basename( dirname( __FILE__ ) ) . '/languages' );
+if ( !defined( 'PREFIX_LANG_DIR' ) )
+    define( 'PREFIX_LANG_DIR', basename( dirname( __FILE__ ) ) . '/languages' );
 
-if ( !defined( 'PLUGIN_DIR' ) )
-    define( 'PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+if ( !defined( 'PREFIX_PLUGIN_DIR' ) )
+    define( 'PREFIX_PLUGIN_DIR', plugin__dir_path( __FILE__ ) );
 
-if ( !defined( 'PLUGIN_URL' ) )
-    define( 'PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+if ( !defined( 'PREFIX_PLUGIN_URL' ) )
+    define( 'PREFIX_PLUGIN_URL', plugin__dir_url( __FILE__ ) );
 
 function plugin_install()
 {

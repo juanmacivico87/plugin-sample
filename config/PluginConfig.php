@@ -8,9 +8,8 @@ class PluginConfig
 {
     public function __construct()
     {
-        $this->load_sources();
-
         add_action( 'plugins_loaded', array( $this, 'load_textdomain' ) );
+        add_action( 'plugins_loaded', array( $this, 'load_sources' ) );
         add_action( 'wp_enqueue_scripts', array( $this, 'load_includes' ) );
 
         add_action( 'admin_init', array( $this, 'activate_plugin_process' ) );
@@ -20,25 +19,37 @@ class PluginConfig
 
     public function load_sources()
     {
-        $customizer        = new \Source\Customizer\Customizer;
-        $post_types        = new \Source\PostsTypes\PostsTypes;
-        $taxonomies        = new \Source\Taxonomies\Taxonomies;
-        $blocks_categories = new \Source\BlocksCategories\BlocksCategories;
-        $blocks            = new \Source\Blocks\Blocks;
-        $metaboxes         = new \Source\Metaboxes\Metaboxes;
+        /** Customizer sections */
+        $customizer_section = new \Source\Customizer\CustomizerSection\CustomizerSection;
+
+        /** Taxonomies */
+        $custom_category = new \Source\Taxonomies\CustomCategory\CustomCategory;
+        $custom_tag      = new \Source\Taxonomies\CustomTag\CustomTag;
+
+        /** Post types */
+        $custom_post_type = new \Source\PostsTypes\SamplePostType\SamplePostType;
+
+        /** Blocks categories */
+        $custom_blocks_category = new \Source\BlocksCategories\CustomBlocksCategory\CustomBlocksCategory;
+
+        /** Blocks */
+        $custom_acf_block = new \Source\Blocks\CustomACFBlock\CustomACFBlock;
+
+        /** Metaboxes */
+        $custom_metabox = new \Source\Metaboxes\SampleMetabox\SampleMetabox;
     }
 
     public function load_textdomain()
     {
-        load_plugin_textdomain( 'plugin-sample', false, LANG_DIR );
+        load_plugin_textdomain( 'plugin-sample', false, PREFIX_LANG_DIR );
     }
 
     public function load_includes()
     {
         if ( !is_admin() )
         {
-            wp_enqueue_script( 'custom-scripts', PLUGIN_URL . 'inc/js/custom-scripts.js', array(), PLUGIN_VERSION, true );
-            wp_enqueue_style( 'custom-styles', PLUGIN_URL . 'inc/css/custom-styles.css', array(), PLUGIN_VERSION );
+            wp_enqueue_script( 'custom-scripts', PREFIX_PLUGIN_URL . 'inc/js/custom-scripts.js', array(), PREFIX_PLUGIN_VERSION, true );
+            wp_enqueue_style( 'custom-styles', PREFIX_PLUGIN_URL . 'inc/css/custom-styles.css', array(), PREFIX_PLUGIN_VERSION );
         }
     }
 
