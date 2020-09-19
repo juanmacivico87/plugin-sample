@@ -45,6 +45,12 @@ if ( !defined( 'PREFIX_PLUGIN_DIR' ) )
 if ( !defined( 'PREFIX_PLUGIN_URL' ) )
     define( 'PREFIX_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
+if ( !defined( 'PREFIX_PLUGIN_ASSETS' ) )
+    define( 'PREFIX_PLUGIN_ASSETS', PREFIX_PLUGIN_URL . '/assets' );
+
+if ( !defined( 'PREFIX_PLUGIN_ADMIN_ASSETS' ) )
+    define( 'PREFIX_PLUGIN_ADMIN_ASSETS', PREFIX_PLUGIN_URL . '/admin' );
+
 function prefix_plugin_install()
 {
     if ( !current_user_can( 'activate_plugins' ) ) {

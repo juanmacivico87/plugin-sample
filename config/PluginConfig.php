@@ -16,9 +16,10 @@ class PluginConfig
 {
     public function __construct()
     {
-        add_action( 'plugins_loaded', array( $this, 'load_textdomain' ) );
         add_action( 'plugins_loaded', array( $this, 'load_sources' ) );
-        add_action( 'wp_enqueue_scripts', array( $this, 'load_includes' ) );
+        add_action( 'plugins_loaded', array( $this, 'load_textdomain' ) );
+        add_action( 'wp_enqueue_scripts', array( $this, 'load_front_end_assets' ) );
+        add_action( 'admin_enqueue_scripts', array( $this, 'load_admin_assets' ) );
 
         add_action( 'admin_init', array( $this, 'activate_plugin_process' ) );
         add_action( 'admin_init', array( $this, 'deactivate_plugin_process' ) );
@@ -31,17 +32,17 @@ class PluginConfig
         $customizer_section = new CustomizerSection();
 
         /** Taxonomies */
-        $custom_category = new CustomCategory();
-        $custom_tag      = new CustomTag;
+        $custom_category    = new CustomCategory();
+        $custom_tag         = new CustomTag;
 
         /** Post types */
-        $custom_post_type = new SamplePostType();
+        $custom_post_type   = new SamplePostType();
 
         /** Blocks categories */
         $custom_blocks_category = new CustomBlocksCategory();
 
         /** Blocks */
-        $custom_acf_block = new CustomACFBlock();
+        $custom_acf_block   = new CustomACFBlock();
 
         /** Metaboxes */
         $custom_metabox = new SampleMetabox();
@@ -52,13 +53,16 @@ class PluginConfig
         load_plugin_textdomain( 'plugin-sample', false, PREFIX_LANG_DIR );
     }
 
-    public function load_includes()
+    public function load_front_end_assets()
     {
-        if ( !is_admin() )
-        {
-            wp_enqueue_script( 'custom-scripts', PREFIX_PLUGIN_URL . 'inc/js/custom-scripts.js', array(), PREFIX_PLUGIN_VERSION, true );
-            wp_enqueue_style( 'custom-styles', PREFIX_PLUGIN_URL . 'inc/css/custom-styles.css', array(), PREFIX_PLUGIN_VERSION );
-        }
+        wp_enqueue_script( 'plugin-sample-front', PREFIX_PLUGIN_ASSETS . '/js/scripts.js', array(), PREFIX_PLUGIN_VERSION, true );
+        wp_enqueue_style( 'plugin-sample-front', PREFIX_PLUGIN_ASSETS . '/css/styles.css', array(), PREFIX_PLUGIN_VERSION );
+    }
+
+    public function load_admin_assets()
+    {
+        wp_enqueue_script( 'plugin-sample-admin', PREFIX_PLUGIN_ADMIN_ASSETS . '/js/scripts.js', array(), PREFIX_PLUGIN_VERSION, true );
+        wp_enqueue_style( 'plugin-sample-admin', PREFIX_PLUGIN_ADMIN_ASSETS . '/css/styles.css', array(), PREFIX_PLUGIN_VERSION );
     }
 
     public function activate_plugin_process()

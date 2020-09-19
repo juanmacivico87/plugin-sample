@@ -54,14 +54,20 @@ De todas formas, para ayudarte, te hago un resumen de los archivos y carpetas qu
     - **PLUGIN_VERSION:** Te permite definir la versión del plugin, para que así no tengas que ir modificándola en todas las partes de tu código donde sea necesario que la indiques, cada vez que hagas una actualización.
     - **LANG_DIR:** Te permite indicar la ruta de la carpeta en la que almacenarás los ficheros .po y .mo con las traducciones del plugin.
     - **PLUGIN_DIR:** Te permite indicar ruta absoluta a la carpeta del plugin. Esta constante te puede ayudar a la hora de hacer includes de otros archivos.
-    - **PLUGIN_URL:** Te permite indicar la URL absoluta de la carpeta del plugin. Esta constante te puede ayudar a la hora de enconlar tus archivos CSS y JS.
-- **config:** Contiene la clase en la que se establece la configuración del plugin.
-    - **PluginConfig.php:** En este archivo se establece una clase con la configuración del plugin. En ella, se instancian todas las clases de la carpeta "src" con las funcionalidades del plugin, se indica a la instalación de WordPress el "textdomain" que debe buscar para traducir el plugin, se encolan los ficheros CSS y Javascript globales que el plugin necesita, y se declaran las funciones que se llaman desde el archivo principal del plugin al activar, desactivar y borrar el plugin.
-- **inc:** Contiene todos los recursos que necesita tu plugin en el front.
+    - **PLUGIN_URL:** Te permite indicar la URL absoluta de la carpeta del plugin.
+    - **PREFIX_PLUGIN_ASSETS:** Te permite indicar la URL absoluta de la carpeta de los assets del plugin. Esta constante te puede ayudar a la hora de enconlar tus archivos CSS y JS, para el frontend.
+    - **PREFIX_PLUGIN_ADMIN_ASSETS:** Te permite indicar la URL absoluta de los assets del panel de administración del plugin. Esta constante te puede ayudar a la hora de enconlar tus archivos CSS y JS, para el panel de administración.
+- **admin:** Contiene todos los recursos que necesita tu plugin en el panel de administración.
+    - **css:** Aquí podrás incluir los archivos CSS que tu plugin necesita para visualizarse correctamente.
+    - **images:** Aquí podrás incluir aquellas imágenes que tu plugin necesita, tales como iconos, logos, etc.
+    - **js:** Aquí podrás incluir los archivos Javascript de las funcionalidades que tu plugin requiera en el panel de administración.
+- **assets:** Contiene todos los recursos que necesita tu plugin en el front.
     - **css:** Aquí podrás incluir los archivos CSS que tu plugin necesita para visualizarse correctamente.
     - **fonts:** Aquí podrás incluir las tipografías requeridas por tu plugin.
     - **images:** Aquí podrás incluir aquellas imágenes que tu plugin necesita, tales como iconos, logos, etc.
     - **js:** Aquí podrás incluir los archivos Javascript de las funcionalidades que tu plugin requiera en el front.
+- **config:** Contiene la clase en la que se establece la configuración del plugin.
+    - **PluginConfig.php:** En este archivo se establece una clase con la configuración del plugin. En ella, se instancian todas las clases de la carpeta "src" con las funcionalidades del plugin, se indica a la instalación de WordPress el "textdomain" que debe buscar para traducir el plugin, se encolan los ficheros CSS y Javascript globales que el plugin necesita, y se declaran las funciones que se llaman desde el archivo principal del plugin al activar, desactivar y borrar el plugin.
 - **src (Source)::** Contiene las clases de PHP que desarrollarás para añadir las funcionalidades de tu plugin a la web en la que se instale el mismo.
     - **Blocks:** Desde la versión 5.0 de WordPress, el editor clásico fue sustituido por un editor de bloques (Gutenberg), que te permite contribuir tus sitios web de una forma más dinámica y visual. En esta carpeta, podrás crear clases con bloques personalizados que necesites para tus desarrollos.
         - **CustomACFBlock:** Contiene un bloque personalizado desarrollado gracias a la función "acf_register_block_type()" de ACF (muy útil para aquellos que no sabemos desarrollar bloques con React). Necesitarás disponer de una licencia PRO de ACF para poder desarrollar bloques de esta manera. Para crear tu propio bloque personalizado, duplica o edita esta clase y añade los métodos y las propiedades que necesites.
