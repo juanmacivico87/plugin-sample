@@ -40,10 +40,10 @@ if ( !defined( 'PREFIX_LANG_DIR' ) )
     define( 'PREFIX_LANG_DIR', basename( dirname( __FILE__ ) ) . '/languages' );
 
 if ( !defined( 'PREFIX_PLUGIN_DIR' ) )
-    define( 'PREFIX_PLUGIN_DIR', plugin__dir_path( __FILE__ ) );
+    define( 'PREFIX_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 
 if ( !defined( 'PREFIX_PLUGIN_URL' ) )
-    define( 'PREFIX_PLUGIN_URL', plugin__dir_url( __FILE__ ) );
+    define( 'PREFIX_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
 function plugin_install()
 {
