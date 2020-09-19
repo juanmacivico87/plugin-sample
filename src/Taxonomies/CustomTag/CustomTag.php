@@ -7,7 +7,7 @@
  * @package plugin-sample
  */
 
-namespace Source\Taxonomies\CustomTag;
+namespace PrefixSource\Taxonomies\CustomTag;
 
 if ( !defined( 'ABSPATH' ) )
     exit;

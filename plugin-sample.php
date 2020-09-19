@@ -30,8 +30,8 @@ if ( !defined( 'ABSPATH' ) )
 
 require_once 'vendor/autoload.php';
 
-use Config\PluginConfig;
-$config = new PluginConfig;
+use PrefixConfig\PluginConfig;
+$prefix_config = new PluginConfig();
 
 if ( !defined( 'PREFIX_PLUGIN_VERSION' ) )
     define( 'PREFIX_PLUGIN_VERSION', '1.0' );

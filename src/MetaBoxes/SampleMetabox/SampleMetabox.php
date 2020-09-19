@@ -7,7 +7,7 @@
  * @package plugin-sample
  */
 
-namespace Source\Metaboxes\SampleMetabox;
+namespace PrefixSource\Metaboxes\SampleMetabox;
 
 if ( !defined( 'ABSPATH' ) )
     exit;

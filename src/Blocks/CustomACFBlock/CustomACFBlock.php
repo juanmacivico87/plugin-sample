@@ -7,7 +7,7 @@
  * @package plugin-sample
  */
 
-namespace Source\Blocks\CustomACFBlock;
+namespace PrefixSource\Blocks\CustomACFBlock;
 
 if ( !defined( 'ABSPATH' ) )
     exit;

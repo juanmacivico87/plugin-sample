@@ -7,7 +7,7 @@
  * @package plugin-sample
  */
 
-namespace Source\Taxonomies\CustomCategory;
+namespace PrefixSource\Taxonomies\CustomCategory;
 
 if ( !defined( 'ABSPATH' ) )
     exit;

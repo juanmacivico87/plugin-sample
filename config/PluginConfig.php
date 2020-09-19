@@ -1,5 +1,5 @@
 <?php
-namespace Config;
+namespace PrefixConfig;
 
 if ( !defined( 'ABSPATH' ) )
     exit;
@@ -20,23 +20,23 @@ class PluginConfig
     public function load_sources()
     {
         /** Customizer sections */
-        $customizer_section = new \Source\Customizer\CustomizerSection\CustomizerSection;
+        $customizer_section = new \PrefixSource\Customizer\CustomizerSection\CustomizerSection;
 
         /** Taxonomies */
-        $custom_category = new \Source\Taxonomies\CustomCategory\CustomCategory;
-        $custom_tag      = new \Source\Taxonomies\CustomTag\CustomTag;
+        $custom_category = new \PrefixSource\Taxonomies\CustomCategory\CustomCategory;
+        $custom_tag      = new \PrefixSource\Taxonomies\CustomTag\CustomTag;
 
         /** Post types */
-        $custom_post_type = new \Source\PostsTypes\SamplePostType\SamplePostType;
+        $custom_post_type = new \PrefixSource\PostsTypes\SamplePostType\SamplePostType;
 
         /** Blocks categories */
-        $custom_blocks_category = new \Source\BlocksCategories\CustomBlocksCategory\CustomBlocksCategory;
+        $custom_blocks_category = new \PrefixSource\BlocksCategories\CustomBlocksCategory\CustomBlocksCategory;
 
         /** Blocks */
-        $custom_acf_block = new \Source\Blocks\CustomACFBlock\CustomACFBlock;
+        $custom_acf_block = new \PrefixSource\Blocks\CustomACFBlock\CustomACFBlock;
 
         /** Metaboxes */
-        $custom_metabox = new \Source\Metaboxes\SampleMetabox\SampleMetabox;
+        $custom_metabox = new \PrefixSource\Metaboxes\SampleMetabox\SampleMetabox;
     }
 
     public function load_textdomain()

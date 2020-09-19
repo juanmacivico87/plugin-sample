@@ -6,8 +6,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Config\\": "config/",
-            "Source\\": "src/"
+            "PrefixConfig\\": "config/",
+            "PrefixSource\\": "src/"
         }
     }
 }
