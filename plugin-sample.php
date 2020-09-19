@@ -45,15 +45,15 @@ if ( !defined( 'PREFIX_PLUGIN_DIR' ) )
 if ( !defined( 'PREFIX_PLUGIN_URL' ) )
     define( 'PREFIX_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
-function plugin_install()
+function prefix_plugin_install()
 {
     if ( !current_user_can( 'activate_plugins' ) ) {
         add_option( '__prefix_activate_plugin', 'plugin-sample' );
     }
 }
-register_activation_hook( __FILE__, 'plugin_install' );
+register_activation_hook( __FILE__, 'prefix_plugin_install' );
 
-function plugin_deactivate()
+function prefix_plugin_deactivate()
 {
     if ( !current_user_can( 'activate_plugins' ) ) {
         add_option( '__prefix_not_deactivate_plugin', 'plugin-sample' );
@@ -61,12 +61,12 @@ function plugin_deactivate()
         die();
     }
 }
-register_deactivation_hook( __FILE__, 'plugin_deactivate' );
+register_deactivation_hook( __FILE__, 'prefix_plugin_deactivate' );
 
-function plugin_uninstall()
+function prefix_plugin_uninstall()
 {
     if ( current_user_can( 'activate_plugins' ) ) {
         
     }
 }
-// register_uninstall_hook( __FILE__, 'plugin_uninstall' );
+// register_uninstall_hook( __FILE__, 'prefix_plugin_uninstall' );
