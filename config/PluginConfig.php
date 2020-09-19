@@ -4,6 +4,14 @@ namespace PrefixConfig;
 if ( !defined( 'ABSPATH' ) )
     exit;
 
+use PrefixSource\Blocks\CustomACFBlock\CustomACFBlock;
+use PrefixSource\BlocksCategories\CustomBlocksCategory\CustomBlocksCategory;
+use PrefixSource\Customizer\CustomizerSection\CustomizerSection;
+use PrefixSource\Metaboxes\SampleMetabox\SampleMetabox;
+use PrefixSource\PostsTypes\SamplePostType\SamplePostType;
+use PrefixSource\Taxonomies\CustomCategory\CustomCategory;
+use PrefixSource\Taxonomies\CustomTag\CustomTag;
+
 class PluginConfig
 {
     public function __construct()
@@ -20,23 +28,23 @@ class PluginConfig
     public function load_sources()
     {
         /** Customizer sections */
-        $customizer_section = new \PrefixSource\Customizer\CustomizerSection\CustomizerSection;
+        $customizer_section = new CustomizerSection();
 
         /** Taxonomies */
-        $custom_category = new \PrefixSource\Taxonomies\CustomCategory\CustomCategory;
-        $custom_tag      = new \PrefixSource\Taxonomies\CustomTag\CustomTag;
+        $custom_category = new CustomCategory();
+        $custom_tag      = new CustomTag;
 
         /** Post types */
-        $custom_post_type = new \PrefixSource\PostsTypes\SamplePostType\SamplePostType;
+        $custom_post_type = new SamplePostType();
 
         /** Blocks categories */
-        $custom_blocks_category = new \PrefixSource\BlocksCategories\CustomBlocksCategory\CustomBlocksCategory;
+        $custom_blocks_category = new CustomBlocksCategory();
 
         /** Blocks */
-        $custom_acf_block = new \PrefixSource\Blocks\CustomACFBlock\CustomACFBlock;
+        $custom_acf_block = new CustomACFBlock();
 
         /** Metaboxes */
-        $custom_metabox = new \PrefixSource\Metaboxes\SampleMetabox\SampleMetabox;
+        $custom_metabox = new SampleMetabox();
     }
 
     public function load_textdomain()
