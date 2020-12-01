@@ -4,6 +4,7 @@ namespace PrefixConfig;
 if ( !defined( 'ABSPATH' ) )
     exit;
 
+use PrefixSource\Settings\Settings;
 use PrefixSource\Blocks\CustomACFBlock\CustomACFBlock;
 use PrefixSource\BlocksCategories\CustomBlocksCategory\CustomBlocksCategory;
 use PrefixSource\Customizer\CustomizerSection\CustomizerSection;
@@ -28,24 +29,27 @@ class PluginConfig
 
     public function load_sources()
     {
+        /** Settings */
+        new Settings();
+
         /** Customizer sections */
-        $customizer_section = new CustomizerSection();
+        new CustomizerSection();
 
         /** Taxonomies */
-        $custom_category    = new CustomCategory();
-        $custom_tag         = new CustomTag;
+        new CustomCategory();
+        new CustomTag;
 
         /** Post types */
-        $custom_post_type   = new SamplePostType();
+        new SamplePostType();
 
         /** Blocks categories */
-        $custom_blocks_category = new CustomBlocksCategory();
+        new CustomBlocksCategory();
 
         /** Blocks */
-        $custom_acf_block   = new CustomACFBlock();
+        new CustomACFBlock();
 
         /** Metaboxes */
-        $custom_metabox = new SampleMetabox();
+        new SampleMetabox();
     }
 
     public function load_textdomain()
