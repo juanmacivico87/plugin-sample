@@ -76,7 +76,7 @@ class SamplePostType
             'show_in_menu'        => true,
             'menu_position'       => 20,
             'menu_icon'           => 'dashicons-wordpress',
-            'hierarchical'        => true,
+            'hierarchical'        => false,
             'supports'            => $this->support,
             'taxonomies'          => $this->taxonomies,
             'has_archive'         => true,
