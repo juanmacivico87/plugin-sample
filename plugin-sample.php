@@ -39,29 +39,3 @@ define( 'PREFIX_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'PREFIX_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'PREFIX_PLUGIN_ASSETS', PREFIX_PLUGIN_URL . '/assets' );
 define( 'PREFIX_PLUGIN_ADMIN_ASSETS', PREFIX_PLUGIN_URL . '/admin' );
-
-function prefix_plugin_install()
-{
-    if ( !current_user_can( 'activate_plugins' ) ) {
-        add_option( '__prefix_activate_plugin', 'plugin-sample' );
-    }
-}
-register_activation_hook( __FILE__, 'prefix_plugin_install' );
-
-function prefix_plugin_deactivate()
-{
-    if ( !current_user_can( 'activate_plugins' ) ) {
-        add_option( '__prefix_not_deactivate_plugin', 'plugin-sample' );
-        wp_redirect( admin_url( 'plugins.php' ) );
-        die();
-    }
-}
-register_deactivation_hook( __FILE__, 'prefix_plugin_deactivate' );
-
-function prefix_plugin_uninstall()
-{
-    if ( current_user_can( 'activate_plugins' ) ) {
-        
-    }
-}
-// register_uninstall_hook( __FILE__, 'prefix_plugin_uninstall' );
