@@ -13,6 +13,7 @@ use PrefixSource\Metaboxes\SampleMetabox\SampleMetabox;
 use PrefixSource\PostsTypes\SamplePostType\SamplePostType;
 use PrefixSource\RestApi\CustomRestField\CustomRestField;
 use PrefixSource\Roles\CustomRole\CustomRole;
+use PrefixSource\Shortcodes\CustomShortcode\CustomShortcode;
 use PrefixSource\Taxonomies\CustomCategory\CustomCategory;
 use PrefixSource\Taxonomies\CustomTag\CustomTag;
 
@@ -50,6 +51,9 @@ class PluginConfig
 
         /** Blocks */
         new CustomACFBlock();
+
+        /** Shortcodes */
+        new CustomShortcode();
 
         /** Metaboxes */
         new SampleMetabox();
