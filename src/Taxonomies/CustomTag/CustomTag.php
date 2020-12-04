@@ -20,7 +20,7 @@ class CustomTag
     public $rest_base  = 'custom_tag';
     public $query_var  = 'custom_tag';
     public $rewrite    = array( 
-        'slug'          => 'custom-tag',
+        'slug'          => '',
         'with_front'    => false,
         'hierarchical'  => false,
         'ep_mask'       => EP_NONE,
@@ -28,8 +28,14 @@ class CustomTag
 
     public function __construct()
     {
+        add_action( 'init', array( $this, 'set_taxonomy_slug' ), 5 );
         add_action( 'init', array( $this, 'add_custom_tag' ) );
         add_filter( 'taxonomy_template', array( $this, 'get_custom_tag_template' ) );
+    }
+
+    public function set_taxonomy_slug()
+    {
+        $this->rewrite['slug'] = __( 'custom-tag', 'plugin-sample' );
     }
 
     public function add_custom_tag()
@@ -67,7 +73,13 @@ class CustomTag
             'description' => __( 'Custom Tag Description', 'plugin-sample' ),
             'hierarchical' => false,
             'query_var' => $this->query_var,
-            'rewrite' => $this->rewrite
+            'rewrite' => $this->rewrite,
+            'capabilities' => array(
+                'manage_terms' => 'manage_custom_tags',
+                'edit_terms' => 'edit_custom_tags',
+                'delete_terms' => 'delete_custom_tags',
+                'assign_terms' => 'assign_custom_tags',
+            ),
         );
 
         register_taxonomy( $this->taxonomy, $this->post_type, $args );

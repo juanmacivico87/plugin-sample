@@ -20,7 +20,7 @@ class CustomCategory
     public $rest_base  = 'custom_cat';
     public $query_var  = 'custom_cat';
     public $rewrite    = array( 
-        'slug'          => 'custom-cat',
+        'slug'          => '',
         'with_front'    => false,
         'hierarchical'  => true,
         'ep_mask'       => EP_NONE,
@@ -28,8 +28,14 @@ class CustomCategory
 
     public function __construct()
     {
+        add_action( 'init', array( $this, 'set_taxonomy_slug' ), 5 );
         add_action( 'init', array( $this, 'add_custom_category' ) );
         add_filter( 'taxonomy_template', array( $this, 'get_custom_category_template' ) );
+    }
+
+    public function set_taxonomy_slug()
+    {
+        $this->rewrite['slug'] = __( 'custom-cat', 'plugin-sample' );
     }
 
     public function add_custom_category()
@@ -64,7 +70,13 @@ class CustomCategory
             'description' => __( 'Custom Category Description', 'plugin-sample' ),
             'hierarchical' => true,
             'query_var' => $this->query_var,
-            'rewrite' => $this->rewrite
+            'rewrite' => $this->rewrite,
+            'capabilities' => array(
+                'manage_terms' => 'manage_custom_categories',
+                'edit_terms' => 'edit_custom_categories',
+                'delete_terms' => 'delete_custom_categories',
+                'assign_terms' => 'assign_custom_categories',
+            ),
         );
 
         register_taxonomy( $this->taxonomy, $this->post_type, $args );
