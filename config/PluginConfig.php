@@ -11,6 +11,7 @@ use PrefixSource\Customizer\CustomizerSection\CustomizerSection;
 use PrefixSource\Endpoints\CustomEndpoint\CustomEndpoint;
 use PrefixSource\Metaboxes\SampleMetabox\SampleMetabox;
 use PrefixSource\PostsTypes\SamplePostType\SamplePostType;
+use PrefixSource\RestApi\CustomRestField\CustomRestField;
 use PrefixSource\Taxonomies\CustomCategory\CustomCategory;
 use PrefixSource\Taxonomies\CustomTag\CustomTag;
 
@@ -54,6 +55,9 @@ class PluginConfig
 
         /** Endpoints */
         new CustomEndpoint();
+
+        /** RestApi */
+        new CustomRestField();
     }
 
     public function load_textdomain()
