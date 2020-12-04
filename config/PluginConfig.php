@@ -8,6 +8,7 @@ use PrefixSource\Settings\Settings;
 use PrefixSource\Blocks\CustomACFBlock\CustomACFBlock;
 use PrefixSource\BlocksCategories\CustomBlocksCategory\CustomBlocksCategory;
 use PrefixSource\Customizer\CustomizerSection\CustomizerSection;
+use PrefixSource\Endpoints\CustomEndpoint\CustomEndpoint;
 use PrefixSource\Metaboxes\SampleMetabox\SampleMetabox;
 use PrefixSource\PostsTypes\SamplePostType\SamplePostType;
 use PrefixSource\Taxonomies\CustomCategory\CustomCategory;
@@ -50,6 +51,9 @@ class PluginConfig
 
         /** Metaboxes */
         new SampleMetabox();
+
+        /** Endpoints */
+        new CustomEndpoint();
     }
 
     public function load_textdomain()
