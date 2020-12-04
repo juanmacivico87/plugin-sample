@@ -27,9 +27,15 @@ class SamplePostType
 
     public function __construct()
     {
+        add_action( 'init', array( $this, 'set_custom_post_type_slug' ), 5 );
         add_action( 'init', array( $this, 'add_custom_post_type' ) );
         add_filter( 'archive_template', array( $this, 'get_post_type_templates' ) );
         add_filter( 'single_template', array( $this, 'get_post_type_templates' ) );
+    }
+
+    public function set_custom_post_type_slug()
+    {
+        $this->rewrite['slug'] = __( 'samples', 'plugin-sample' );
     }
 
     public function add_custom_post_type()
@@ -85,6 +91,23 @@ class SamplePostType
             'can_export'          => true,
             'delete_with_user'    => false,
             'show_in_rest'        => true,
+            'capability_type'     => array( 'sample', 'samples' ),
+            'capabilities'        => array(
+                'edit_sample'               => 'edit_sample', 
+                'read_sample'               => 'read_sample', 
+                'delete_sample'             => 'delete_sample', 
+                'edit_samples'             => 'edit_samples', 
+                'edit_others_samples'      => 'edit_others_samples',
+                'delete_samples'           => 'delete_samples', 
+                'publish_samples'          => 'publish_samples',       
+                'read_private_samples'     => 'read_private_samples',
+                'read'                    => 'read',
+                'delete_private_samples'   => 'delete_private_samples',
+                'delete_published_samples' => 'delete_published_samples',
+                'delete_others_samples'    => 'delete_others_samples',
+                'edit_private_samples'     => 'edit_private_samples',
+                'edit_published_samples'   => 'edit_published_samples',
+            ),
         );
 
         register_post_type( $this->post_type, $args );
