@@ -91,17 +91,18 @@ class SamplePostType
             'can_export'          => true,
             'delete_with_user'    => false,
             'show_in_rest'        => true,
+            'map_meta_cap'        => true,
             'capability_type'     => array( 'sample', 'samples' ),
             'capabilities'        => array(
-                'edit_sample'               => 'edit_sample', 
-                'read_sample'               => 'read_sample', 
-                'delete_sample'             => 'delete_sample', 
+                'edit_sample'              => 'edit_sample', 
+                'read_sample'              => 'read_sample', 
+                'delete_sample'            => 'delete_sample', 
                 'edit_samples'             => 'edit_samples', 
                 'edit_others_samples'      => 'edit_others_samples',
                 'delete_samples'           => 'delete_samples', 
                 'publish_samples'          => 'publish_samples',       
                 'read_private_samples'     => 'read_private_samples',
-                'read'                    => 'read',
+                'read'                     => 'read',
                 'delete_private_samples'   => 'delete_private_samples',
                 'delete_published_samples' => 'delete_published_samples',
                 'delete_others_samples'    => 'delete_others_samples',
@@ -130,5 +131,42 @@ class SamplePostType
         }
 
         return $template;
+    }
+
+    public static function set_roles_capabilities()
+    {
+        global $wp_roles;
+
+        $is_set_capabilities = get_option( '__prefix_set_sample_capabilities' );
+
+        if ( $is_set_capabilities )
+            return;
+
+        $map_meta_cap = array(
+            'edit_post'              => 'edit_sample', 
+            'read_post'              => 'read_sample', 
+            'delete_post'            => 'delete_sample', 
+            'edit_posts'             => 'edit_samples', 
+            'edit_others_posts'      => 'edit_others_samples',
+            'delete_posts'           => 'delete_samples', 
+            'publish_posts'          => 'publish_samples',       
+            'read_private_posts'     => 'read_private_samples',
+            'delete_private_posts'   => 'delete_private_samples',
+            'delete_published_posts' => 'delete_published_samples',
+            'delete_others_posts'    => 'delete_others_samples',
+            'edit_private_posts'     => 'edit_private_samples',
+            'edit_published_posts'   => 'edit_published_samples',
+        );
+        
+        foreach( $wp_roles->roles as $role => $args ) {
+            $current_role = get_role( $role );
+
+            foreach( $map_meta_cap as $post_cap => $capability ) {
+                if ( isset( $args['capabilities'][$post_cap] ) && false !== $args['capabilities'][$post_cap] )
+                    $current_role->add_cap( $capability );
+            }
+        }
+
+        add_option( '__prefix_set_sample_capabilities', true );
     }
 }

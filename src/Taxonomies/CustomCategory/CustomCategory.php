@@ -89,4 +89,28 @@ class CustomCategory
 
         return $template;
     }
+
+    public static function set_roles_capabilities()
+    {
+        global $wp_roles;
+
+        $is_set_capabilities = get_option( '__prefix_set_custom_cat_capabilities' );
+
+        if ( $is_set_capabilities )
+            return;
+        
+        foreach( $wp_roles->roles as $role => $args ) {
+            $current_role = get_role( $role );
+
+            if ( false === isset( $args['capabilities']['manage_categories'] ) || false === $args['capabilities']['manage_categories'] )
+                continue;
+
+            $current_role->add_cap( 'manage_custom_categories' );
+            $current_role->add_cap( 'edit_custom_categories' );
+            $current_role->add_cap( 'delete_custom_categories' );
+            $current_role->add_cap( 'assign_custom_categories' );
+        }
+
+        add_option( '__prefix_set_custom_cat_capabilities', true );
+    }
 }
