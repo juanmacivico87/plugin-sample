@@ -17,7 +17,7 @@ class CustomEndpoint
 
     public function create_new_endpoint()
     {
-        register_rest_route( 'custom/', 'endpoint', array(
+        register_rest_route( 'custom', 'endpoint', array(
             'methods'  => \WP_REST_Server::READABLE,
             'callback' => array( $this, 'controller' ),
         ) );
