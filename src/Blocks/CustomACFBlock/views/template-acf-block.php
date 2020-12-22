@@ -3,7 +3,7 @@ $title    = get_field( 'sample_title' );
 $subtitle = get_field( 'sample_subtitle' );
 $button   = get_field( 'sample_button' ); ?>
 
-<section class="sample-block <?php echo $block['className'] ?>">
+<section class="sample-block <?php echo isset( $block['className'] ) ? $block['className'] : '' ?>">
     <h1><?php echo esc_attr( $title ) ?></h1>
     <p><?php echo esc_attr( $subtitle ) ?></p>
     <?php if ( $button ) : ?>
