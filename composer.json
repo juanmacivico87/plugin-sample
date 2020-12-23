@@ -2,7 +2,7 @@
     "name": "plugin/sample",
     "description": "A little plugin description",
     "require": {
-        "php": ">=7.2"
+        "php": ">=7.3.0"
     },
     "autoload": {
         "psr-4": {
