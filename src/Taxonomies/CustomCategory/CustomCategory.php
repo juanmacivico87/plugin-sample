@@ -12,14 +12,15 @@ namespace PrefixSource\Taxonomies\CustomCategory;
 if ( !defined( 'ABSPATH' ) )
     exit;
 
+use PrefixSource\PostsTypes\SamplePostType\SamplePostType;
+
 class CustomCategory
 {
-    public $taxonomy   = 'custom_cat';
-    public $post_type  = 'sample';
+    const TAXONOMY = 'custom_cat';
 
-    public $rest_base  = 'custom_cat';
-    public $query_var  = 'custom_cat';
-    public $rewrite    = array( 
+    private $rest_base  = 'custom_cat';
+    private $query_var  = 'custom_cat';
+    private $rewrite    = array( 
         'slug'          => '',
         'with_front'    => false,
         'hierarchical'  => true,
@@ -58,33 +59,33 @@ class CustomCategory
                 'not_found'                  => __( 'Custom Categories not Found', 'plugin-sample' ),
                 'back_to_items'              => __( 'Back to Custom Categories', 'plugin-sample' ),
             ),
-            'public' => true,
-            'publicly_queryable' => true,
-            'show_ui' => true,
-            'show_in_menu' => true,
-            'show_in_nav_menus' => true,
-            'show_in_rest' => true,
-            'rest_base' => $this->rest_base,
-            'show_in_quick_edit' => true,
-            'show_admin_column' => false,
-            'description' => __( 'Custom Category Description', 'plugin-sample' ),
-            'hierarchical' => true,
-            'query_var' => $this->query_var,
-            'rewrite' => $this->rewrite,
-            'capabilities' => array(
-                'manage_terms' => 'manage_custom_categories',
-                'edit_terms' => 'edit_custom_categories',
-                'delete_terms' => 'delete_custom_categories',
-                'assign_terms' => 'assign_custom_categories',
+            'public'                => true,
+            'publicly_queryable'    => true,
+            'show_ui'               => true,
+            'show_in_menu'          => true,
+            'show_in_nav_menus'     => true,
+            'show_in_rest'          => true,
+            'rest_base'             => $this->rest_base,
+            'show_in_quick_edit'    => true,
+            'show_admin_column'     => false,
+            'description'           => __( 'Custom Category Description', 'plugin-sample' ),
+            'hierarchical'          => true,
+            'query_var'             => $this->query_var,
+            'rewrite'               => $this->rewrite,
+            'capabilities'          => array(
+                'manage_terms'  => 'manage_custom_categories',
+                'edit_terms'    => 'edit_custom_categories',
+                'delete_terms'  => 'delete_custom_categories',
+                'assign_terms'  => 'assign_custom_categories',
             ),
         );
 
-        register_taxonomy( $this->taxonomy, $this->post_type, $args );
+        register_taxonomy( self::TAXONOMY, SamplePostType::POST_TYPE_NAME, $args );
     }
 
     public function get_custom_category_template( $template )
     {
-        if ( get_query_var( 'taxonomy' ) === $this->taxonomy )
+        if ( get_query_var( 'taxonomy' ) === self::TAXONOMY )
             $template = PREFIX_PLUGIN_DIR . 'src/Taxonomies/CustomCategory/views/taxonomy-category.php';
 
         return $template;

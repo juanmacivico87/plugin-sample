@@ -12,14 +12,17 @@ namespace PrefixSource\PostsTypes\SamplePostType;
 if ( !defined( 'ABSPATH' ) )
     exit;
 
+use PrefixSource\Taxonomies\CustomCategory\CustomCategory;
+
 class SamplePostType
 {
-    public $post_type  = 'sample';
+    const POST_TYPE_NAME    = 'sample';
+    const POST_TYPE_PLURAL  = 'samples';
 
-    public $support    = array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'trackbacks', 'custom-fields', 'comments', 'revisions', 'page-attributes', 'post-formats' );
-    public $taxonomies = array( 'custom_cat', 'custom_tag' );
-    public $rewrite    = array( 
-        'slug'       => 'samples',
+    private $support    = array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'trackbacks', 'custom-fields', 'comments', 'revisions', 'page-attributes', 'post-formats' );
+    private $taxonomies = array( CustomCategory::TAXONOMY, 'custom_tag' );
+    private $rewrite    = array( 
+        'slug'       => '',
         'with_front' => false,
         'feeds'      => false,
         'pages'      => true,
@@ -92,7 +95,7 @@ class SamplePostType
             'delete_with_user'    => false,
             'show_in_rest'        => true,
             'map_meta_cap'        => true,
-            'capability_type'     => array( 'sample', 'samples' ),
+            'capability_type'     => array( self::POST_TYPE_NAME, self::POST_TYPE_PLURAL ),
             'capabilities'        => array(
                 'edit_sample'              => 'edit_sample', 
                 'read_sample'              => 'read_sample', 
@@ -111,13 +114,13 @@ class SamplePostType
             ),
         );
 
-        register_post_type( $this->post_type, $args );
+        register_post_type( self::POST_TYPE_NAME, $args );
         flush_rewrite_rules();
     }
 
     public function get_post_type_templates( $template )
     {
-        if ( get_post_type() === $this->post_type )
+        if ( get_post_type() === self::POST_TYPE_NAME )
         { 
             switch( true ) 
             {

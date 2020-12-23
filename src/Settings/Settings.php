@@ -12,7 +12,7 @@ if ( !defined( 'ABSPATH' ) )
 
 class Settings
 {
-    private $menu_slug = 'plugin-sample-settings';
+    const MENU_SLUG = 'plugin-sample-settings';
 
     public function __construct()
     {
@@ -27,7 +27,7 @@ class Settings
                 array(
                     'page_title'        => __( 'Plugin Sample Settings', 'plugin-sample' ),
                     'menu_title'        => __( 'Plugin Sample Settings', 'plugin-sample' ),
-                    'menu_slug'         => $this->menu_slug,
+                    'menu_slug'         => self::MENU_SLUG,
                     'capability'        => 'manage_options',
                     'position'          => '2.9',
                     'icon_url'          => 'dashicons-paperclip',

@@ -12,25 +12,26 @@ namespace PrefixSource\Metaboxes\SampleMetabox;
 if ( !defined( 'ABSPATH' ) )
     exit;
 
+use PrefixSource\PostsTypes\SamplePostType\SamplePostType;
+
 class SampleMetabox
 {
-    public $screen      = 'sample';
-    public $metabox_id  = 'sample_metabox';
-    public $metabox_key = '_sample_metabox';
+    private $metabox_id  = 'sample_metabox';
+    private $metabox_key = '_sample_metabox';
 
     public function __construct()
     {
-        add_action( 'add_meta_boxes', array( $this, 'add_sample_metabox' ) );
+        add_action( 'add_meta_boxes', array( $this, 'add_sample_metabox' ), 10, 2 );
         add_action( 'save_post', array( $this, 'save_sample_metabox' ) );
     }
 
-    public function add_sample_metabox()
+    public function add_sample_metabox( $post_type, $post )
     {
         add_meta_box(
             $this->metabox_id,
             __( 'Sample Meta Box Title', 'plugin-sample' ),
             array( $this, 'render_sample_metabox' ),
-            $this->screen,
+            SamplePostType::POST_TYPE_NAME,
             'side',
             'default'
         );

@@ -12,8 +12,14 @@ namespace PrefixSource\Blocks\CustomACFBlock;
 if ( !defined( 'ABSPATH' ) )
     exit;
 
+use PrefixSource\BlocksCategories\CustomBlocksCategory\CustomBlocksCategory;
+use PrefixSource\PostsTypes\SamplePostType\SamplePostType;
+
 class CustomACFBlock
 {
+    const BLOCK_NAME = 'sample';
+    const BLOCK_SLUG = 'acf/sample';
+
     public function __construct()
     {
         add_action( 'acf/init', array( $this, 'add_custom_block' ) );
@@ -25,15 +31,16 @@ class CustomACFBlock
         if ( function_exists( 'acf_register_block_type' ) ) {
             acf_register_block_type(
                 array(
-                    'name'				=> 'sample',
+                    'name'				=> self::BLOCK_NAME,
                     'title'				=> __( 'Sample Block', 'plugin-sample' ),
                     'description'		=> __( 'A Gutenbetg sample block', 'plugin-sample' ),
-                    'category'			=> 'custom-blocks-category',
+                    'category'			=> CustomBlocksCategory::BLOCK_CATEGORY_SLUG,
                     'icon'				=> 'admin-comments',
                     'keywords'			=> array( 'sample', 'block' ),
-                    'post_types'        => array( 'post', 'page', 'sample' ),
+                    'post_types'        => array( SamplePostType::POST_TYPE_NAME ),
                     'mode'              => 'edit',
                     'render_template'   => PREFIX_PLUGIN_DIR . 'src/Blocks/CustomACFBlock/views/template-acf-block.php',
+                    'supports'          => array( 'mode' => false ),
                     'enqueue_assets'    => function() {
                         if ( !is_admin() )
                         {
@@ -46,14 +53,13 @@ class CustomACFBlock
                         }
                         //CSS class: .is-style-sample-custom-style
                         register_block_style(
-                            'acf/sample',
+                            self::BLOCK_SLUG,
                             array(
                                 'name'  => 'sample-custom-style',
                                 'label' => __( 'Sample Custom Style', 'plugin-sample' ),
                             )
                         );
                     },
-                    'supports'          => array( 'mode' => false ),
                 )
             );
         }
@@ -126,7 +132,7 @@ class CustomACFBlock
                             array(
                                 'param' => 'block',
                                 'operator' => '==',
-                                'value' => 'acf/sample',
+                                'value' => self::BLOCK_SLUG,
                             ),
                         ),
                     ),

@@ -12,15 +12,19 @@ namespace PrefixSource\BlocksCategories\CustomBlocksCategory;
 if ( !defined( 'ABSPATH' ) )
     exit;
 
+use PrefixSource\PostsTypes\SamplePostType\SamplePostType;
+
 class CustomBlocksCategory
 {
+    const BLOCK_CATEGORY_SLUG = 'custom-blocks-category';
+
     public function __construct()
     {
         add_filter( 'block_categories', array( $this, 'add_custom_block_category' ), 10, 2 );
     }
 
     public function add_custom_block_category( $categories, $post ) {
-        $allowed_posts_types = array( 'post' );
+        $allowed_posts_types = array( SamplePostType::POST_TYPE_NAME );
         
         if ( !in_array( $post->post_type, $allowed_posts_types ) ) {
             return $categories;
@@ -30,7 +34,7 @@ class CustomBlocksCategory
             $categories,
             array(
                 array(
-                    'slug' => 'custom-blocks-category',
+                    'slug' => self::BLOCK_CATEGORY_SLUG,
                     'title' => __( 'Custom Blocks Category', 'plugin-sample' ),
                     'icon'  => '',
                 ),

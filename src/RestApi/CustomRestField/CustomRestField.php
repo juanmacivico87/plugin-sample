@@ -10,6 +10,8 @@ if ( !defined( 'ABSPATH' ) )
 
 class CustomRestField
 {
+    private $post_types = array( 'post', 'page' );
+
     public function __construct()
     {
         add_action( 'rest_api_init', array( $this, 'add_new_rest_field' ) );
@@ -21,7 +23,7 @@ class CustomRestField
             'get_callback' => array( $this, 'get_rest_field_value' ),
         );
     
-        register_rest_field( 'post', 'custom-rest-field', $args );
+        register_rest_field( $this->post_types, 'custom-rest-field', $args );
     }
 
     public function get_rest_field_value()

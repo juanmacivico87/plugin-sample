@@ -14,7 +14,7 @@ if ( !defined( 'ABSPATH' ) )
 
 class CustomizerSection
 {
-    public $panel = 'panel_name';
+    private $panel = 'panel_name';
 
     public function __construct()
     {
@@ -34,15 +34,15 @@ class CustomizerSection
             )
         );
 
-        $this->add_new_customizer_section();
+        $this->add_new_customizer_section( $wp_customize );
     }
 
-    public function add_new_customizer_section()
+    public function add_new_customizer_section( $wp_customize )
     {
-        global $wp_customize;
+        $section_name = 'section_name';
 
         $wp_customize->add_section( 
-            'section_name',
+            $section_name,
             array(
                 'title'         => __( 'Section Name', 'plugin-sample' ),
                 'priority'      => 1,
@@ -51,12 +51,12 @@ class CustomizerSection
                 'panel'         => $this->panel,
             )
         );
-        $this->add_new_customizer_control();
+
+        $this->add_new_customizer_control( $wp_customize, $section_name );
     }
 
-    public function add_new_customizer_control()
+    public function add_new_customizer_control( $wp_customize, $section_name )
     {
-        global $wp_customize;
         $control = '_control_name';
 
         $wp_customize->add_setting(
@@ -74,7 +74,7 @@ class CustomizerSection
             array(
                 'label'       => __( 'Control Name', 'plugin-sample' ),
                 'description' => __( 'A little control description', 'plugin-sample' ),
-                'section'     => 'section_name',
+                'section'     => $section_name,
                 'priority'    => 1,
                 'type'        => 'text',
             )

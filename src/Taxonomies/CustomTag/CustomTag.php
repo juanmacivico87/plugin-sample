@@ -9,17 +9,18 @@
 
 namespace PrefixSource\Taxonomies\CustomTag;
 
+use PrefixSource\PostsTypes\SamplePostType\SamplePostType;
+
 if ( !defined( 'ABSPATH' ) )
     exit;
 
 class CustomTag
 {
-    public $taxonomy   = 'custom_tag';
-    public $post_type  = 'sample';
+    const TAXONOMY = 'custom_tag';
 
-    public $rest_base  = 'custom_tag';
-    public $query_var  = 'custom_tag';
-    public $rewrite    = array( 
+    private $rest_base  = 'custom_tag';
+    private $query_var  = 'custom_tag';
+    private $rewrite    = array( 
         'slug'          => '',
         'with_front'    => false,
         'hierarchical'  => false,
@@ -60,34 +61,34 @@ class CustomTag
                 'not_found'                  => __( 'Custom Tags not Found', 'plugin-sample' ),
                 'back_to_items'              => __( 'Back to Custom Tags', 'plugin-sample' ),
             ),
-            'public' => true,
-            'publicly_queryable' => true,
-            'show_ui' => true,
-            'show_in_menu' => true,
-            'show_in_nav_menus' => true,
-            'show_in_rest' => true,
-            'rest_base' => $this->rest_base,
-            'show_tagcloud' => true,
-            'show_in_quick_edit' => true,
-            'show_admin_column' => false,
-            'description' => __( 'Custom Tag Description', 'plugin-sample' ),
-            'hierarchical' => false,
-            'query_var' => $this->query_var,
-            'rewrite' => $this->rewrite,
+            'public'                => true,
+            'publicly_queryable'    => true,
+            'show_ui'               => true,
+            'show_in_menu'          => true,
+            'show_in_nav_menus'     => true,
+            'show_in_rest'          => true,
+            'rest_base'             => $this->rest_base,
+            'show_tagcloud'         => true,
+            'show_in_quick_edit'    => true,
+            'show_admin_column'     => false,
+            'description'           => __( 'Custom Tag Description', 'plugin-sample' ),
+            'hierarchical'          => false,
+            'query_var'             => $this->query_var,
+            'rewrite'               => $this->rewrite,
             'capabilities' => array(
-                'manage_terms' => 'manage_custom_tags',
-                'edit_terms' => 'edit_custom_tags',
-                'delete_terms' => 'delete_custom_tags',
-                'assign_terms' => 'assign_custom_tags',
+                'manage_terms'  => 'manage_custom_tags',
+                'edit_terms'    => 'edit_custom_tags',
+                'delete_terms'  => 'delete_custom_tags',
+                'assign_terms'  => 'assign_custom_tags',
             ),
         );
 
-        register_taxonomy( $this->taxonomy, $this->post_type, $args );
+        register_taxonomy( self::TAXONOMY, SamplePostType::POST_TYPE_NAME, $args );
     }
 
     public function get_custom_tag_template( $template )
     {
-        if ( get_query_var( 'taxonomy' ) === $this->taxonomy )
+        if ( get_query_var( 'taxonomy' ) === self::TAXONOMY )
             $template = PREFIX_PLUGIN_DIR . 'src/Taxonomies/CustomTag/views/taxonomy-tag.php';
 
         return $template;
