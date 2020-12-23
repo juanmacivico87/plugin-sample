@@ -93,10 +93,12 @@ class PluginConfig
     {
         $dependencies = PluginDependencies::$dependencies;
         ?><div class="notice notice-error is-dismissible">
-            <p><?php _e( 'The following plugins are necessary for "Plugin Sample" to work successfully:', 'plugin-sample' ); ?></p>
+            <p><?php _e( 'In order to activate the "Plugin sample" plugin, you have to meet the next requirements:', 'plugin-sample' ); ?></p>
             <ul>
+                <li><?php echo sprintf( __( 'PHP version: %s', 'plugin-sample' ), PluginDependencies::$min_php_version ) ?></li>
+                <li><?php echo sprintf( __( 'WordPress version: %s', 'plugin-sample' ), PluginDependencies::$min_wp_version ) ?></li>
                 <?php foreach( $dependencies as $name => $plugin ) : ?>
-                    <li><?php echo $name ?></li>
+                    <li><?php echo sprintf( __( 'Activate plugin: %s', 'plugin-sample' ), $name ) ?></li>
                 <?php endforeach ?>
             </ul>
         </div><?php
