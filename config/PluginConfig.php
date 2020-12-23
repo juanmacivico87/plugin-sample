@@ -79,14 +79,14 @@ class PluginConfig
 
     public function load_front_end_assets()
     {
-        wp_enqueue_script( 'plugin-sample-front', PREFIX_PLUGIN_ASSETS . '/js/scripts.js', array(), PREFIX_PLUGIN_VERSION, true );
-        wp_enqueue_style( 'plugin-sample-front', PREFIX_PLUGIN_ASSETS . '/css/styles.css', array(), PREFIX_PLUGIN_VERSION );
+        wp_enqueue_script( 'plugin-sample-front', PREFIX_PLUGIN_ASSETS . '/js/scripts.js', array(), '1.0', true );
+        wp_enqueue_style( 'plugin-sample-front', PREFIX_PLUGIN_ASSETS . '/css/styles.css', array(), '1.0' );
     }
 
     public function load_admin_assets()
     {
-        wp_enqueue_script( 'plugin-sample-admin', PREFIX_PLUGIN_ADMIN_ASSETS . '/js/scripts.js', array(), PREFIX_PLUGIN_VERSION, true );
-        wp_enqueue_style( 'plugin-sample-admin', PREFIX_PLUGIN_ADMIN_ASSETS . '/css/styles.css', array(), PREFIX_PLUGIN_VERSION );
+        wp_enqueue_script( 'plugin-sample-admin', PREFIX_PLUGIN_ADMIN_ASSETS . '/js/scripts.js', array(), '1.0', true );
+        wp_enqueue_style( 'plugin-sample-admin', PREFIX_PLUGIN_ADMIN_ASSETS . '/css/styles.css', array(), '1.0' );
     }
 
     public function render_dependencies_not_found_notice()

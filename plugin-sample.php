@@ -33,7 +33,6 @@ require_once 'vendor/autoload.php';
 use PrefixConfig\PluginConfig;
 $prefix_config = new PluginConfig();
 
-define( 'PREFIX_PLUGIN_VERSION', '1.0' );
 define( 'PREFIX_LANG_DIR', basename( dirname( __FILE__ ) ) . '/languages' );
 define( 'PREFIX_PLUGIN_FILE', __FILE__ );
 define( 'PREFIX_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );

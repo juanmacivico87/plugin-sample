@@ -44,8 +44,8 @@ class CustomACFBlock
                     'enqueue_assets'    => function() {
                         if ( !is_admin() )
                         {
-                            wp_enqueue_style( 'sample-block-css', PREFIX_PLUGIN_URL . 'src/Blocks/CustomACFBlock/css/styles.css', array(), PREFIX_PLUGIN_VERSION );
-                            wp_enqueue_script( 'sample-block-js', PREFIX_PLUGIN_URL . 'src/Blocks/CustomACFBlock/js/scripts.js', array(), PREFIX_PLUGIN_VERSION, true );
+                            wp_enqueue_style( 'sample-block-css', PREFIX_PLUGIN_URL . 'src/Blocks/CustomACFBlock/css/styles.css', array(), '1.0' );
+                            wp_enqueue_script( 'sample-block-js', PREFIX_PLUGIN_URL . 'src/Blocks/CustomACFBlock/js/scripts.js', array(), '1.0', true );
                             $args = array(
                                 'ajax_url' => admin_url( 'admin-ajax.php' ),
                             );
