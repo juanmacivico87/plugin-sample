@@ -10,6 +10,8 @@ if ( !defined( 'ABSPATH' ) )
 
 class CustomEndpoint
 {
+    private $route = 'custom-endpoint';
+
     public function __construct()
     {
         add_action( 'rest_api_init', array( $this, 'create_new_endpoint' ) );
@@ -17,9 +19,10 @@ class CustomEndpoint
 
     public function create_new_endpoint()
     {
-        register_rest_route( 'custom', 'endpoint', array(
-            'methods'  => \WP_REST_Server::READABLE,
-            'callback' => array( $this, 'controller' ),
+        register_rest_route( PREFIX_PLUGIN_ENDPOINTS_NAMESPACE, $this->route, array(
+            'methods'               => \WP_REST_Server::READABLE,
+            'callback'              => array( $this, 'controller' ),
+            'permission_callback'   => '__return_true',
         ) );
     }
 
