@@ -18,6 +18,11 @@ class CustomizerSection
 
     public function __construct()
     {
+        $this->init();
+    }
+
+    public function init()
+    {
         add_action( 'customize_register', array( $this, 'add_new_customizer_panel' ) );
     }
 

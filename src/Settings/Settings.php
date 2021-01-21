@@ -16,6 +16,11 @@ class Settings
 
     public function __construct()
     {
+        $this->init();
+    }
+
+    public function init()
+    {
         add_action( 'acf/init', array( $this, 'create_settings_page' ) );
         // add_action( 'init', array( $this, 'add_settings_page_fields' ) );
     }

@@ -30,6 +30,11 @@ class SamplePostType
 
     public function __construct()
     {
+        $this->init();
+    }
+
+    public function init()
+    {
         add_action( 'init', array( $this, 'set_custom_post_type_slug' ), 5 );
         add_action( 'init', array( $this, 'add_custom_post_type' ) );
         add_filter( 'archive_template', array( $this, 'get_post_type_templates' ) );

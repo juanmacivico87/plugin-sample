@@ -29,6 +29,11 @@ class CustomTag
 
     public function __construct()
     {
+        $this->init();
+    }
+
+    public function init()
+    {
         add_action( 'init', array( $this, 'set_taxonomy_slug' ), 5 );
         add_action( 'init', array( $this, 'add_custom_tag' ) );
         add_filter( 'taxonomy_template', array( $this, 'get_custom_tag_template' ) );

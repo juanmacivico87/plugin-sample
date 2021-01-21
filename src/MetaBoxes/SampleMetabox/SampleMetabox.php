@@ -21,6 +21,11 @@ class SampleMetabox
 
     public function __construct()
     {
+        $this->init();
+    }
+
+    public function init()
+    {
         add_action( 'add_meta_boxes', array( $this, 'add_sample_metabox' ), 10, 2 );
         add_action( 'save_post', array( $this, 'save_sample_metabox' ) );
     }

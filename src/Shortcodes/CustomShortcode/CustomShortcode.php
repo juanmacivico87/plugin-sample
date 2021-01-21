@@ -12,6 +12,11 @@ class CustomShortcode
 {
     public function __construct()
     {
+        $this->init();
+    }
+
+    public function init()
+    {
         add_shortcode( 'custom_shortcode', array( $this, 'render_shortcode' ) );
     }
 

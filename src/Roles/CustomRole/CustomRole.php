@@ -14,6 +14,11 @@ class CustomRole
 
     public function __construct()
     {
+        $this->init();
+    }
+
+    public function init()
+    {
         add_action( 'init', array( $this, 'add_new_role' ) );
     }
     

@@ -22,6 +22,11 @@ class CustomACFBlock
 
     public function __construct()
     {
+        $this->init();
+    }
+
+    public function init()
+    {
         add_action( 'acf/init', array( $this, 'add_custom_block' ) );
         add_action( 'init', array( $this, 'add_block_fields' ) );
     }

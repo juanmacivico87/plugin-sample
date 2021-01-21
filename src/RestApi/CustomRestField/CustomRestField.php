@@ -14,6 +14,11 @@ class CustomRestField
 
     public function __construct()
     {
+        $this->init();
+    }
+
+    public function init()
+    {
         add_action( 'rest_api_init', array( $this, 'add_new_rest_field' ) );
     }
 

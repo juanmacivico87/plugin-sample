@@ -20,6 +20,11 @@ class CustomBlocksCategory
 
     public function __construct()
     {
+        $this->init();
+    }
+
+    public function init()
+    {
         add_filter( 'block_categories', array( $this, 'add_custom_block_category' ), 10, 2 );
     }
 

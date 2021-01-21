@@ -14,6 +14,11 @@ class CustomEndpoint
 
     public function __construct()
     {
+        $this->init();
+    }
+
+    public function init()
+    {
         add_action( 'rest_api_init', array( $this, 'create_new_endpoint' ) );
     }
 
