@@ -30,8 +30,8 @@ class Settings
         if ( function_exists( 'acf_add_options_page' ) ) {
             acf_add_options_page(
                 array(
-                    'page_title'        => __( 'Plugin Sample Settings', 'plugin-sample' ),
-                    'menu_title'        => __( 'Plugin Sample Settings', 'plugin-sample' ),
+                    'page_title'        => __( '{{ plugin_name }} Settings', 'plugin-sample' ),
+                    'menu_title'        => __( '{{ plugin_name }} Settings', 'plugin-sample' ),
                     'menu_slug'         => self::MENU_SLUG,
                     'capability'        => 'manage_options',
                     'position'          => '2.9',

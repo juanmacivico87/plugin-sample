@@ -1,28 +1,28 @@
 <?php
 /*
-Plugin Name: Plugin Name
-Plugin URI: https://www.myplugin.com
-Description: A little plugin description
+Plugin Name: {{ plugin_name }}
+Plugin URI: {{ plugin_uri }}
+Description: {{ plugin_description }}
 Version: 1.0
-Author: Your Name
-Author URI: https://www.yourwebsite.com
+Author: {{ plugin_author }}
+Author URI: {{ plugin_author_uri }}
 License: GPLv2 or later
 License URI:  https://www.gnu.org/licenses/gpl-2.0.html
 Text Domain:  plugin-sample
 Domain Path:  /languages
 
-[Plugin Name] is free software: you can redistribute it and/or modify
+{{ plugin_name }} is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 2 of the License, or
 any later version.
  
-[Plugin Name] is distributed in the hope that it will be useful,
+{{ plugin_name }} is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
  
 You should have received a copy of the GNU General Public License
-along with [Plugin Name]. If not, see https://www.gnu.org/licenses/gpl-2.0.html
+along with {{ plugin_name }}. If not, see https://www.gnu.org/licenses/gpl-2.0.html
 */
 
 if ( !defined( 'ABSPATH' ) )

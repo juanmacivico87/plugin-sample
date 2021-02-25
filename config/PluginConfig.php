@@ -93,7 +93,7 @@ class PluginConfig
     {
         $dependencies = PluginDependencies::$dependencies;
         ?><div class="notice notice-error is-dismissible">
-            <p><?php _e( 'In order to activate the "Plugin sample" plugin, you have to meet the next requirements:', 'plugin-sample' ); ?></p>
+            <p><?php _e( 'In order to activate the "{{ plugin_name }}" plugin, you have to meet the next requirements:', 'plugin-sample' ); ?></p>
             <ul>
                 <li><?php echo sprintf( __( 'PHP version: %s', 'plugin-sample' ), PluginDependencies::$min_php_version ) ?></li>
                 <li><?php echo sprintf( __( 'WordPress version: %s', 'plugin-sample' ), PluginDependencies::$min_wp_version ) ?></li>
