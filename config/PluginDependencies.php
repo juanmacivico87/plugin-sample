@@ -15,7 +15,7 @@ if ( !defined( 'ABSPATH' ) )
  */
 class PluginDependencies
 {
-    private static $active_plugins  = array();
+    private static $active_plugins  = null;
 
     public static $min_php_version  = '7.3.0';
     public static $min_wp_version   = '5.0';
