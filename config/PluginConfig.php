@@ -1,16 +1,4 @@
 <?php
-/**
- * PluginConfig
- *
- * This class sets the plugin configuration. In it, all the classes in the "src" folder with the plugin functionalities
- * are instantiated, the textdomain is set for the translation strings, the CSS / Javascript files common for the entire
- * plugin are enqueued and other methods that may be utility for plugin configuration.
- *
- * @version	1.0
- * @since  	1.0
- * @package	plugin-sample
- */
-
 namespace PrefixConfig;
 
 if ( !defined( 'ABSPATH' ) )
@@ -29,6 +17,17 @@ use PrefixSource\Shortcodes\CustomShortcode\CustomShortcode;
 use PrefixSource\Taxonomies\CustomCategory\CustomCategory;
 use PrefixSource\Taxonomies\CustomTag\CustomTag;
 
+/**
+ * PluginConfig
+ *
+ * This class sets the plugin configuration. In it, all the classes in the "src" folder with the plugin functionalities
+ * are instantiated, the textdomain is set for the translation strings, the CSS / Javascript files common for the entire
+ * plugin are enqueued and other methods that may be utility for plugin configuration.
+ *
+ * @version	1.0
+ * @since  	1.0
+ * @package	plugin-sample
+ */
 class PluginConfig
 {
     /**
