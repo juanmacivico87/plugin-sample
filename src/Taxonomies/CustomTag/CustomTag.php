@@ -7,7 +7,7 @@ if ( !defined( 'ABSPATH' ) )
     exit;
 
 /**
- * CustomCategory
+ * CustomTag
  *
  * This class provides an example to register a new taxonomy, without hierarchy, in WordPress.
  * For more information, visit the @link https://codex.wordpress.org/Function_Reference/register_taxonomy
