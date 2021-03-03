@@ -1,12 +1,4 @@
 <?php
-/**
- * A snippet to create a new custom tag taxonomy for a post type in WordPress. For more info, view:
- *
- * @link https://codex.wordpress.org/Function_Reference/register_taxonomy
- *
- * @package plugin-sample
- */
-
 namespace PrefixSource\Taxonomies\CustomTag;
 
 use PrefixSource\PostsTypes\SamplePostType\SamplePostType;
@@ -14,6 +6,16 @@ use PrefixSource\PostsTypes\SamplePostType\SamplePostType;
 if ( !defined( 'ABSPATH' ) )
     exit;
 
+/**
+ * CustomTag
+ *
+ * This class provides an example to register a new taxonomy, without hierarchy, in WordPress.
+ * For more information, visit the @link https://codex.wordpress.org/Function_Reference/register_taxonomy
+ *
+ * @version	1.0
+ * @since  	1.0
+ * @package	plugin-sample
+ */
 class CustomTag
 {
     const TAXONOMY = 'custom_tag';
@@ -27,24 +29,69 @@ class CustomTag
         'ep_mask'       => EP_NONE,
     );
 
+    /**
+     * __construct()
+     *
+     * This method is responsible for initializing the class and assigning values to its internal properties, from anywhere
+     * in the code where an object of that class is instantiated.
+     *
+     * @return 	void
+     * @access 	public
+     * @version	1.0
+     * @since  	1.0
+     * @package	plugin-sample
+     */
     public function __construct()
     {
         $this->init();
     }
 
+    /**
+     * init()
+     *
+     * This method takes care of hooking the rest of the methods of the class in the corresponding hooks that are provided for it.
+     *
+     * @return 	void
+     * @access 	public
+     * @version	1.0
+     * @since  	1.0
+     * @package	plugin-sample
+     */
     public function init()
     {
         add_action( 'init', array( $this, 'set_taxonomy_slug' ), 5 );
-        add_action( 'init', array( $this, 'add_custom_tag' ) );
-        add_filter( 'taxonomy_template', array( $this, 'get_custom_tag_template' ) );
+        add_action( 'init', array( $this, 'add_custom_taxonomy' ) );
+        add_filter( 'taxonomy_template', array( $this, 'get_custom_taxonomy_template' ) );
     }
 
+    /**
+     * set_taxonomy_slug()
+     *
+     * This method is responsible for setting the taxonomy slug for each of the languages in which the plugin is translated.
+     *
+     * @return 	void
+     * @access 	public
+     * @version	1.0
+     * @since  	1.0
+     * @package	plugin-sample
+     */
     public function set_taxonomy_slug()
     {
         $this->rewrite['slug'] = __( 'custom-tag', 'plugin-sample' );
     }
 
-    public function add_custom_tag()
+    /**
+     * add_custom_taxonomy()
+     *
+     * This method takes care of registering the new taxonomy in WordPress.
+     *
+     * @return 	void
+     * @access 	public
+     * @version	1.0
+     * @since  	1.0
+     * @package	plugin-sample
+     */
+    public function add_custom_taxonomy()
     {
         $args = array(
             'label'  => __( 'Custom Tags', 'plugin-sample' ),
@@ -91,7 +138,19 @@ class CustomTag
         register_taxonomy( self::TAXONOMY, SamplePostType::POST_TYPE_NAME, $args );
     }
 
-    public function get_custom_tag_template( $template )
+    /**
+     * get_custom_taxonomy_template()
+     *
+     * This method is responsible for setting the template for the taxonomy archive, from the plugin itself.
+     *
+     * @param   string  $template Path to the template
+     * @return 	string  New path to the template
+     * @access 	public
+     * @version	1.0
+     * @since  	1.0
+     * @package	plugin-sample
+     */
+    public function get_custom_taxonomy_template( $template )
     {
         if ( get_query_var( 'taxonomy' ) === self::TAXONOMY )
             $template = PREFIX_PLUGIN_DIR . 'src/Taxonomies/CustomTag/views/taxonomy-tag.php';
@@ -99,6 +158,17 @@ class CustomTag
         return $template;
     }
 
+    /**
+     * set_roles_capabilities()
+     *
+     * This method takes care of assigning the different capabilities to each of the roles that have been defined on the web.
+     *
+     * @return 	void
+     * @access 	public
+     * @version	1.0
+     * @since  	1.0
+     * @package	plugin-sample
+     */
     public static function set_roles_capabilities()
     {
         global $wp_roles;

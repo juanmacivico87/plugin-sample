@@ -1,31 +1,67 @@
 <?php
-/**
- * A snippet to add a new panel in WordPress Customizer. For more info, view:
- *
- * @link https://codex.wordpress.org/Theme_Customization_API
- *
- * @package plugin-sample
- */
-
 namespace PrefixSource\Customizer\CustomizerSection;
 
 if ( !defined( 'ABSPATH' ) )
     exit;
 
+/**
+ * CustomizerSection
+ *
+ * This class provides an example to create a new panel in WordPress customizer.
+ * For more information, visit the @link https://codex.wordpress.org/Theme_Customization_API
+ *
+ * @version	1.0
+ * @since  	1.0
+ * @package	plugin-sample
+ */
 class CustomizerSection
 {
     private $panel = 'panel_name';
 
+    /**
+     * __construct()
+     *
+     * This method is responsible for initializing the class and assigning values to its internal properties, from anywhere
+     * in the code where an object of that class is instantiated.
+     *
+     * @return 	void
+     * @access 	public
+     * @version	1.0
+     * @since  	1.0
+     * @package	plugin-sample
+     */
     public function __construct()
     {
         $this->init();
     }
 
+    /**
+     * init()
+     *
+     * This method takes care of hooking the rest of the methods of the class in the corresponding hooks that are provided for it.
+     *
+     * @return 	void
+     * @access 	public
+     * @version	1.0
+     * @since  	1.0
+     * @package	plugin-sample
+     */
     public function init()
     {
         add_action( 'customize_register', array( $this, 'add_new_customizer_panel' ) );
     }
 
+    /**
+     * add_new_customizer_panel()
+     *
+     * This method is responsible for adding a new options panel to the WordPress customizer.
+     *
+     * @return 	void
+     * @access 	public
+     * @version	1.0
+     * @since  	1.0
+     * @package	plugin-sample
+     */
     public function add_new_customizer_panel()
     {
         global $wp_customize;
@@ -42,7 +78,19 @@ class CustomizerSection
         $this->add_new_customizer_section( $wp_customize );
     }
 
-    public function add_new_customizer_section( $wp_customize )
+    /**
+     * add_new_customizer_section()
+     *
+     * This method takes care of adding a new section in the created panel.
+     *
+     * @param   WP_Customize_Manager    $wp_customize   WP_Customize_Manager instance.
+     * @return 	void
+     * @access 	private
+     * @version	1.0
+     * @since  	1.0
+     * @package	plugin-sample
+     */
+    private function add_new_customizer_section( $wp_customize )
     {
         $section_name = 'section_name';
 
@@ -60,7 +108,20 @@ class CustomizerSection
         $this->add_new_customizer_control( $wp_customize, $section_name );
     }
 
-    public function add_new_customizer_control( $wp_customize, $section_name )
+    /**
+     * add_new_customizer_control()
+     *
+     * This method is responsible for adding a new control to the section of the panel created in the customizer.
+     *
+     * @param   WP_Customize_Manager    $wp_customize   WP_Customize_Manager instance.
+     * @param   string                  $section_name   Name of the section in which to create the control.
+     * @return 	void
+     * @access 	private
+     * @version	1.0
+     * @since  	1.0
+     * @package	plugin-sample
+     */
+    private function add_new_customizer_control( $wp_customize, $section_name )
     {
         $control = '_control_name';
 

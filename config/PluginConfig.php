@@ -17,8 +17,31 @@ use PrefixSource\Shortcodes\CustomShortcode\CustomShortcode;
 use PrefixSource\Taxonomies\CustomCategory\CustomCategory;
 use PrefixSource\Taxonomies\CustomTag\CustomTag;
 
+/**
+ * PluginConfig
+ *
+ * This class sets the plugin configuration. In it, all the classes in the "src" folder with the plugin functionalities
+ * are instantiated, the textdomain is set for the translation strings, the CSS / Javascript files common for the entire
+ * plugin are enqueued and other methods that may be utility for plugin configuration.
+ *
+ * @version	1.0
+ * @since  	1.0
+ * @package	plugin-sample
+ */
 class PluginConfig
 {
+    /**
+     * __construct()
+     *
+     * This method is responsible for initializing the class and assigning values to its internal properties, from anywhere
+     * in the code where an object of that class is instantiated.
+     *
+     * @return 	void
+     * @access 	public
+     * @version	1.0
+     * @since  	1.0
+     * @package	plugin-sample
+     */
     public function __construct()
     {
         if ( false === PluginDependencies::check_dependencies() )
@@ -27,6 +50,17 @@ class PluginConfig
             $this->init();
     }
 
+    /**
+     * init()
+     *
+     * This method takes care of hooking the rest of the methods of the class in the corresponding hooks that are provided for it.
+     *
+     * @return 	void
+     * @access 	public
+     * @version	1.0
+     * @since  	1.0
+     * @package	plugin-sample
+     */
     public function init()
     {
         add_action( 'plugins_loaded', array( $this, 'load_sources' ) );
@@ -35,6 +69,17 @@ class PluginConfig
         add_action( 'admin_enqueue_scripts', array( $this, 'load_admin_assets' ) );
     }
 
+    /**
+     * load_sources()
+     *
+     * This method is responsible for instantiating the classes that contain the different functionalities of the plugin.
+     *
+     * @return 	void
+     * @access 	public
+     * @version	1.0
+     * @since  	1.0
+     * @package	plugin-sample
+     */
     public function load_sources()
     {
         /** Settings */
@@ -72,23 +117,69 @@ class PluginConfig
         new CustomRole();
     }
 
+    /**
+     * load_textdomain()
+     *
+     * This method is the one that tells WordPress which is the textdomain used by the plugin to translate its text strings.
+     *
+     * @return 	void
+     * @access 	public
+     * @version	1.0
+     * @since  	1.0
+     * @package	plugin-sample
+     */
     public function load_textdomain()
     {
         load_plugin_textdomain( 'plugin-sample', false, PREFIX_LANG_DIR );
     }
 
+    /**
+     * load_front_end_assets()
+     *
+     * This method is responsible for queuing all the CSS and Javascript files that the plugin uses on the front of the website.
+     *
+     * @return 	void
+     * @access 	public
+     * @version	1.0
+     * @since  	1.0
+     * @package	plugin-sample
+     */
     public function load_front_end_assets()
     {
         wp_enqueue_script( 'plugin-sample-front', PREFIX_PLUGIN_ASSETS . '/js/scripts.js', array(), '1.0', true );
         wp_enqueue_style( 'plugin-sample-front', PREFIX_PLUGIN_ASSETS . '/css/styles.css', array(), '1.0' );
     }
 
+    /**
+     * load_admin_assets()
+     *
+     * This method is the one that takes care of queuing all the CSS and Javascript files that the plugin uses in the
+     * back office of the website.
+     *
+     * @return 	void
+     * @access 	public
+     * @version	1.0
+     * @since  	1.0
+     * @package	plugin-sample
+     */
     public function load_admin_assets()
     {
         wp_enqueue_script( 'plugin-sample-admin', PREFIX_PLUGIN_ADMIN_ASSETS . '/js/scripts.js', array(), '1.0', true );
         wp_enqueue_style( 'plugin-sample-admin', PREFIX_PLUGIN_ADMIN_ASSETS . '/css/styles.css', array(), '1.0' );
     }
 
+    /**
+     * render_dependencies_not_found_notice()
+     *
+     * This method is responsible for displaying an error message in the event that any of the dependencies
+     * that the plugin needs to work are not found.
+     *
+     * @return 	void
+     * @access 	public
+     * @version	1.0
+     * @since  	1.0
+     * @package	plugin-sample
+     */
     public function render_dependencies_not_found_notice()
     {
         $dependencies = PluginDependencies::$dependencies;

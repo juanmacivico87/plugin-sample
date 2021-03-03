@@ -1,0 +1,1 @@
+<h2>This is the result of the rendered shortcode</h2>
