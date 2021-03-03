@@ -173,7 +173,7 @@ class SamplePostType
     /**
      * get_post_type_templates()
      *
-     * This method is responsible for setting the templates for the Custom Post Type file and single, from the plugin itself.
+     * This method is responsible for setting the templates for the Custom Post Type archive and single, from the plugin itself.
      *
      * @param   string  $template Path to the template
      * @return 	string  New path to the template
