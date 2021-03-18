@@ -84,11 +84,11 @@ De todas formas, para ayudarte, te hago un resumen de los archivos y carpetas qu
         - **CustomEndpoint:** Contiene un endpoint personalizado desarrollado a medida. Para crear tu propio endpoint personalizado, duplica o edita esta clase y añade los métodos y las propiedades que necesites.
             - **CustomEndpoint.php:** Este es el archivo que contiene los métodos y las propiedades necesarias para desarrollar el endpoint personalizado.
     - **Metaboxes:** Aunque pienses que los campos personalizados a WordPress llegaron gracias a plugins como ACF, he de decirte que no es así. En esta carpeta podrás tener los distintos campos personalizados que necesites tanto para tus contenidos, como para tus usuarios o para la página de opciones del plugin.
-        - **SampleMetabox:** Contiene un campo personalizado desarrollado a medida. Para crear tu propio campo personalizado, duplica o edita esta clase y añade los métodos y las propiedades que necesites.
-            - **SampleMetabox.php:** Este es el archivo que contiene los métodos y las propiedades necesarias para desarrollar el campo personalizado.
+        - **CustomMetaboxesGroup:** Contiene un campo personalizado desarrollado a medida. Para crear tu propio campo personalizado, duplica o edita esta clase y añade los métodos y las propiedades que necesites.
+            - **CustomMetaboxesGroup.php:** Este es el archivo que contiene los métodos y las propiedades necesarias para desarrollar el campo personalizado.
     - **PostsTypes:** WordPress trae incluidos en su núcleo una serie de tipos de contenido. Los más conocidos son las páginas y las entradas, pero también lo son los archivos de la biblioteca, los menús, etc. Pero también puedes tener los tuyos propios, como pueden ser para crear fichas de producto (como hace WooCommerce), cursos (como es el caso de Sensei) y todo lo que se te pase por la cabeza. En esta carpeta, podrás tener los tipos de contenido personalizados que desarrolles.
-        - **SamplePostType:** Contiene un tipo de contenido personalizado. Para crear tu propio tipo de contenido personalizado, duplica o edita esta clase y añade los métodos y las propiedades que necesites.
-            - **SamplePostType.php:** Este es el archivo que contiene los métodos y las propiedades necesarias para desarrollar el tipo de contenido personalizado.
+        - **CustomPostType:** Contiene un tipo de contenido personalizado. Para crear tu propio tipo de contenido personalizado, duplica o edita esta clase y añade los métodos y las propiedades que necesites.
+            - **CustomPostType.php:** Este es el archivo que contiene los métodos y las propiedades necesarias para desarrollar el tipo de contenido personalizado.
             - **views:** En esta carpeta podrás crear templates para que se rendericen, tanto el listado de entradas de tu tipo de contenido personalizado, como la propia entrada de dicho tipo de contenido.
                 - **archive-sample.php:** Este archivo contiene el template del listado.
                 - **single-sample.php:** Este archivo contiene el template de la entrada.

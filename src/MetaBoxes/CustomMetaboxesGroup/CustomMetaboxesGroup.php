@@ -1,13 +1,13 @@
 <?php
-namespace PrefixSource\Metaboxes\SampleMetabox;
+namespace PrefixSource\Metaboxes\CustomMetaboxesGroup;
 
 if ( !defined( 'ABSPATH' ) )
     exit;
 
-use PrefixSource\PostsTypes\SamplePostType\SamplePostType;
+use PrefixSource\PostsTypes\CustomPostType\CustomPostType;
 
 /**
- * SampleMetabox
+ * CustomMetaboxesGroup
  *
  * This class provides an example to create a new metabox.
  * For more information, visit the @link https://developer.wordpress.org/plugins/metadata/custom-meta-boxes/
@@ -16,7 +16,7 @@ use PrefixSource\PostsTypes\SamplePostType\SamplePostType;
  * @since  	1.0
  * @package	plugin-sample
  */
-class SampleMetabox
+class CustomMetaboxesGroup
 {
     private $metabox_id  = 'sample_metabox';
     private $metabox_key = '_sample_metabox';
@@ -74,7 +74,7 @@ class SampleMetabox
             $this->metabox_id,
             __( 'Sample Meta Box Title', 'plugin-sample' ),
             array( $this, 'render_sample_metabox' ),
-            SamplePostType::POST_TYPE_NAME,
+            CustomPostType::POST_TYPE_NAME,
             'side',
             'default'
         );
