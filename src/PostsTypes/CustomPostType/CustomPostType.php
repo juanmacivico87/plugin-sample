@@ -5,6 +5,7 @@ if ( !defined( 'ABSPATH' ) )
     exit;
 
 use PrefixSource\Taxonomies\CustomCategory\CustomCategory;
+use PrefixSource\Taxonomies\CustomTag\CustomTag;
 
 /**
  * CustomPostType
@@ -22,7 +23,7 @@ class CustomPostType
     const POST_TYPE_PLURAL  = 'samples';
 
     private $support    = array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'trackbacks', 'custom-fields', 'comments', 'revisions', 'page-attributes', 'post-formats' );
-    private $taxonomies = array( CustomCategory::TAXONOMY, 'custom_tag' );
+    private $taxonomies = array( CustomCategory::TAXONOMY, CustomTag::TAXONOMY );
     private $rewrite    = array( 
         'slug'       => '',
         'with_front' => false,
