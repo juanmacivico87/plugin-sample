@@ -7,8 +7,8 @@ if ( !defined( 'ABSPATH' ) )
 /**
  * Settings
  *
- * This class provides an example to create a settings page for the plugin with the help of the Advanced Custom Field PRO plugin.
- * For more information, visit the @link https://www.advancedcustomfields.com/resources/acf_add_options_page/
+ * This class provides an example to create a new options page in WordPress.
+ * For more information, visit the @link https://developer.wordpress.org/plugins/settings/settings-api/
  *
  * @version	1.0
  * @since  	1.0
@@ -16,7 +16,8 @@ if ( !defined( 'ABSPATH' ) )
  */
 class Settings
 {
-    const MENU_SLUG = 'plugin-sample-settings';
+    const MENU_SLUG     = 'plugin-sample-settings';
+    const FIELDS_GROUP  = 'plugin-sample-settings-group';
 
     /**
      * __construct()
@@ -48,14 +49,14 @@ class Settings
      */
     public function init()
     {
-        add_action( 'acf/init', array( $this, 'create_settings_page' ) );
-        // add_action( 'init', array( $this, 'add_settings_page_fields' ) );
+        add_action( 'admin_menu', array( $this, 'add_settings_page' ) );
+        add_action( 'admin_init', array( $this, 'register_settings' ) );
     }
 
     /**
-     * create_settings_page()
+     * add_settings_page()
      *
-     * This method is responsible for creating the plugin options page through the acf_add_options_page() function.
+     * This method is responsible for creating the plugin options page.
      *
      * @return 	void
      * @access 	public
@@ -63,31 +64,23 @@ class Settings
      * @since  	1.0
      * @package	plugin-sample
      */
-    public function create_settings_page()
+    public function add_settings_page()
     {
-        if ( false === function_exists( 'acf_add_options_page' ) )
-            return;
-
-        acf_add_options_page(
-            array(
-                'page_title'        => __( '{{ plugin_name }} Settings', 'plugin-sample' ),
-                'menu_title'        => __( '{{ plugin_name }} Settings', 'plugin-sample' ),
-                'menu_slug'         => self::MENU_SLUG,
-                'capability'        => 'manage_options',
-                'position'          => '2.9',
-                'icon_url'          => 'dashicons-paperclip',
-                'redirect'          => true,
-                'update_button'     => __( 'Save', 'plugin-sample' ),
-                'updated_message'   => __( 'Settings have been saved successfully', 'plugin-sample' ),
-            )
+        add_menu_page(
+            __( '{{ plugin_name }} Settings', 'plugin-sample' ),
+            __( '{{ plugin_name }} Settings', 'plugin-sample' ),
+            'manage_options',
+            self::MENU_SLUG,
+            array( $this, 'render_settings_page' ),
+            'dashicons-paperclip',
+            3
         );
     }
 
     /**
-     * add_settings_page_fields()
+     * register_settings()
      *
-     * This method takes care of registering a group of fields and setting it to the options page, with the help of the
-     * acf_add_local_field_group() function.
+     * This method takes care of registering the group of fields with the plugin options.
      *
      * @return 	void
      * @access 	public
@@ -95,11 +88,42 @@ class Settings
      * @since  	1.0
      * @package	plugin-sample
      */
-    public function add_settings_page_fields()
+    public function register_settings()
     {
-        if ( false === function_exists( 'acf_add_local_field_group' ) )
-            return;
+        register_setting( self::FIELDS_GROUP, '_plugin_sample_field' );
+    }
 
-        acf_add_local_field_group();
+    /**
+     * render_settings_page()
+     *
+     * This method is responsible for render the plugin options page.
+     *
+     * @return 	void
+     * @access 	public
+     * @version	1.0
+     * @since  	1.0
+     * @package	plugin-sample
+     */
+    public function render_settings_page()
+    {
+        $field = get_option( '_plugin_sample_field' ) ?: null; ?>
+
+        <div class="wrap">
+            <h1><?php _e( '{{ plugin_name }}', 'plugin-sample' ) ?></h1>
+            <h2><?php _e( 'Settings', 'plugin-sample' ) ?></h2>
+            <form method="post" action="options.php">
+                <?php settings_fields( self::FIELDS_GROUP );
+                do_settings_sections( self::FIELDS_GROUP ); ?>
+                <table class="form-table">
+                    <tr valign="top">
+                        <th scope="row"><?php _e( 'Field', 'plugin-sample' ) ?></th>
+                        <td>
+                            <input type="text" class="regular-text" name="_plugin_sample_field" value="<?php echo null !== $field ? esc_attr( $field ) : '' ?>" />
+                        </td>
+                    </tr>
+                </table>
+                <?php submit_button( __( 'Save Settings', 'plugin-sample' ), 'primary', 'save_dapda_vehicles_settings', true, array() ) ?>
+            </form>
+        </div><?php
     }
 }
