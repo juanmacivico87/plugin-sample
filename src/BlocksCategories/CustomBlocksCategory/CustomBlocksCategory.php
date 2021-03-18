@@ -4,7 +4,7 @@ namespace PrefixSource\BlocksCategories\CustomBlocksCategory;
 if ( !defined( 'ABSPATH' ) )
     exit;
 
-use PrefixSource\PostsTypes\SamplePostType\SamplePostType;
+use PrefixSource\PostsTypes\CustomPostType\CustomPostType;
 
 /**
  * CustomBlocksCategory
@@ -68,7 +68,7 @@ class CustomBlocksCategory
      */
     public function add_custom_blocks_category( $categories, $post )
     {
-        $allowed_posts_types = array( SamplePostType::POST_TYPE_NAME );
+        $allowed_posts_types = array( CustomPostType::POST_TYPE_NAME );
         
         if ( false === in_array( $post->post_type, $allowed_posts_types ) )
             return $categories;

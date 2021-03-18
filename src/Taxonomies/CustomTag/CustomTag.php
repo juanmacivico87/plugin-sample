@@ -1,7 +1,7 @@
 <?php
 namespace PrefixSource\Taxonomies\CustomTag;
 
-use PrefixSource\PostsTypes\SamplePostType\SamplePostType;
+use PrefixSource\PostsTypes\CustomPostType\CustomPostType;
 
 if ( !defined( 'ABSPATH' ) )
     exit;
@@ -135,7 +135,7 @@ class CustomTag
             ),
         );
 
-        register_taxonomy( self::TAXONOMY, SamplePostType::POST_TYPE_NAME, $args );
+        register_taxonomy( self::TAXONOMY, CustomPostType::POST_TYPE_NAME, $args );
     }
 
     /**

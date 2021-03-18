@@ -9,8 +9,8 @@ use PrefixSource\Blocks\CustomACFBlock\CustomACFBlock;
 use PrefixSource\BlocksCategories\CustomBlocksCategory\CustomBlocksCategory;
 use PrefixSource\Customizer\CustomizerSection\CustomizerSection;
 use PrefixSource\Endpoints\CustomEndpoint\CustomEndpoint;
-use PrefixSource\Metaboxes\SampleMetabox\SampleMetabox;
-use PrefixSource\PostsTypes\SamplePostType\SamplePostType;
+use PrefixSource\Metaboxes\CustomMetaboxesGroup\CustomMetaboxesGroup;
+use PrefixSource\PostsTypes\CustomPostType\CustomPostType;
 use PrefixSource\RestApi\CustomRestField\CustomRestField;
 use PrefixSource\Roles\CustomRole\CustomRole;
 use PrefixSource\Shortcodes\CustomShortcode\CustomShortcode;
@@ -93,7 +93,7 @@ class PluginConfig
         new CustomTag;
 
         /** Post types */
-        new SamplePostType();
+        new CustomPostType();
 
         /** Blocks categories */
         new CustomBlocksCategory();
@@ -105,7 +105,7 @@ class PluginConfig
         new CustomShortcode();
 
         /** Metaboxes */
-        new SampleMetabox();
+        new CustomMetaboxesGroup();
 
         /** Endpoints */
         new CustomEndpoint();

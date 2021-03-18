@@ -1,13 +1,13 @@
 <?php
-namespace PrefixSource\Metaboxes\SampleMetabox;
+namespace PrefixSource\Metaboxes\CustomMetaboxesGroup;
 
 if ( !defined( 'ABSPATH' ) )
     exit;
 
-use PrefixSource\PostsTypes\SamplePostType\SamplePostType;
+use PrefixSource\PostsTypes\CustomPostType\CustomPostType;
 
 /**
- * SampleMetabox
+ * CustomMetaboxesGroup
  *
  * This class provides an example to create a new metabox.
  * For more information, visit the @link https://developer.wordpress.org/plugins/metadata/custom-meta-boxes/
@@ -16,10 +16,10 @@ use PrefixSource\PostsTypes\SamplePostType\SamplePostType;
  * @since  	1.0
  * @package	plugin-sample
  */
-class SampleMetabox
+class CustomMetaboxesGroup
 {
-    private $metabox_id  = 'sample_metabox';
-    private $metabox_key = '_sample_metabox';
+    private $metaboxes_group  = 'sample_metabox';
+    private $metaboxes        = array();
 
     /**
      * __construct()
@@ -51,12 +51,16 @@ class SampleMetabox
      */
     public function init()
     {
-        add_action( 'add_meta_boxes', array( $this, 'add_sample_metabox' ), 10, 2 );
-        add_action( 'save_post', array( $this, 'save_sample_metabox' ) );
+        $this->metaboxes = array(
+            '_sample_metabox' => __( 'Label for this metabox', 'dapda-vehicles' ),
+        );
+
+        add_action( 'add_meta_boxes', array( $this, 'add_metaboxes_group' ), 10, 2 );
+        add_action( 'save_post', array( $this, 'save_metaboxes_group' ) );
     }
 
     /**
-     * add_sample_metabox()
+     * add_metaboxes_group()
      *
      * This method is responsible for adding the new metabox on the edit page of the post types that are indicated.
      *
@@ -68,20 +72,20 @@ class SampleMetabox
      * @since  	1.0
      * @package	plugin-sample
      */
-    public function add_sample_metabox( $post_type, $post )
+    public function add_metaboxes_group( $post_type, $post )
     {
         add_meta_box(
-            $this->metabox_id,
-            __( 'Sample Meta Box Title', 'plugin-sample' ),
-            array( $this, 'render_sample_metabox' ),
-            SamplePostType::POST_TYPE_NAME,
+            $this->metaboxes_group,
+            __( 'Custom Metaboxes Group', 'plugin-sample' ),
+            array( $this, 'render_metaboxes_group' ),
+            CustomPostType::POST_TYPE_NAME,
             'side',
             'default'
         );
     }
 
     /**
-     * render_sample_metabox()
+     * render_metaboxes_group()
      *
      * This method is responsible for rendering the metabox or group of metaboxes in the place chosen for it.
      *
@@ -92,22 +96,20 @@ class SampleMetabox
      * @since  	1.0
      * @package	plugin-sample
      */
-    public function render_sample_metabox( $post )
+    public function render_metaboxes_group( $post )
     {
-        $value = get_post_meta( $post->ID, $this->metabox_key, true ); ?>
+        foreach( $this->metaboxes as $key => $label ) {
+            $value = get_post_meta( $post->ID, $key, true ) ?: ''; ?>
 
-        <label for="<?php echo esc_attr( $this->metabox_id ) ?>"><?php esc_html_e( 'Description for this metabox', 'plugin-sample' ) ?></label>
-        <select name="<?php echo esc_attr( $this->metabox_id ) ?>" id="<?php echo esc_attr( $this->metabox_id ) ?>">
-            <option value="-1"><?php esc_html_e( 'Select an option', 'plugin-sample' ) ?></option>
-            <option value="1" <?php selected( $value, '1' ); ?>><?php esc_html_e( 'Option 1', 'plugin-sample' ) ?></option>
-            <option value="2" <?php selected( $value, '2' ); ?>><?php esc_html_e( 'Option 2', 'plugin-sample' ) ?></option>
-        </select>
-        
-        <?php
+            <div class="components-base-control__field">
+                <label class="components-base-control__label" for="<?php echo $key ?>"><?php echo $label ?></label>
+                <input class="components-base-control__input" name="<?php echo $key ?>" id="<?php echo $key ?>" value="<?php echo esc_attr( $value ) ?>" />
+            </div><?php
+        }
     }
 
     /**
-     * save_sample_metabox()
+     * save_metaboxes_group()
      *
      * This method takes care of saving the metabox value in the database, when the post to which it is
      * associated is published or updated.
@@ -119,14 +121,16 @@ class SampleMetabox
      * @since  	1.0
      * @package	plugin-sample
      */
-    public function save_sample_metabox( $post_id )
+    public function save_metaboxes_group( $post_id )
     {
-        if ( false === array_key_exists( $this->metabox_id, $_POST ) || false !== empty( $_POST[$this->metabox_id] ) || '-1' === $_POST[$this->metabox_id] ) {
-            delete_post_meta( $post_id, $this->metabox_key );
-            return;
-        }
+        foreach( $this->metaboxes as $key => $label ) {
+            if ( false === array_key_exists( $key, $_POST ) || false !== empty( $_POST[$key] ) ) {
+                delete_post_meta( $post_id, $key );
+                continue;
+            }
 
-        $metabox_id = sanitize_meta( $this->metabox_key, $_POST[$this->metabox_id], 'post' );
-        update_post_meta( $post_id, $this->metabox_key, $metabox_id );
+            $value = sanitize_meta( $key, $_POST[$key], 'post' );
+            update_post_meta( $post_id, $key, $value );
+        }
     }
 }

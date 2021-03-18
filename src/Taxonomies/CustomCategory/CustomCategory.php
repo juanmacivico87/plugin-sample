@@ -4,7 +4,7 @@ namespace PrefixSource\Taxonomies\CustomCategory;
 if ( !defined( 'ABSPATH' ) )
     exit;
 
-use PrefixSource\PostsTypes\SamplePostType\SamplePostType;
+use PrefixSource\PostsTypes\CustomPostType\CustomPostType;
 
 /**
  * CustomCategory
@@ -132,7 +132,7 @@ class CustomCategory
             ),
         );
 
-        register_taxonomy( self::TAXONOMY, SamplePostType::POST_TYPE_NAME, $args );
+        register_taxonomy( self::TAXONOMY, CustomPostType::POST_TYPE_NAME, $args );
     }
 
     /**

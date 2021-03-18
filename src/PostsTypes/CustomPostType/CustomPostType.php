@@ -1,13 +1,14 @@
 <?php
-namespace PrefixSource\PostsTypes\SamplePostType;
+namespace PrefixSource\PostsTypes\CustomPostType;
 
 if ( !defined( 'ABSPATH' ) )
     exit;
 
 use PrefixSource\Taxonomies\CustomCategory\CustomCategory;
+use PrefixSource\Taxonomies\CustomTag\CustomTag;
 
 /**
- * SamplePostType
+ * CustomPostType
  *
  * This class provides an example to create a new custom post type in WordPress.
  * For more information, visit the @link https://codex.wordpress.org/Function_Reference/register_post_type
@@ -16,13 +17,13 @@ use PrefixSource\Taxonomies\CustomCategory\CustomCategory;
  * @since  	1.0
  * @package	plugin-sample
  */
-class SamplePostType
+class CustomPostType
 {
     const POST_TYPE_NAME    = 'sample';
     const POST_TYPE_PLURAL  = 'samples';
 
     private $support    = array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'trackbacks', 'custom-fields', 'comments', 'revisions', 'page-attributes', 'post-formats' );
-    private $taxonomies = array( CustomCategory::TAXONOMY, 'custom_tag' );
+    private $taxonomies = array( CustomCategory::TAXONOMY, CustomTag::TAXONOMY );
     private $rewrite    = array( 
         'slug'       => '',
         'with_front' => false,
@@ -189,10 +190,10 @@ class SamplePostType
 
         switch( true ) {
             case is_archive() && !is_tax():
-                $template = PREFIX_PLUGIN_DIR . 'src/PostsTypes/SamplePostType/views/archive-sample.php';
+                $template = PREFIX_PLUGIN_DIR . 'src/PostsTypes/CustomPostType/views/archive-sample.php';
                 break;
             case is_single():
-                $template = PREFIX_PLUGIN_DIR . 'src/PostsTypes/SamplePostType/views/single-sample.php';
+                $template = PREFIX_PLUGIN_DIR . 'src/PostsTypes/CustomPostType/views/single-sample.php';
                 break;
         }
 

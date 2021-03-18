@@ -5,7 +5,7 @@ if ( !defined( 'ABSPATH' ) )
     exit;
 
 use PrefixSource\BlocksCategories\CustomBlocksCategory\CustomBlocksCategory;
-use PrefixSource\PostsTypes\SamplePostType\SamplePostType;
+use PrefixSource\PostsTypes\CustomPostType\CustomPostType;
 
 /**
  * CustomACFBlock
@@ -80,7 +80,7 @@ class CustomACFBlock
                 'category'			=> CustomBlocksCategory::BLOCK_CATEGORY_SLUG,
                 'icon'				=> 'admin-comments',
                 'keywords'			=> array( 'sample', 'block' ),
-                'post_types'        => array( SamplePostType::POST_TYPE_NAME ),
+                'post_types'        => array( CustomPostType::POST_TYPE_NAME ),
                 'mode'              => 'edit',
                 'render_template'   => PREFIX_PLUGIN_DIR . 'src/Blocks/CustomACFBlock/views/template-acf-block.php',
                 'supports'          => array( 'mode' => false ),
