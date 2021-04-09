@@ -1,7 +1,7 @@
 <?php
 namespace PrefixSource\Blocks\CustomACFBlock;
 
-if ( !defined( 'ABSPATH' ) )
+if ( false === defined( 'ABSPATH' ) )
     exit;
 
 use PrefixSource\BlocksCategories\CustomBlocksCategory\CustomBlocksCategory;
@@ -50,7 +50,7 @@ class CustomACFBlock
      * @since  	1.0
      * @package	plugin-sample
      */
-    public function init()
+    public function init() : void
     {
         add_action( 'acf/init', array( $this, 'add_custom_block' ) );
         add_action( 'init', array( $this, 'add_block_fields' ) );
@@ -67,7 +67,7 @@ class CustomACFBlock
      * @since  	1.0
      * @package	plugin-sample
      */
-    public function add_custom_block()
+    public function add_custom_block() : void
     {
         if ( false === function_exists( 'acf_register_block_type' ) )
             return;
@@ -119,7 +119,7 @@ class CustomACFBlock
      * @since  	1.0
      * @package	plugin-sample
      */
-    public function add_block_fields()
+    public function add_block_fields() : void
     {
         if ( false === function_exists( 'acf_add_local_field_group' ) )
             return;

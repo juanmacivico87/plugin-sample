@@ -1,7 +1,7 @@
 <?php
 namespace PrefixSource\Endpoints\CustomEndpoint;
 
-if ( !defined( 'ABSPATH' ) )
+if ( false === defined( 'ABSPATH' ) )
     exit;
 
 /**
@@ -16,7 +16,7 @@ if ( !defined( 'ABSPATH' ) )
  */
 class CustomEndpoint
 {
-    private $route = 'custom-endpoint';
+    const ROUTE = 'custom-endpoint';
 
     /**
      * __construct()
@@ -46,7 +46,7 @@ class CustomEndpoint
      * @since  	1.0
      * @package	plugin-sample
      */
-    public function init()
+    public function init() : void
     {
         add_action( 'rest_api_init', array( $this, 'create_new_endpoint' ) );
     }
@@ -63,9 +63,9 @@ class CustomEndpoint
      * @since  	1.0
      * @package	plugin-sample
      */
-    public function create_new_endpoint()
+    public function create_new_endpoint() : void
     {
-        register_rest_route( PREFIX_PLUGIN_ENDPOINTS_NAMESPACE, $this->route, array(
+        register_rest_route( PREFIX_PLUGIN_ENDPOINTS_NAMESPACE, SELF::ROUTE, array(
             'methods'               => \WP_REST_Server::READABLE,
             'callback'              => array( $this, 'controller' ),
             'permission_callback'   => '__return_true',

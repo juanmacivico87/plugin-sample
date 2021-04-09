@@ -1,7 +1,7 @@
 <?php
 namespace PrefixSource\Shortcodes\CustomShortcode;
 
-if ( !defined( 'ABSPATH' ) )
+if ( false === defined( 'ABSPATH' ) )
     exit;
 
 /**
@@ -44,7 +44,7 @@ class CustomShortcode
      * @since  	1.0
      * @package	plugin-sample
      */
-    public function init()
+    public function init() : void
     {
         add_shortcode( 'custom_shortcode', array( $this, 'render_shortcode' ) );
     }
@@ -61,7 +61,7 @@ class CustomShortcode
      * @since  	1.0
      * @package	plugin-sample
      */
-    public function render_shortcode( $args )
+    public function render_shortcode( array $args ) : string
     {
         $sample_arg = isset( $args['sample'] ) ? $args['sample'] : null;
         

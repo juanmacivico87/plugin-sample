@@ -1,7 +1,7 @@
 <?php
 namespace PrefixSource\Taxonomies\CustomCategory;
 
-if ( !defined( 'ABSPATH' ) )
+if ( false === defined( 'ABSPATH' ) )
     exit;
 
 use PrefixSource\PostsTypes\CustomPostType\CustomPostType;
@@ -20,9 +20,9 @@ class CustomCategory
 {
     const TAXONOMY = 'custom_cat';
 
-    private $rest_base  = 'custom_cat';
-    private $query_var  = 'custom_cat';
-    private $rewrite    = array( 
+    private string $rest_base   = 'custom_cat';
+    private string $query_var   = 'custom_cat';
+    private array $rewrite      = array( 
         'slug'          => '',
         'with_front'    => false,
         'hierarchical'  => true,
@@ -57,7 +57,7 @@ class CustomCategory
      * @since  	1.0
      * @package	plugin-sample
      */
-    public function init()
+    public function init() : void
     {
         add_action( 'init', array( $this, 'set_taxonomy_slug' ), 5 );
         add_action( 'init', array( $this, 'add_custom_taxonomy' ) );
@@ -75,7 +75,7 @@ class CustomCategory
      * @since  	1.0
      * @package	plugin-sample
      */
-    public function set_taxonomy_slug()
+    public function set_taxonomy_slug() : void
     {
         $this->rewrite['slug'] = __( 'custom-cat', 'plugin-sample' );
     }
@@ -91,7 +91,7 @@ class CustomCategory
      * @since  	1.0
      * @package	plugin-sample
      */
-    public function add_custom_taxonomy()
+    public function add_custom_taxonomy() : void
     {
         $args = array(
             'label'  => __( 'Custom Categories', 'plugin-sample' ),
@@ -147,7 +147,7 @@ class CustomCategory
      * @since  	1.0
      * @package	plugin-sample
      */
-    public function get_custom_taxonomy_template( $template )
+    public function get_custom_taxonomy_template( string $template ) : string
     {
         if ( get_query_var( 'taxonomy' ) === self::TAXONOMY )
             $template = PREFIX_PLUGIN_DIR . 'src/Taxonomies/CustomCategory/views/taxonomy-category.php';
@@ -166,7 +166,7 @@ class CustomCategory
      * @since  	1.0
      * @package	plugin-sample
      */
-    public static function set_roles_capabilities()
+    public static function set_roles_capabilities() : void
     {
         global $wp_roles;
 

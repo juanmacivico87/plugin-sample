@@ -25,7 +25,7 @@ You should have received a copy of the GNU General Public License
 along with {{ plugin_name }}. If not, see https://www.gnu.org/licenses/gpl-2.0.html
 */
 
-if ( !defined( 'ABSPATH' ) )
+if ( false === defined( 'ABSPATH' ) )
     exit;
 
 require_once 'vendor/autoload.php';

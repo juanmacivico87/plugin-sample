@@ -1,7 +1,7 @@
 <?php
 namespace PrefixConfig;
 
-if ( !defined( 'ABSPATH' ) )
+if ( false === defined( 'ABSPATH' ) )
     exit;
 
 /**
@@ -15,11 +15,11 @@ if ( !defined( 'ABSPATH' ) )
  */
 class PluginDependencies
 {
-    private static $active_plugins  = null;
+    private static ?array $active_plugins = null;
 
-    public static $min_php_version  = '7.3.0';
-    public static $min_wp_version   = '5.0';
-    public static $dependencies     = array(
+    public static string $min_php_version   = '7.3.0';
+    public static string $min_wp_version    = '5.0';
+    public static array $dependencies       = array(
         'Advanced Custom Fields PRO' => 'advanced-custom-fields-pro/acf.php',
     );
 
@@ -34,7 +34,7 @@ class PluginDependencies
      * @since  	1.0
      * @package	plugin-sample
      */
-    public static function init()
+    public static function init() : void
     {
 		self::$active_plugins = get_option( 'active_plugins', array() );
 
@@ -54,7 +54,7 @@ class PluginDependencies
      * @since  	1.0
      * @package	plugin-sample
      */
-    public static function check_dependencies()
+    public static function check_dependencies() : bool
     {
         global $wp_version;
         

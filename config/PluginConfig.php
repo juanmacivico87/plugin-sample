@@ -1,7 +1,7 @@
 <?php
 namespace PrefixConfig;
 
-if ( !defined( 'ABSPATH' ) )
+if ( false === defined( 'ABSPATH' ) )
     exit;
 
 use PrefixSource\Settings\Settings;
@@ -61,7 +61,7 @@ class PluginConfig
      * @since  	1.0
      * @package	plugin-sample
      */
-    public function init()
+    public function init() : void
     {
         add_action( 'plugins_loaded', array( $this, 'load_sources' ) );
         add_action( 'plugins_loaded', array( $this, 'load_textdomain' ) );
@@ -80,7 +80,7 @@ class PluginConfig
      * @since  	1.0
      * @package	plugin-sample
      */
-    public function load_sources()
+    public function load_sources() : void
     {
         /** Settings */
         new Settings();
@@ -128,7 +128,7 @@ class PluginConfig
      * @since  	1.0
      * @package	plugin-sample
      */
-    public function load_textdomain()
+    public function load_textdomain() : void
     {
         load_plugin_textdomain( 'plugin-sample', false, PREFIX_LANG_DIR );
     }
@@ -144,7 +144,7 @@ class PluginConfig
      * @since  	1.0
      * @package	plugin-sample
      */
-    public function load_front_end_assets()
+    public function load_front_end_assets() : void
     {
         wp_enqueue_script( 'plugin-sample-front', PREFIX_PLUGIN_ASSETS . '/js/scripts.js', array(), '1.0', true );
         wp_enqueue_style( 'plugin-sample-front', PREFIX_PLUGIN_ASSETS . '/css/styles.css', array(), '1.0' );
@@ -162,7 +162,7 @@ class PluginConfig
      * @since  	1.0
      * @package	plugin-sample
      */
-    public function load_admin_assets()
+    public function load_admin_assets() : void
     {
         wp_enqueue_script( 'plugin-sample-admin', PREFIX_PLUGIN_ADMIN_ASSETS . '/js/scripts.js', array(), '1.0', true );
         wp_enqueue_style( 'plugin-sample-admin', PREFIX_PLUGIN_ADMIN_ASSETS . '/css/styles.css', array(), '1.0' );
@@ -180,7 +180,7 @@ class PluginConfig
      * @since  	1.0
      * @package	plugin-sample
      */
-    public function render_dependencies_not_found_notice()
+    public function render_dependencies_not_found_notice() : void
     {
         $dependencies = PluginDependencies::$dependencies;
         ?><div class="notice notice-error is-dismissible">
