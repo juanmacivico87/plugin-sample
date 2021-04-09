@@ -16,7 +16,7 @@ if ( false === defined( 'ABSPATH' ) )
  */
 class CustomEndpoint
 {
-    private string $route = 'custom-endpoint';
+    const ROUTE = 'custom-endpoint';
 
     /**
      * __construct()
@@ -65,7 +65,7 @@ class CustomEndpoint
      */
     public function create_new_endpoint() : void
     {
-        register_rest_route( PREFIX_PLUGIN_ENDPOINTS_NAMESPACE, $this->route, array(
+        register_rest_route( PREFIX_PLUGIN_ENDPOINTS_NAMESPACE, SELF::ROUTE, array(
             'methods'               => \WP_REST_Server::READABLE,
             'callback'              => array( $this, 'controller' ),
             'permission_callback'   => '__return_true',

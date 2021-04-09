@@ -16,7 +16,7 @@ if ( false === defined( 'ABSPATH' ) )
  */
 class CustomRole
 {
-    private string $role_name = 'custom_role';
+    const ROLE_NAME = 'custom_role';
 
     /**
      * __construct()
@@ -65,7 +65,7 @@ class CustomRole
     public function add_new_role() : void
     {
         add_role(
-            $this->role_name,
+            self::ROLE_NAME,
             __( 'Custom role', 'plugin-sample' ),
             array()
         );

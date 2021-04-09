@@ -18,8 +18,9 @@ use PrefixSource\PostsTypes\CustomPostType\CustomPostType;
  */
 class CustomMetaboxesGroup
 {
-    private string $metaboxes_group     = 'sample_metabox';
-    private array $metaboxes            = array();
+    const METABOXES_GROUP = 'sample_metabox';
+
+    private array $metaboxes = array();
 
     /**
      * __construct()
@@ -75,7 +76,7 @@ class CustomMetaboxesGroup
     public function add_metaboxes_group( string $post_type, \WP_Post $post ) : void
     {
         add_meta_box(
-            $this->metaboxes_group,
+            self::METABOXES_GROUP,
             __( 'Custom Metaboxes Group', 'plugin-sample' ),
             array( $this, 'render_metaboxes_group' ),
             CustomPostType::POST_TYPE_NAME,

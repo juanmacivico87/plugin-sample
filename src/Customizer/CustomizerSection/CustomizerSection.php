@@ -16,7 +16,7 @@ if ( false === defined( 'ABSPATH' ) )
  */
 class CustomizerSection
 {
-    private string $panel = 'panel_name';
+    const PANEL_NAME = 'panel_name';
 
     /**
      * __construct()
@@ -67,7 +67,7 @@ class CustomizerSection
         global $wp_customize;
 
         $wp_customize->add_panel( 
-            $this->panel, 
+            self::PANEL_NAME, 
             array(
                 'priority'       => 1,
                 'capability'     => 'edit_pages',
@@ -101,7 +101,7 @@ class CustomizerSection
                 'priority'      => 1,
                 'description'   => __( 'A little section description', 'plugin-sample' ),
                 'capability'    => 'edit_pages',
-                'panel'         => $this->panel,
+                'panel'         => self::PANEL_NAME,
             )
         );
 
