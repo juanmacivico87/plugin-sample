@@ -1,7 +1,7 @@
 <?php
 namespace PrefixSource\Roles\CustomRole;
 
-if ( !defined( 'ABSPATH' ) )
+if ( false === defined( 'ABSPATH' ) )
     exit;
 
 /**
@@ -16,7 +16,7 @@ if ( !defined( 'ABSPATH' ) )
  */
 class CustomRole
 {
-    private $role_name = 'custom_role';
+    private string $role_name = 'custom_role';
 
     /**
      * __construct()
@@ -46,7 +46,7 @@ class CustomRole
      * @since  	1.0
      * @package	plugin-sample
      */
-    public function init()
+    public function init() : void
     {
         add_action( 'init', array( $this, 'add_new_role' ) );
     }
@@ -62,7 +62,7 @@ class CustomRole
      * @since  	1.0
      * @package	plugin-sample
      */
-    public function add_new_role()
+    public function add_new_role() : void
     {
         add_role(
             $this->role_name,

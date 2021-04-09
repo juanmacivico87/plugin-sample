@@ -1,7 +1,7 @@
 <?php
 namespace PrefixSource\Settings;
 
-if ( !defined( 'ABSPATH' ) )
+if ( false === defined( 'ABSPATH' ) )
     exit;
 
 /**
@@ -47,7 +47,7 @@ class Settings
      * @since  	1.0
      * @package	plugin-sample
      */
-    public function init()
+    public function init() : void
     {
         add_action( 'admin_menu', array( $this, 'add_settings_page' ) );
         add_action( 'admin_init', array( $this, 'register_settings' ) );
@@ -64,7 +64,7 @@ class Settings
      * @since  	1.0
      * @package	plugin-sample
      */
-    public function add_settings_page()
+    public function add_settings_page() : void
     {
         add_menu_page(
             __( '{{ plugin_name }} Settings', 'plugin-sample' ),
@@ -88,7 +88,7 @@ class Settings
      * @since  	1.0
      * @package	plugin-sample
      */
-    public function register_settings()
+    public function register_settings() : void
     {
         register_setting( self::FIELDS_GROUP, '_plugin_sample_field' );
     }
@@ -104,7 +104,7 @@ class Settings
      * @since  	1.0
      * @package	plugin-sample
      */
-    public function render_settings_page()
+    public function render_settings_page() : void
     {
         $field = get_option( '_plugin_sample_field' ) ?: null; ?>
 

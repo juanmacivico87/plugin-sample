@@ -1,7 +1,7 @@
 <?php
 namespace PrefixSource\Settings;
 
-if ( !defined( 'ABSPATH' ) )
+if ( false === defined( 'ABSPATH' ) )
     exit;
 
 /**
@@ -46,7 +46,7 @@ class Settings
      * @since  	1.0
      * @package	plugin-sample
      */
-    public function init()
+    public function init() : void
     {
         add_action( 'acf/init', array( $this, 'create_settings_page' ) );
         // add_action( 'init', array( $this, 'add_settings_page_fields' ) );
@@ -63,7 +63,7 @@ class Settings
      * @since  	1.0
      * @package	plugin-sample
      */
-    public function create_settings_page()
+    public function create_settings_page() : void
     {
         if ( false === function_exists( 'acf_add_options_page' ) )
             return;
@@ -95,7 +95,7 @@ class Settings
      * @since  	1.0
      * @package	plugin-sample
      */
-    public function add_settings_page_fields()
+    public function add_settings_page_fields() : void
     {
         if ( false === function_exists( 'acf_add_local_field_group' ) )
             return;

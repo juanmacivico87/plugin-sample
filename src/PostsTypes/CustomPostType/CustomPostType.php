@@ -1,7 +1,7 @@
 <?php
 namespace PrefixSource\PostsTypes\CustomPostType;
 
-if ( !defined( 'ABSPATH' ) )
+if ( false === defined( 'ABSPATH' ) )
     exit;
 
 use PrefixSource\Taxonomies\CustomCategory\CustomCategory;
@@ -22,9 +22,9 @@ class CustomPostType
     const POST_TYPE_NAME    = 'sample';
     const POST_TYPE_PLURAL  = 'samples';
 
-    private $support    = array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'trackbacks', 'custom-fields', 'comments', 'revisions', 'page-attributes', 'post-formats' );
-    private $taxonomies = array( CustomCategory::TAXONOMY, CustomTag::TAXONOMY );
-    private $rewrite    = array( 
+    private array $support    = array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'trackbacks', 'custom-fields', 'comments', 'revisions', 'page-attributes', 'post-formats' );
+    private array $taxonomies = array( CustomCategory::TAXONOMY, CustomTag::TAXONOMY );
+    private array $rewrite    = array( 
         'slug'       => '',
         'with_front' => false,
         'feeds'      => false,
@@ -59,7 +59,7 @@ class CustomPostType
      * @since  	1.0
      * @package	plugin-sample
      */
-    public function init()
+    public function init() : void
     {
         add_action( 'init', array( $this, 'set_custom_post_type_slug' ), 5 );
         add_action( 'init', array( $this, 'add_custom_post_type' ) );
@@ -78,7 +78,7 @@ class CustomPostType
      * @since  	1.0
      * @package	plugin-sample
      */
-    public function set_custom_post_type_slug()
+    public function set_custom_post_type_slug() : void
     {
         $this->rewrite['slug'] = __( 'samples', 'plugin-sample' );
     }
@@ -94,7 +94,7 @@ class CustomPostType
      * @since  	1.0
      * @package	plugin-sample
      */
-    public function add_custom_post_type()
+    public function add_custom_post_type() : void
     {
         $args = array(
             'labels' => array(
@@ -183,7 +183,7 @@ class CustomPostType
      * @since  	1.0
      * @package	plugin-sample
      */
-    public function get_post_type_templates( $template )
+    public function get_post_type_templates( string $template ) : string
     {
         if ( get_post_type() !== self::POST_TYPE_NAME )
             return $template;
@@ -211,7 +211,7 @@ class CustomPostType
      * @since  	1.0
      * @package	plugin-sample
      */
-    public static function set_roles_capabilities()
+    public static function set_roles_capabilities() : void
     {
         global $wp_roles;
 

@@ -1,7 +1,7 @@
 <?php
 namespace PrefixSource\Metaboxes\CustomMetaboxesGroup;
 
-if ( !defined( 'ABSPATH' ) )
+if ( false === defined( 'ABSPATH' ) )
     exit;
 
 use PrefixSource\PostsTypes\CustomPostType\CustomPostType;
@@ -18,8 +18,8 @@ use PrefixSource\PostsTypes\CustomPostType\CustomPostType;
  */
 class CustomMetaboxesGroup
 {
-    private $metaboxes_group  = 'sample_metabox';
-    private $metaboxes        = array();
+    private string $metaboxes_group     = 'sample_metabox';
+    private array $metaboxes            = array();
 
     /**
      * __construct()
@@ -49,10 +49,10 @@ class CustomMetaboxesGroup
      * @since  	1.0
      * @package	plugin-sample
      */
-    public function init()
+    public function init() : void
     {
         $this->metaboxes = array(
-            '_sample_metabox' => __( 'Label for this metabox', 'dapda-vehicles' ),
+            '_sample_metabox' => __( 'Label for this metabox', 'plugin-sample' ),
         );
 
         add_action( 'add_meta_boxes', array( $this, 'add_metaboxes_group' ), 10, 2 );
@@ -72,7 +72,7 @@ class CustomMetaboxesGroup
      * @since  	1.0
      * @package	plugin-sample
      */
-    public function add_metaboxes_group( $post_type, $post )
+    public function add_metaboxes_group( string $post_type, \WP_Post $post ) : void
     {
         add_meta_box(
             $this->metaboxes_group,
@@ -96,7 +96,7 @@ class CustomMetaboxesGroup
      * @since  	1.0
      * @package	plugin-sample
      */
-    public function render_metaboxes_group( $post )
+    public function render_metaboxes_group( \WP_Post $post ) : void
     {
         foreach( $this->metaboxes as $key => $label ) {
             $value = get_post_meta( $post->ID, $key, true ) ?: ''; ?>
@@ -121,7 +121,7 @@ class CustomMetaboxesGroup
      * @since  	1.0
      * @package	plugin-sample
      */
-    public function save_metaboxes_group( $post_id )
+    public function save_metaboxes_group( int $post_id ) : void
     {
         foreach( $this->metaboxes as $key => $label ) {
             if ( false === array_key_exists( $key, $_POST ) || false !== empty( $_POST[$key] ) ) {

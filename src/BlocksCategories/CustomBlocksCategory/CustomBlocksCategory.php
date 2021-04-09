@@ -1,7 +1,7 @@
 <?php
 namespace PrefixSource\BlocksCategories\CustomBlocksCategory;
 
-if ( !defined( 'ABSPATH' ) )
+if ( false === defined( 'ABSPATH' ) )
     exit;
 
 use PrefixSource\PostsTypes\CustomPostType\CustomPostType;
@@ -48,7 +48,7 @@ class CustomBlocksCategory
      * @since  	1.0
      * @package	plugin-sample
      */
-    public function init()
+    public function init() : void
     {
         add_filter( 'block_categories', array( $this, 'add_custom_blocks_category' ), 10, 2 );
     }
@@ -66,7 +66,7 @@ class CustomBlocksCategory
      * @since  	1.0
      * @package	plugin-sample
      */
-    public function add_custom_blocks_category( $categories, $post )
+    public function add_custom_blocks_category( array $categories, \WP_Post $post ) : array
     {
         $allowed_posts_types = array( CustomPostType::POST_TYPE_NAME );
         

@@ -1,7 +1,7 @@
 <?php
 namespace PrefixSource\Customizer\CustomizerSection;
 
-if ( !defined( 'ABSPATH' ) )
+if ( false === defined( 'ABSPATH' ) )
     exit;
 
 /**
@@ -16,7 +16,7 @@ if ( !defined( 'ABSPATH' ) )
  */
 class CustomizerSection
 {
-    private $panel = 'panel_name';
+    private string $panel = 'panel_name';
 
     /**
      * __construct()
@@ -46,7 +46,7 @@ class CustomizerSection
      * @since  	1.0
      * @package	plugin-sample
      */
-    public function init()
+    public function init() : void
     {
         add_action( 'customize_register', array( $this, 'add_new_customizer_panel' ) );
     }
@@ -62,7 +62,7 @@ class CustomizerSection
      * @since  	1.0
      * @package	plugin-sample
      */
-    public function add_new_customizer_panel()
+    public function add_new_customizer_panel() : void
     {
         global $wp_customize;
 
@@ -90,7 +90,7 @@ class CustomizerSection
      * @since  	1.0
      * @package	plugin-sample
      */
-    private function add_new_customizer_section( $wp_customize )
+    private function add_new_customizer_section( \WP_Customize_Manager $wp_customize ) : void
     {
         $section_name = 'section_name';
 
@@ -121,7 +121,7 @@ class CustomizerSection
      * @since  	1.0
      * @package	plugin-sample
      */
-    private function add_new_customizer_control( $wp_customize, $section_name )
+    private function add_new_customizer_control( \WP_Customize_Manager $wp_customize, string $section_name ) : void
     {
         $control = '_control_name';
 

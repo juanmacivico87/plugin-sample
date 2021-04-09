@@ -1,7 +1,7 @@
 <?php
 namespace PrefixSource\RestApi\CustomRestField;
 
-if ( !defined( 'ABSPATH' ) )
+if ( false === defined( 'ABSPATH' ) )
     exit;
 
 /**
@@ -16,7 +16,7 @@ if ( !defined( 'ABSPATH' ) )
  */
 class CustomRestField
 {
-    private $post_types = array( 'post', 'page' );
+    private array $post_types = array( 'post', 'page' );
 
     /**
      * __construct()
@@ -46,7 +46,7 @@ class CustomRestField
      * @since  	1.0
      * @package	plugin-sample
      */
-    public function init()
+    public function init() : void
     {
         add_action( 'rest_api_init', array( $this, 'add_new_rest_field' ) );
     }
@@ -62,7 +62,7 @@ class CustomRestField
      * @since  	1.0
      * @package	plugin-sample
      */
-    public function add_new_rest_field()
+    public function add_new_rest_field() : void
     {
         $args = array(
             'get_callback' => array( $this, 'get_rest_field_value' ),
@@ -82,7 +82,7 @@ class CustomRestField
      * @since  	1.0
      * @package	plugin-sample
      */
-    public function get_rest_field_value()
+    public function get_rest_field_value() : string
     {
         return 'Some value';
     }
