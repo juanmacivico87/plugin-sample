@@ -1,10 +1,10 @@
 <?php
-namespace PrefixSource\Metaboxes\CustomMetaboxesGroup;
+namespace \Metaboxes\CustomMetaboxesGroup;
 
 if ( false === defined( 'ABSPATH' ) )
     exit;
 
-use PrefixSource\PostsTypes\CustomPostType\CustomPostType;
+use \PostsTypes\CustomPostType\CustomPostType;
 
 /**
  * CustomMetaboxesGroup
@@ -14,7 +14,7 @@ use PrefixSource\PostsTypes\CustomPostType\CustomPostType;
  *
  * @version	1.0
  * @since  	1.0
- * @package	plugin-sample
+ * @package	
  */
 class CustomMetaboxesGroup
 {
@@ -32,7 +32,7 @@ class CustomMetaboxesGroup
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	
      */
     public function __construct()
     {
@@ -48,12 +48,12 @@ class CustomMetaboxesGroup
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	
      */
     public function init() : void
     {
         $this->metaboxes = array(
-            '_sample_metabox' => __( 'Label for this metabox', 'plugin-sample' ),
+            '_sample_metabox' => __( 'Label for this metabox', '' ),
         );
 
         add_action( 'add_meta_boxes', array( $this, 'add_metaboxes_group' ), 10, 2 );
@@ -71,13 +71,13 @@ class CustomMetaboxesGroup
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	
      */
     public function add_metaboxes_group( string $post_type, \WP_Post $post ) : void
     {
         add_meta_box(
             self::METABOXES_GROUP,
-            __( 'Custom Metaboxes Group', 'plugin-sample' ),
+            __( 'Custom Metaboxes Group', '' ),
             array( $this, 'render_metaboxes_group' ),
             CustomPostType::POST_TYPE_NAME,
             'side',
@@ -95,7 +95,7 @@ class CustomMetaboxesGroup
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	
      */
     public function render_metaboxes_group( \WP_Post $post ) : void
     {
@@ -120,7 +120,7 @@ class CustomMetaboxesGroup
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	
      */
     public function save_metaboxes_group( int $post_id ) : void
     {

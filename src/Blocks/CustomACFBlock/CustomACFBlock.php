@@ -1,11 +1,11 @@
 <?php
-namespace PrefixSource\Blocks\CustomACFBlock;
+namespace \Blocks\CustomACFBlock;
 
 if ( false === defined( 'ABSPATH' ) )
     exit;
 
-use PrefixSource\BlocksCategories\CustomBlocksCategory\CustomBlocksCategory;
-use PrefixSource\PostsTypes\CustomPostType\CustomPostType;
+use \BlocksCategories\CustomBlocksCategory\CustomBlocksCategory;
+use \PostsTypes\CustomPostType\CustomPostType;
 
 /**
  * CustomACFBlock
@@ -15,7 +15,7 @@ use PrefixSource\PostsTypes\CustomPostType\CustomPostType;
  *
  * @version	1.0
  * @since  	1.0
- * @package	plugin-sample
+ * @package	
  */
 class CustomACFBlock
 {
@@ -32,7 +32,7 @@ class CustomACFBlock
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	
      */
     public function __construct()
     {
@@ -48,7 +48,7 @@ class CustomACFBlock
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	
      */
     public function init() : void
     {
@@ -65,7 +65,7 @@ class CustomACFBlock
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	
      */
     public function add_custom_block() : void
     {
@@ -75,20 +75,20 @@ class CustomACFBlock
         acf_register_block_type(
             array(
                 'name'				=> self::BLOCK_NAME,
-                'title'				=> __( 'Sample Block', 'plugin-sample' ),
-                'description'		=> __( 'A Gutenbetg sample block', 'plugin-sample' ),
+                'title'				=> __( 'Sample Block', '' ),
+                'description'		=> __( 'A Gutenbetg sample block', '' ),
                 'category'			=> CustomBlocksCategory::BLOCK_CATEGORY_SLUG,
                 'icon'				=> 'admin-comments',
                 'keywords'			=> array( 'sample', 'block' ),
                 'post_types'        => array( CustomPostType::POST_TYPE_NAME ),
                 'mode'              => 'edit',
-                'render_template'   => PREFIX_PLUGIN_DIR . 'src/Blocks/CustomACFBlock/views/template-acf-block.php',
+                'render_template'   => PLUGIN_DIR . 'src/Blocks/CustomACFBlock/views/template-acf-block.php',
                 'supports'          => array( 'mode' => false ),
                 'enqueue_assets'    => function() {
                     if ( !is_admin() )
                     {
-                        wp_enqueue_style( 'sample-block-css', PREFIX_PLUGIN_URL . 'src/Blocks/CustomACFBlock/css/styles.css', array(), '1.0' );
-                        wp_enqueue_script( 'sample-block-js', PREFIX_PLUGIN_URL . 'src/Blocks/CustomACFBlock/js/scripts.js', array(), '1.0', true );
+                        wp_enqueue_style( 'sample-block-css', PLUGIN_URL . 'src/Blocks/CustomACFBlock/css/styles.css', array(), '1.0' );
+                        wp_enqueue_script( 'sample-block-js', PLUGIN_URL . 'src/Blocks/CustomACFBlock/js/scripts.js', array(), '1.0', true );
                         $args = array(
                             'ajax_url' => admin_url( 'admin-ajax.php' ),
                         );
@@ -99,7 +99,7 @@ class CustomACFBlock
                         self::BLOCK_SLUG,
                         array(
                             'name'  => 'sample-custom-style',
-                            'label' => __( 'Sample Custom Style', 'plugin-sample' ),
+                            'label' => __( 'Sample Custom Style', '' ),
                         )
                     );
                 },
@@ -117,7 +117,7 @@ class CustomACFBlock
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	
      */
     public function add_block_fields() : void
     {
@@ -127,11 +127,11 @@ class CustomACFBlock
         acf_add_local_field_group(
             array(
                 'key' => 'group_5cf76f0e4cde3',
-                'title' => __( 'Sample', 'plugin-sample' ),
+                'title' => __( 'Sample', '' ),
                 'fields' => array(
                     array(
                         'key' => 'field_5cf76f15f55e8',
-                        'label' => __( 'Title', 'plugin-sample' ),
+                        'label' => __( 'Title', '' ),
                         'name' => 'sample_title',
                         'type' => 'text',
                         'instructions' => '',
@@ -150,7 +150,7 @@ class CustomACFBlock
                     ),
                     array(
                         'key' => 'field_5cf76f28f55e9',
-                        'label' => __( 'Subtitle', 'plugin-sample' ),
+                        'label' => __( 'Subtitle', '' ),
                         'name' => 'sample_subtitle',
                         'type' => 'text',
                         'instructions' => '',
@@ -169,7 +169,7 @@ class CustomACFBlock
                     ),
                     array(
                         'key' => 'field_5cf76f3bf55ea',
-                        'label' => __( 'Button', 'plugin-sample' ),
+                        'label' => __( 'Button', '' ),
                         'name' => 'sample_button',
                         'type' => 'link',
                         'instructions' => '',

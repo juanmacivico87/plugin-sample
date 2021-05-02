@@ -1,10 +1,10 @@
 <?php
-namespace PrefixSource\Taxonomies\CustomCategory;
+namespace \Taxonomies\CustomCategory;
 
 if ( false === defined( 'ABSPATH' ) )
     exit;
 
-use PrefixSource\PostsTypes\CustomPostType\CustomPostType;
+use \PostsTypes\CustomPostType\CustomPostType;
 
 /**
  * CustomCategory
@@ -14,7 +14,7 @@ use PrefixSource\PostsTypes\CustomPostType\CustomPostType;
  *
  * @version	1.0
  * @since  	1.0
- * @package	plugin-sample
+ * @package	
  */
 class CustomCategory
 {
@@ -39,7 +39,7 @@ class CustomCategory
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	
      */
     public function __construct()
     {
@@ -55,7 +55,7 @@ class CustomCategory
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	
      */
     public function init() : void
     {
@@ -73,11 +73,11 @@ class CustomCategory
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	
      */
     public function set_taxonomy_slug() : void
     {
-        $this->rewrite['slug'] = __( 'custom-cat', 'plugin-sample' );
+        $this->rewrite['slug'] = __( 'custom-cat', '' );
     }
 
     /**
@@ -89,27 +89,27 @@ class CustomCategory
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	
      */
     public function add_custom_taxonomy() : void
     {
         $args = array(
-            'label'  => __( 'Custom Categories', 'plugin-sample' ),
+            'label'  => __( 'Custom Categories', '' ),
             'labels' => array(
-                'name'                       => __( 'Custom Categories', 'plugin-sample' ),
-                'singular_name'              => __( 'Custom Category', 'plugin-sample' ),
-                'menu_name'                  => __( 'Custom Categories', 'plugin-sample' ),
-                'all_items'                  => __( 'All Custom Categories', 'plugin-sample' ),
-                'edit_item'                  => __( 'Edit Custom Category', 'plugin-sample' ),
-                'view_item'                  => __( 'View Custom Category', 'plugin-sample' ),
-                'update_item'                => __( 'Update Custom Category', 'plugin-sample' ),
-                'add_new_item'               => __( 'Add new Custom Category', 'plugin-sample' ),
-                'new_item_name'              => __( 'New Custom Category Name', 'plugin-sample' ),
-                'parent_item'                => __( 'Parent Custom Category', 'plugin-sample' ),
-                'parent_item_colon'          => __( 'Parent Custom Category:', 'plugin-sample' ),
-                'search_items'               => __( 'Search Custom Categories', 'plugin-sample' ),
-                'not_found'                  => __( 'Custom Categories not Found', 'plugin-sample' ),
-                'back_to_items'              => __( 'Back to Custom Categories', 'plugin-sample' ),
+                'name'                       => __( 'Custom Categories', '' ),
+                'singular_name'              => __( 'Custom Category', '' ),
+                'menu_name'                  => __( 'Custom Categories', '' ),
+                'all_items'                  => __( 'All Custom Categories', '' ),
+                'edit_item'                  => __( 'Edit Custom Category', '' ),
+                'view_item'                  => __( 'View Custom Category', '' ),
+                'update_item'                => __( 'Update Custom Category', '' ),
+                'add_new_item'               => __( 'Add new Custom Category', '' ),
+                'new_item_name'              => __( 'New Custom Category Name', '' ),
+                'parent_item'                => __( 'Parent Custom Category', '' ),
+                'parent_item_colon'          => __( 'Parent Custom Category:', '' ),
+                'search_items'               => __( 'Search Custom Categories', '' ),
+                'not_found'                  => __( 'Custom Categories not Found', '' ),
+                'back_to_items'              => __( 'Back to Custom Categories', '' ),
             ),
             'public'                => true,
             'publicly_queryable'    => true,
@@ -120,7 +120,7 @@ class CustomCategory
             'rest_base'             => $this->rest_base,
             'show_in_quick_edit'    => true,
             'show_admin_column'     => false,
-            'description'           => __( 'Custom Category Description', 'plugin-sample' ),
+            'description'           => __( 'Custom Category Description', '' ),
             'hierarchical'          => true,
             'query_var'             => $this->query_var,
             'rewrite'               => $this->rewrite,
@@ -145,12 +145,12 @@ class CustomCategory
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	
      */
     public function get_custom_taxonomy_template( string $template ) : string
     {
         if ( get_query_var( 'taxonomy' ) === self::TAXONOMY )
-            $template = PREFIX_PLUGIN_DIR . 'src/Taxonomies/CustomCategory/views/taxonomy-category.php';
+            $template = PLUGIN_DIR . 'src/Taxonomies/CustomCategory/views/taxonomy-category.php';
 
         return $template;
     }
@@ -164,13 +164,13 @@ class CustomCategory
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	
      */
     public static function set_roles_capabilities() : void
     {
         global $wp_roles;
 
-        $is_set_capabilities = get_option( '__prefix_set_custom_cat_capabilities' );
+        $is_set_capabilities = get_option( '__set_custom_cat_capabilities' );
 
         if ( $is_set_capabilities )
             return;
@@ -187,6 +187,6 @@ class CustomCategory
             $current_role->add_cap( 'assign_custom_categories' );
         }
 
-        add_option( '__prefix_set_custom_cat_capabilities', true );
+        add_option( '__set_custom_cat_capabilities', true );
     }
 }

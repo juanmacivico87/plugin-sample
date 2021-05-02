@@ -1,7 +1,7 @@
 <?php
-namespace PrefixSource\Taxonomies\CustomTag;
+namespace \Taxonomies\CustomTag;
 
-use PrefixSource\PostsTypes\CustomPostType\CustomPostType;
+use \PostsTypes\CustomPostType\CustomPostType;
 
 if ( false === defined( 'ABSPATH' ) )
     exit;
@@ -14,7 +14,7 @@ if ( false === defined( 'ABSPATH' ) )
  *
  * @version	1.0
  * @since  	1.0
- * @package	plugin-sample
+ * @package	
  */
 class CustomTag
 {
@@ -39,7 +39,7 @@ class CustomTag
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	
      */
     public function __construct()
     {
@@ -55,7 +55,7 @@ class CustomTag
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	
      */
     public function init() : void
     {
@@ -73,11 +73,11 @@ class CustomTag
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	
      */
     public function set_taxonomy_slug() : void
     {
-        $this->rewrite['slug'] = __( 'custom-tag', 'plugin-sample' );
+        $this->rewrite['slug'] = __( 'custom-tag', '' );
     }
 
     /**
@@ -89,29 +89,29 @@ class CustomTag
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	
      */
     public function add_custom_taxonomy() : void
     {
         $args = array(
-            'label'  => __( 'Custom Tags', 'plugin-sample' ),
+            'label'  => __( 'Custom Tags', '' ),
             'labels' => array(
-                'name'                       => __( 'Custom Tags', 'plugin-sample' ),
-                'singular_name'              => __( 'Custom Tag', 'plugin-sample' ),
-                'menu_name'                  => __( 'Custom Tags', 'plugin-sample' ),
-                'all_items'                  => __( 'All Custom Tags', 'plugin-sample' ),
-                'edit_item'                  => __( 'Edit Custom Tag', 'plugin-sample' ),
-                'view_item'                  => __( 'View Custom Tag', 'plugin-sample' ),
-                'update_item'                => __( 'Update Custom Tag', 'plugin-sample' ),
-                'add_new_item'               => __( 'Add new Custom Tag', 'plugin-sample' ),
-                'new_item_name'              => __( 'New Custom Tag Name', 'plugin-sample' ),
-                'search_items'               => __( 'Search Custom Tags', 'plugin-sample' ),
-                'popular_items'              => __( 'Popular Custom Tags', 'plugin-sample' ),
-                'separate_items_with_commas' => __( 'Separate Custom Tags with Commas', 'plugin-sample' ),
-                'add_or_remove_items'        => __( 'Add or remove Custom Tags', 'plugin-sample' ),
-                'choose_from_most_used'      => __( 'Choose from most used Custom Tags', 'plugin-sample' ),
-                'not_found'                  => __( 'Custom Tags not Found', 'plugin-sample' ),
-                'back_to_items'              => __( 'Back to Custom Tags', 'plugin-sample' ),
+                'name'                       => __( 'Custom Tags', '' ),
+                'singular_name'              => __( 'Custom Tag', '' ),
+                'menu_name'                  => __( 'Custom Tags', '' ),
+                'all_items'                  => __( 'All Custom Tags', '' ),
+                'edit_item'                  => __( 'Edit Custom Tag', '' ),
+                'view_item'                  => __( 'View Custom Tag', '' ),
+                'update_item'                => __( 'Update Custom Tag', '' ),
+                'add_new_item'               => __( 'Add new Custom Tag', '' ),
+                'new_item_name'              => __( 'New Custom Tag Name', '' ),
+                'search_items'               => __( 'Search Custom Tags', '' ),
+                'popular_items'              => __( 'Popular Custom Tags', '' ),
+                'separate_items_with_commas' => __( 'Separate Custom Tags with Commas', '' ),
+                'add_or_remove_items'        => __( 'Add or remove Custom Tags', '' ),
+                'choose_from_most_used'      => __( 'Choose from most used Custom Tags', '' ),
+                'not_found'                  => __( 'Custom Tags not Found', '' ),
+                'back_to_items'              => __( 'Back to Custom Tags', '' ),
             ),
             'public'                => true,
             'publicly_queryable'    => true,
@@ -123,7 +123,7 @@ class CustomTag
             'show_tagcloud'         => true,
             'show_in_quick_edit'    => true,
             'show_admin_column'     => false,
-            'description'           => __( 'Custom Tag Description', 'plugin-sample' ),
+            'description'           => __( 'Custom Tag Description', '' ),
             'hierarchical'          => false,
             'query_var'             => $this->query_var,
             'rewrite'               => $this->rewrite,
@@ -148,12 +148,12 @@ class CustomTag
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	
      */
     public function get_custom_taxonomy_template( string $template ) : string
     {
         if ( get_query_var( 'taxonomy' ) === self::TAXONOMY )
-            $template = PREFIX_PLUGIN_DIR . 'src/Taxonomies/CustomTag/views/taxonomy-tag.php';
+            $template = PLUGIN_DIR . 'src/Taxonomies/CustomTag/views/taxonomy-tag.php';
 
         return $template;
     }
@@ -167,13 +167,13 @@ class CustomTag
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	
      */
     public static function set_roles_capabilities() : void
     {
         global $wp_roles;
 
-        $is_set_capabilities = get_option( '__prefix_set_custom_tag_capabilities' );
+        $is_set_capabilities = get_option( '__set_custom_tag_capabilities' );
 
         if ( $is_set_capabilities )
             return;
@@ -190,6 +190,6 @@ class CustomTag
             $current_role->add_cap( 'assign_custom_tags' );
         }
 
-        add_option( '__prefix_set_custom_tag_capabilities', true );
+        add_option( '__set_custom_tag_capabilities', true );
     }
 }

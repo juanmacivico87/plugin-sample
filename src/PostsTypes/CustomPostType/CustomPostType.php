@@ -1,11 +1,11 @@
 <?php
-namespace PrefixSource\PostsTypes\CustomPostType;
+namespace \PostsTypes\CustomPostType;
 
 if ( false === defined( 'ABSPATH' ) )
     exit;
 
-use PrefixSource\Taxonomies\CustomCategory\CustomCategory;
-use PrefixSource\Taxonomies\CustomTag\CustomTag;
+use \Taxonomies\CustomCategory\CustomCategory;
+use \Taxonomies\CustomTag\CustomTag;
 
 /**
  * CustomPostType
@@ -15,7 +15,7 @@ use PrefixSource\Taxonomies\CustomTag\CustomTag;
  *
  * @version	1.0
  * @since  	1.0
- * @package	plugin-sample
+ * @package	
  */
 class CustomPostType
 {
@@ -41,7 +41,7 @@ class CustomPostType
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	
      */
     public function __construct()
     {
@@ -57,7 +57,7 @@ class CustomPostType
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	
      */
     public function init() : void
     {
@@ -76,11 +76,11 @@ class CustomPostType
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	
      */
     public function set_custom_post_type_slug() : void
     {
-        $this->rewrite['slug'] = __( 'samples', 'plugin-sample' );
+        $this->rewrite['slug'] = __( 'samples', '' );
     }
 
     /**
@@ -92,43 +92,43 @@ class CustomPostType
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	
      */
     public function add_custom_post_type() : void
     {
         $args = array(
             'labels' => array(
-                'name'                     => __( 'Samples', 'plugin-sample' ),
-                'singular_name'            => __( 'Sample', 'plugin-sample' ),
-                'add_new'                  => __( 'Add New', 'plugin-sample' ),
-                'add_new_item'             => __( 'Add New Sample', 'plugin-sample' ),
-                'edit_item'                => __( 'Edit Sample', 'plugin-sample' ),
-                'new_item'                 => __( 'New Sample', 'plugin-sample' ),
-                'view_item'                => __( 'View Sample', 'plugin-sample' ),
-                'view_items'               => __( 'View Samples', 'plugin-sample' ),
-                'search_items'             => __( 'Search Samples', 'plugin-sample' ),
-                'not_found'                => __( 'Sample not Found', 'plugin-sample' ),
-                'not_found_in_trash'       => __( 'Sample not Found in Trash', 'plugin-sample' ),
-                'parent_item_colon'        => __( 'Parent Sample:', 'plugin-sample' ),
-                'all_items'                => __( 'All Samples', 'plugin-sample' ),
-                'archives'                 => __( 'Sample Archives', 'plugin-sample' ),
-                'attributes'               => __( 'Sample Attributes', 'plugin-sample' ),
-                'insert_into_item'         => __( 'Insert into Sample', 'plugin-sample' ),
-                'uploaded_to_this_item'    => __( 'Uploaded to this Sample', 'plugin-sample' ),
-                'featured_image'           => __( 'Featured Image', 'plugin-sample' ),
-                'set_featured_image'       => __( 'Set Featured Image', 'plugin-sample' ),
-                'remove_featured_image'    => __( 'Remove Featured Image', 'plugin-sample' ),
-                'use_featured_image'       => __( 'Use Featured Image', 'plugin-sample' ),
-                'menu_name'                => __( 'Samples', 'plugin-sample' ),
-                'filter_items_list'        => __( 'Filter Samples List', 'plugin-sample' ),
-                'items_list_navigation'    => __( 'Samples List Navigation', 'plugin-sample' ),
-                'items_list'               => __( 'Samples List', 'plugin-sample' ),
-                'name_admin_bar'           => __( 'Samples', 'plugin-sample' ),
-                'item_published'           => __( 'Sample Published', 'plugin-sample' ),
-                'item_published_privately' => __( 'Sample Published Privately', 'plugin-sample' ),
-                'item_reverted_to_draft'   => __( 'Sample Reverte to Draft', 'plugin-sample' ),
-                'item_scheduled'           => __( 'Sample Scheduled', 'plugin-sample' ),
-                'item_updated'             => __( 'Sample Updated', 'plugin-sample' ),
+                'name'                     => __( 'Samples', '' ),
+                'singular_name'            => __( 'Sample', '' ),
+                'add_new'                  => __( 'Add New', '' ),
+                'add_new_item'             => __( 'Add New Sample', '' ),
+                'edit_item'                => __( 'Edit Sample', '' ),
+                'new_item'                 => __( 'New Sample', '' ),
+                'view_item'                => __( 'View Sample', '' ),
+                'view_items'               => __( 'View Samples', '' ),
+                'search_items'             => __( 'Search Samples', '' ),
+                'not_found'                => __( 'Sample not Found', '' ),
+                'not_found_in_trash'       => __( 'Sample not Found in Trash', '' ),
+                'parent_item_colon'        => __( 'Parent Sample:', '' ),
+                'all_items'                => __( 'All Samples', '' ),
+                'archives'                 => __( 'Sample Archives', '' ),
+                'attributes'               => __( 'Sample Attributes', '' ),
+                'insert_into_item'         => __( 'Insert into Sample', '' ),
+                'uploaded_to_this_item'    => __( 'Uploaded to this Sample', '' ),
+                'featured_image'           => __( 'Featured Image', '' ),
+                'set_featured_image'       => __( 'Set Featured Image', '' ),
+                'remove_featured_image'    => __( 'Remove Featured Image', '' ),
+                'use_featured_image'       => __( 'Use Featured Image', '' ),
+                'menu_name'                => __( 'Samples', '' ),
+                'filter_items_list'        => __( 'Filter Samples List', '' ),
+                'items_list_navigation'    => __( 'Samples List Navigation', '' ),
+                'items_list'               => __( 'Samples List', '' ),
+                'name_admin_bar'           => __( 'Samples', '' ),
+                'item_published'           => __( 'Sample Published', '' ),
+                'item_published_privately' => __( 'Sample Published Privately', '' ),
+                'item_reverted_to_draft'   => __( 'Sample Reverte to Draft', '' ),
+                'item_scheduled'           => __( 'Sample Scheduled', '' ),
+                'item_updated'             => __( 'Sample Updated', '' ),
             ),
             'public'              => true,
             'exclude_from_search' => false,
@@ -181,7 +181,7 @@ class CustomPostType
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	
      */
     public function get_post_type_templates( string $template ) : string
     {
@@ -190,10 +190,10 @@ class CustomPostType
 
         switch( true ) {
             case is_archive() && !is_tax():
-                $template = PREFIX_PLUGIN_DIR . 'src/PostsTypes/CustomPostType/views/archive-sample.php';
+                $template = PLUGIN_DIR . 'src/PostsTypes/CustomPostType/views/archive-sample.php';
                 break;
             case is_single():
-                $template = PREFIX_PLUGIN_DIR . 'src/PostsTypes/CustomPostType/views/single-sample.php';
+                $template = PLUGIN_DIR . 'src/PostsTypes/CustomPostType/views/single-sample.php';
                 break;
         }
 
@@ -209,13 +209,13 @@ class CustomPostType
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	
      */
     public static function set_roles_capabilities() : void
     {
         global $wp_roles;
 
-        $is_set_capabilities = get_option( '__prefix_set_sample_capabilities' );
+        $is_set_capabilities = get_option( '__set_sample_capabilities' );
 
         if ( $is_set_capabilities )
             return;
@@ -245,6 +245,6 @@ class CustomPostType
             }
         }
 
-        add_option( '__prefix_set_sample_capabilities', true );
+        add_option( '__set_sample_capabilities', true );
     }
 }

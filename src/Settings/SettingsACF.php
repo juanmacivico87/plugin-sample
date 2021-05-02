@@ -1,5 +1,5 @@
 <?php
-namespace PrefixSource\Settings;
+namespace \Settings;
 
 if ( false === defined( 'ABSPATH' ) )
     exit;
@@ -12,11 +12,11 @@ if ( false === defined( 'ABSPATH' ) )
  *
  * @version	1.0
  * @since  	1.0
- * @package	plugin-sample
+ * @package	
  */
 class Settings
 {
-    const MENU_SLUG = 'plugin-sample-settings';
+    const MENU_SLUG = '-settings';
 
     /**
      * __construct()
@@ -28,7 +28,7 @@ class Settings
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	
      */
     public function __construct()
     {
@@ -44,7 +44,7 @@ class Settings
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	
      */
     public function init() : void
     {
@@ -61,7 +61,7 @@ class Settings
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	
      */
     public function create_settings_page() : void
     {
@@ -70,15 +70,15 @@ class Settings
 
         acf_add_options_page(
             array(
-                'page_title'        => __( '{{ plugin_name }} Settings', 'plugin-sample' ),
-                'menu_title'        => __( '{{ plugin_name }} Settings', 'plugin-sample' ),
+                'page_title'        => __( ' Settings', '' ),
+                'menu_title'        => __( ' Settings', '' ),
                 'menu_slug'         => self::MENU_SLUG,
                 'capability'        => 'manage_options',
                 'position'          => '2.9',
                 'icon_url'          => 'dashicons-paperclip',
                 'redirect'          => true,
-                'update_button'     => __( 'Save', 'plugin-sample' ),
-                'updated_message'   => __( 'Settings have been saved successfully', 'plugin-sample' ),
+                'update_button'     => __( 'Save', '' ),
+                'updated_message'   => __( 'Settings have been saved successfully', '' ),
             )
         );
     }
@@ -93,7 +93,7 @@ class Settings
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	
      */
     public function add_settings_page_fields() : void
     {
