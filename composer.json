@@ -1,6 +1,6 @@
 {
     "name": "plugin/sample",
-    "description": "",
+    "description": "{{ plugin_description }}",
     "require": {
         "php": ">=7.3.0"
     },
