@@ -1,5 +1,5 @@
 <?php
-namespace \Endpoints\CustomEndpoint;
+namespace PrefixSource\Endpoints\CustomEndpoint;
 
 if ( false === defined( 'ABSPATH' ) )
     exit;
@@ -12,7 +12,7 @@ if ( false === defined( 'ABSPATH' ) )
  *
  * @version	1.0
  * @since  	1.0
- * @package	
+ * @package	{{ plugin_slug }}
  */
 class CustomEndpoint
 {
@@ -28,7 +28,7 @@ class CustomEndpoint
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	
+     * @package	{{ plugin_slug }}
      */
     public function __construct()
     {
@@ -44,7 +44,7 @@ class CustomEndpoint
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	
+     * @package	{{ plugin_slug }}
      */
     public function init() : void
     {
@@ -61,11 +61,11 @@ class CustomEndpoint
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	
+     * @package	{{ plugin_slug }}
      */
     public function create_new_endpoint() : void
     {
-        register_rest_route( PLUGIN_ENDPOINTS_NAMESPACE, SELF::ROUTE, array(
+        register_rest_route( PREFIX_PLUGIN_ENDPOINTS_NAMESPACE, SELF::ROUTE, array(
             'methods'               => \WP_REST_Server::READABLE,
             'callback'              => array( $this, 'controller' ),
             'permission_callback'   => '__return_true',
@@ -81,16 +81,16 @@ class CustomEndpoint
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	
+     * @package	{{ plugin_slug }}
      */
     public function controller()
     {
         if ( is_wp_error( '' ) )
-            return new \WP_Error( 'custom_error', __( 'Message of custom error', '' ), array( 'status' => 400 ) );
+            return new \WP_Error( 'custom_error', __( 'Message of custom error', '{{ plugin_slug }}' ), array( 'status' => 400 ) );
 
         return new \WP_REST_Response( array(
             'code'		=> 'custom_response',
-            'message'	=> __( 'Message of custom response', '' ),
+            'message'	=> __( 'Message of custom response', '{{ plugin_slug }}' ),
             'data'		=> array(
                 'status' => 200,
             )

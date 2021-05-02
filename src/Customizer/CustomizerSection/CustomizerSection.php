@@ -1,5 +1,5 @@
 <?php
-namespace \Customizer\CustomizerSection;
+namespace PrefixSource\Customizer\CustomizerSection;
 
 if ( false === defined( 'ABSPATH' ) )
     exit;
@@ -12,7 +12,7 @@ if ( false === defined( 'ABSPATH' ) )
  *
  * @version	1.0
  * @since  	1.0
- * @package	
+ * @package	{{ plugin_slug }}
  */
 class CustomizerSection
 {
@@ -28,7 +28,7 @@ class CustomizerSection
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	
+     * @package	{{ plugin_slug }}
      */
     public function __construct()
     {
@@ -44,7 +44,7 @@ class CustomizerSection
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	
+     * @package	{{ plugin_slug }}
      */
     public function init() : void
     {
@@ -60,7 +60,7 @@ class CustomizerSection
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	
+     * @package	{{ plugin_slug }}
      */
     public function add_new_customizer_panel() : void
     {
@@ -71,7 +71,7 @@ class CustomizerSection
             array(
                 'priority'       => 1,
                 'capability'     => 'edit_pages',
-                'title'          => __( 'Panel Name', '' ),
+                'title'          => __( 'Panel Name', '{{ plugin_slug }}' ),
             )
         );
 
@@ -88,7 +88,7 @@ class CustomizerSection
      * @access 	private
      * @version	1.0
      * @since  	1.0
-     * @package	
+     * @package	{{ plugin_slug }}
      */
     private function add_new_customizer_section( \WP_Customize_Manager $wp_customize ) : void
     {
@@ -97,9 +97,9 @@ class CustomizerSection
         $wp_customize->add_section( 
             $section_name,
             array(
-                'title'         => __( 'Section Name', '' ),
+                'title'         => __( 'Section Name', '{{ plugin_slug }}' ),
                 'priority'      => 1,
-                'description'   => __( 'A little section description', '' ),
+                'description'   => __( 'A little section description', '{{ plugin_slug }}' ),
                 'capability'    => 'edit_pages',
                 'panel'         => self::PANEL_NAME,
             )
@@ -119,7 +119,7 @@ class CustomizerSection
      * @access 	private
      * @version	1.0
      * @since  	1.0
-     * @package	
+     * @package	{{ plugin_slug }}
      */
     private function add_new_customizer_control( \WP_Customize_Manager $wp_customize, string $section_name ) : void
     {
@@ -138,8 +138,8 @@ class CustomizerSection
         $wp_customize->add_control(
             $control,
             array(
-                'label'       => __( 'Control Name', '' ),
-                'description' => __( 'A little control description', '' ),
+                'label'       => __( 'Control Name', '{{ plugin_slug }}' ),
+                'description' => __( 'A little control description', '{{ plugin_slug }}' ),
                 'section'     => $section_name,
                 'priority'    => 1,
                 'type'        => 'text',

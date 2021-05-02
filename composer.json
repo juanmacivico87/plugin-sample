@@ -1,13 +1,21 @@
 {
     "name": "plugin/sample",
-    "description": "{{ plugin_description }}",
+    "description": "",
     "require": {
         "php": ">=7.3.0"
     },
     "autoload": {
         "psr-4": {
             "PrefixConfig\\": "config/",
-            "PrefixSource\\": "src/"
+            "PrefixSource\\": "src/",
+            "PrefixCmd\\": "cmd/"
         }
+    },
+    "scripts": {
+        "create-plugin": [
+            "cd cmd/CreatePlugin",
+            "./create.sh"
+        ],
+        "make": "echo 'Hi, I'm making something'"
     }
 }

@@ -1,5 +1,5 @@
 <?php
-namespace \Shortcodes\CustomShortcode;
+namespace PrefixSource\Shortcodes\CustomShortcode;
 
 if ( false === defined( 'ABSPATH' ) )
     exit;
@@ -12,7 +12,7 @@ if ( false === defined( 'ABSPATH' ) )
  *
  * @version	1.0
  * @since  	1.0
- * @package	
+ * @package	{{ plugin_slug }}
  */
 class CustomShortcode
 {
@@ -26,7 +26,7 @@ class CustomShortcode
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	
+     * @package	{{ plugin_slug }}
      */
     public function __construct()
     {
@@ -42,7 +42,7 @@ class CustomShortcode
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	
+     * @package	{{ plugin_slug }}
      */
     public function init() : void
     {
@@ -59,7 +59,7 @@ class CustomShortcode
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	
+     * @package	{{ plugin_slug }}
      */
     public function render_shortcode( array $args ) : string
     {
@@ -67,7 +67,7 @@ class CustomShortcode
         
         ob_start();
 
-        include PLUGIN_DIR . 'src/Shortcodes/CustomShortcode/views/template-shortcode.php';
+        include PREFIX_PLUGIN_DIR . 'src/Shortcodes/CustomShortcode/views/template-shortcode.php';
 
         $render = ob_get_contents();
         ob_get_clean();
