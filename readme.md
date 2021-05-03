@@ -1,13 +1,13 @@
 # Plugin sample
 
-Este repositorio contiene un plugin de muestra para desarrollar otros plugins para WordPress a partir del mismo. El plugin alojado en este repositorio solamente tiene funcionalidades de prueba, las cuales puedes tomar como ejemplo para desarrollar las tuyas propias.
+Este repositorio contiene un boilerplate para desarrollar plugins para WordPress a partir del mismo. El plugin alojado en este repositorio solamente tiene funcionalidades de prueba, las cuales puedes tomar como ejemplo para desarrollar las tuyas propias.
 
 ## Requisitos mínimos
 
 Para poder desarrollar tu propio plugin a partir de este ejemplo, vas a necesitar, como mínimo:
 
-- [WordPress 5.4](https://es.wordpress.org/download/)
-- PHP 7.2
+- [WordPress](https://es.wordpress.org/download/)
+- PHP 7.4
 - [Composer 1.10.7](https://getcomposer.org/download/)
 - Ganas de desarrollar un plugin para WordPress
 
@@ -17,23 +17,23 @@ Para poder desarrollar tu propio plugin a partir de este ejemplo, vas a necesita
 2. Ve a la carpeta plugins de tu instalación de WordPress (preferiblemente, en un entorno de desarrollo).
 3. Abre una consola de comandos en esta ruta y ejecuta el comando "git clone https://github.com/juanmacivico87/plugin-sample.git". Esto creará un clon del plugin de ejemplo en tu carpeta de plugins.
 4. Renombra la carpeta del plugin descargado con el slug que tú le quieras dar, en minúscula y separado por guiones (por ejemplo: "my-custom-plugin").
-5. Entra dentro de la carpeta del plugin y edita el archivo "config.data". En él, tendrás que facilitar la siguiente información:
-    - **COMPOSER_VENDOR_NAME:** Será el nombre del proveedor para el archivo "composer.json" y deberá ir en minúscula y separado por guiones.
+5. Entra dentro de la carpeta del plugin y edita el archivo ".data". En él, tendrás que facilitar la siguiente información:
     - **PLUGIN_NAME:** Especifica cómo se va a llamar el plugin que vas a desarrollar.
     - **PLUGIN_DESCRIPTION:** Escribe una descripción, para que así, los usuarios que instalen tu plugin tengan una referencia de lo que hace.
+    - **PLUGIN_SLUG:** Es el mismo que el nombre que has utilizado para la carpeta del plugin.
     - **PLUGIN_URI:** Si tienes una URL en la que se pueda ver tu plugin, este es el sitio para indicarla. Por favor, respeta el formato del ejemplo, ya que de lo contrario, la configuración fallará.
     - **PLUGIN_AUTHOR:** Un poco de publicidad no viene mal, así que ya que has tenido el detalle de desarrollar el plugin, pon tu nombre o el de tu empresa para que todo el mundo te conozca.
     - **PLUGIN_AUTHOR_URI:** Indica también la URL de tu web o la de tu empresa, para que la gente sepa donde encontrarte.
-    - **PLUGIN_SLUG:** Es el mismo que el nombre que has utilizado para la carpeta del plugin.
+    - **COMPOSER_VENDOR_NAME:** Será el nombre del proveedor para el archivo "composer.json" y deberá ir en minúscula y separado por guiones.
     - **PLUGIN_CONFIG_NAMESPACE:** Escribe el nombre de espacio para las clases que haya en la carpeta "config" del plugin.
     - **PLUGIN_SOURCE_NAMESPACE:** Igual que el punto anterior, pero para las clases de la carpeta "src".
+    - **PLUGIN_COMMAND_NAMESPACE:** Igual que el punto anterior, pero para las clases de la carpeta "cmd".
     - **PLUGIN_VARS_PREFIX:** Con el uso de clases y de nombres de espacio, no es necesario el uso de prefijos en funciones y variables. Pero, sí hay un par de ellas que lo necesitan.
     - **PLUGIN_CONSTANTS_PREFIX:** Se trata del prefijo para las constantes globales del plugin.
-6. Abre la consola de comandos y ejecuta el script "./config.sh".
-7. Una vez que el plugin está configurado, elimina los archivos "config.sh" y "config.data".
-8. Revisa los archivos del plugin para verificar que no queda rastro de las cadenas de ejemplo.
-9. Elimina del archivo ".gitignore" la referencia al archivo "composer.lock".
-10. Guarda todos los cambios que has hecho en todos los archivos.
+6. Abre la consola de comandos y ejecuta el script "composer create-plugin".
+7. Revisa los archivos del plugin para verificar que no queda rastro de las cadenas de ejemplo.
+8. Elimina del archivo ".gitignore" la referencia al archivo "composer.lock".
+9. Guarda todos los cambios que has hecho en todos los archivos.
 
 Y, voilà!!! Ya está todo listo para que empieces a desarrollar tu plugin.
 
