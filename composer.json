@@ -13,6 +13,6 @@
     },
     "scripts": {
         "create-plugin": "cd cmd/CreatePlugin && ./create.sh",
-        "make": "echo 'Hi, I'm making something'"
+        "make": "PrefixCmd\\Make\\Make::make"
     }
 }
