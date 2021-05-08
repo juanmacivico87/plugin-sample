@@ -86,12 +86,7 @@ De todas formas, para ayudarte, te hago un resumen de los archivos y carpetas qu
     - **Metaboxes:** Aunque pienses que los campos personalizados a WordPress llegaron gracias a plugins como ACF, he de decirte que no es así. En esta carpeta podrás tener los distintos campos personalizados que necesites tanto para tus contenidos, como para tus usuarios o para la página de opciones del plugin.
         - **CustomMetaboxesGroup:** Contiene un campo personalizado desarrollado a medida. Para crear tu propio campo personalizado, duplica o edita esta clase y añade los métodos y las propiedades que necesites.
             - **CustomMetaboxesGroup.php:** Este es el archivo que contiene los métodos y las propiedades necesarias para desarrollar el campo personalizado.
-    - **PostsTypes:** WordPress trae incluidos en su núcleo una serie de tipos de contenido. Los más conocidos son las páginas y las entradas, pero también lo son los archivos de la biblioteca, los menús, etc. Pero también puedes tener los tuyos propios, como pueden ser para crear fichas de producto (como hace WooCommerce), cursos (como es el caso de Sensei) y todo lo que se te pase por la cabeza. En esta carpeta, podrás tener los tipos de contenido personalizados que desarrolles.
-        - **CustomPostType:** Contiene un tipo de contenido personalizado. Para crear tu propio tipo de contenido personalizado, duplica o edita esta clase y añade los métodos y las propiedades que necesites.
-            - **CustomPostType.php:** Este es el archivo que contiene los métodos y las propiedades necesarias para desarrollar el tipo de contenido personalizado.
-            - **views:** En esta carpeta podrás crear templates para que se rendericen, tanto el listado de entradas de tu tipo de contenido personalizado, como la propia entrada de dicho tipo de contenido.
-                - **archive-sample.php:** Este archivo contiene el template del listado.
-                - **single-sample.php:** Este archivo contiene el template de la entrada.
+    - **PostsTypes:** WordPress trae incluidos en su núcleo una serie de tipos de contenido. Los más conocidos son las páginas y las entradas, pero también lo son los archivos de la biblioteca, los menús, etc. Además, te ofrece la posibilidad de que puedas tener los tuyos propios, como pueden ser para crear fichas de producto (como hace WooCommerce), cursos (como es el caso de Sensei) y todo lo que se te pase por la cabeza. Guarda en esta carpeta todos los tipos de contenido personalizados que desarrolles.
     - **RestApi:** Pese a que los endpoints que trae por defecto la API Rest de WordPress te pueden proporcionar mucha información sobre tu sitio web, hay veces que esta información no es suficiente. Como alternativa a crear tu propio endpoint, WordPress te ofrece la posibilidad de añadir un nuevo campo a los endpoints que ya tiene integrados. En esta carpeta, podrás crear tus campos personalizados e incluirlos en el endpoint que desees.
         - **CustomRestField:** Contiene un campo personalizado para la API Rest desarrollado a medida. Para crear tu propio campo personalizado para la API Rest, duplica o edita esta clase y añade los métodos y las propiedades que necesites.
             - **CustomRestField.php:** Este es el archivo que contiene los métodos y las propiedades necesarias para desarrollar el campo personalizado para la API Rest.
@@ -115,6 +110,23 @@ De todas formas, para ayudarte, te hago un resumen de los archivos y carpetas qu
 - **vendor:** En esta carpeta, se almacenarán todas las dependencias que se instalen en el plugin al ejecutar el comando "composer install".
 - **composer.json:** Este es el archivo de configuración de Composer. En él, encontrarás las librerías y dependencias que el plugin necesita para funcionar. Quizá necesites añadir las tuyas propias en función del plugin que vayas a desarrollar.
 - **composer.lock:** Este archivo contiene las dependencias que se han instalado actualmente en tu plugin a través de composer, así como las versiones de cada una de ellas. Puedes modificar su contenido ejecutando el comando "composer update" en una consola desde la raíz del plugin.
+
+## Crear un nuevo tipo de contenido personalizado
+
+1. Abre la consola de comandos y ejecuta el script "composer make cpt".
+2. Introduce un nombre para la clase de tu tipo de contenido personalizado. Recuerda que el nombre de la clase tiene que tener el formato UpperCamelCase.
+3. Introduce un slug para el nuevo tipo de contenido personalizado. Recuerda que el slug debe estar compuesto por minísculas y separado por guiones.
+4. Introduce un slug para el plural del tipo de contenido personalizado. Recuerda que el slug debe estar compuesto por minísculas y separado por guiones.
+5. Revisa los archivos del nuevo tipo de contenido en la ruta src/PostsTypes/NuevoTipoDeContenido, para verificar que no queda rastro de las cadenas de ejemplo. Si así fuese, por favor, haz los cambios de forma manual y notifícamelo con una incidencia en el repositorio de GitHub para arregarlo.
+6. Guarda todos los cambios que has hecho en todos los archivos.
+
+Una vez que hayas creado tu nuevo tipo de contenido personalizado, tendrás un nuevo directorio con esta estructura:
+
+- **NuevoTipoDeContenido:** Contiene el nuevo tipo de contenido personalizado que acabas de crear.
+    - **NuevoTipoDeContenido.php:** Este es el archivo que contiene los métodos y las propiedades necesarias para desarrollar el tipo de contenido personalizado.
+    - **views:** En esta carpeta podrás crear templates para que se rendericen, tanto el listado de entradas de tu tipo de contenido personalizado, como la propia entrada de dicho tipo de contenido.
+        - **archive-nuevo-tipo-de-contenido.php:** Este archivo contiene el template del listado.
+        - **single-nuevo-tipo-de-contenido.php:** Este archivo contiene el template de la entrada.
 
 ## Fin del desarrollo de tu plugin
 
