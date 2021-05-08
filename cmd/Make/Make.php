@@ -4,6 +4,7 @@ namespace PrefixCmd\Make;
 use Composer\Script\Event;
 use Composer\Installer\PackageEvent;
 use Exception;
+use PrefixCmd\Make\CustomPostType\CustomPostType;
 
 class Make
 {
@@ -26,8 +27,8 @@ class Make
                 $event->getIO()->write( 'This is a category of blocks' );
                 break;
             case 'cpt':
-                $cpt_name = $event->getIO()->ask( 'Please, enter a name for your new custom post type: ' );
-                $event->getIO()->write( sprintf( 'The name of your new custom post type is %s', $cpt_name ) );
+                $cpt = new CustomPostType( $event );
+                $cpt::create_custom_post_type();
                 break;
             case 'customizer':
                 $event->getIO()->write( 'This is a section of the customizer' );
