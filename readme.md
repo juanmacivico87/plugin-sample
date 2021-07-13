@@ -81,8 +81,6 @@ De todas formas, para ayudarte, te hago un resumen de los archivos y carpetas qu
         - **CustomizerSection:** Contiene una sección del personalizador de WordPress, desarrollada a medida. Para crear tu propia sección para el personalizador, duplica o edita esta clase y añade los métodos y las propiedades que necesites.
             - **CustomizerSection.php:** Este es el archivo que contiene los métodos y las propiedades necesarias para desarrollar la sección del personalizador.
     - **Endpoints:** Con la llegada de la API Rest de WordPress, es posible interactuar con nuestra web desde un servicio externo, como puede ser una App o un front hecho con un framework de Javascript. En esta carpeta, podrás crear tus propios endpoints para que devuelvan los datos que necesite tu aplicación externa... o interna.
-        - **CustomEndpoint:** Contiene un endpoint personalizado desarrollado a medida. Para crear tu propio endpoint personalizado, duplica o edita esta clase y añade los métodos y las propiedades que necesites.
-            - **CustomEndpoint.php:** Este es el archivo que contiene los métodos y las propiedades necesarias para desarrollar el endpoint personalizado.
     - **Metaboxes:** Aunque pienses que los campos personalizados a WordPress llegaron gracias a plugins como ACF, he de decirte que no es así. En esta carpeta podrás tener los distintos campos personalizados que necesites tanto para tus contenidos, como para tus usuarios o para la página de opciones del plugin.
         - **CustomMetaboxesGroup:** Contiene un campo personalizado desarrollado a medida. Para crear tu propio campo personalizado, duplica o edita esta clase y añade los métodos y las propiedades que necesites.
             - **CustomMetaboxesGroup.php:** Este es el archivo que contiene los métodos y las propiedades necesarias para desarrollar el campo personalizado.
@@ -111,7 +109,9 @@ De todas formas, para ayudarte, te hago un resumen de los archivos y carpetas qu
 - **composer.json:** Este es el archivo de configuración de Composer. En él, encontrarás las librerías y dependencias que el plugin necesita para funcionar. Quizá necesites añadir las tuyas propias en función del plugin que vayas a desarrollar.
 - **composer.lock:** Este archivo contiene las dependencias que se han instalado actualmente en tu plugin a través de composer, así como las versiones de cada una de ellas. Puedes modificar su contenido ejecutando el comando "composer update" en una consola desde la raíz del plugin.
 
-## Crear un nuevo tipo de contenido personalizado
+## Comandos para crear nuevas funcionalidades en el plugin
+
+### Crear un nuevo tipo de contenido personalizado
 
 1. Abre la consola de comandos y ejecuta el script "composer make cpt".
 2. Introduce un nombre para la clase de tu tipo de contenido personalizado. Recuerda que el nombre de la clase tiene que tener el formato UpperCamelCase.
@@ -127,6 +127,19 @@ Una vez que hayas creado tu nuevo tipo de contenido personalizado, tendrás un n
     - **views:** En esta carpeta podrás crear templates para que se rendericen, tanto el listado de entradas de tu tipo de contenido personalizado, como la propia entrada de dicho tipo de contenido.
         - **archive-nuevo-tipo-de-contenido.php:** Este archivo contiene el template del listado.
         - **single-nuevo-tipo-de-contenido.php:** Este archivo contiene el template de la entrada.
+
+### Crear un nuevo endpoint
+
+1. Abre la consola de comandos y ejecuta el script "composer make endpoint".
+2. Introduce un nombre para la clase de tu endpoint personalizado. Recuerda que el nombre de la clase tiene que tener el formato UpperCamelCase.
+3. Introduce una ruta para llamar al controlador del nuevo endpoint. Recuerda que la ruta debe estar compuesta por minísculas y separada por guiones.
+5. Revisa los archivos del nuevo endpoint en la ruta src/Endpoints/NuevoEndpoint, para verificar que no queda rastro de las cadenas de ejemplo. Si así fuese, por favor, haz los cambios de forma manual y notifícamelo con una incidencia en el repositorio de GitHub para arregarlo.
+6. Guarda todos los cambios que has hecho en todos los archivos.
+
+Una vez que hayas creado tu nuevo endpoint personalizado, tendrás un nuevo directorio con esta estructura:
+
+- **NuevoEndpoint:** Contiene el nuevo endpoint que acabas de crear.
+    - **NuevoEndpoint.php:** Este es el archivo que contiene los métodos y las propiedades necesarias para desarrollar el endpoint personalizado.
 
 ## Fin del desarrollo de tu plugin
 

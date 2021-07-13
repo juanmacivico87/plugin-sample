@@ -5,6 +5,7 @@ use Composer\Script\Event;
 use Composer\Installer\PackageEvent;
 use Exception;
 use PrefixCmd\Make\CustomPostType\CustomPostType;
+use PrefixCmd\Make\Endpoint\Endpoint;
 
 class Make
 {
@@ -34,7 +35,8 @@ class Make
                 $event->getIO()->write( 'This is a section of the customizer' );
                 break;
             case 'endpoint':
-                $event->getIO()->write( 'This is a custom endpoint' );
+                $endpoint = new Endpoint( $event );
+                $endpoint::create_custom_endpoint();
                 break;
             case 'metabox':
                 $event->getIO()->write( 'This is a group of metaboxes' );

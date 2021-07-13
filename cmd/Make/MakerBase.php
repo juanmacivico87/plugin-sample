@@ -109,12 +109,23 @@ abstract class MakerBase
 
     public static function sanitize_value( array $data, string $value ) : string
     {
-        $value = str_ireplace( 'class_name', $data['name'], $value );
-        $value = str_ireplace( 'class_slug', $data['slug'], $value );
-        $value = str_ireplace( 'class_singular_lower_name', $data['singular_lower_name'], $value );
-        $value = str_ireplace( 'class_plural_lower_name', $data['plural_lower_name'], $value );
-        $value = str_ireplace( 'class_singular_upper_name', $data['singular_upper_name'], $value );
-        $value = str_ireplace( 'class_plural_upper_name', $data['plural_upper_name'], $value );
+        $replaces = array(
+            'name'                => 'class_name',
+            'slug'                => 'class_slug',
+            'route'               => 'class_route',
+            'singular_lower_name' => 'class_singular_lower_name',
+            'singular_upper_name' => 'class_singular_upper_name',
+            'plural_lower_name'   => 'class_plural_lower_name',
+            'plural_upper_name'   => 'class_plural_upper_name',
+        );
+
+        foreach( $replaces as $key => $replace ) {
+            if ( false === isset( $data[$key] ) ) {
+                continue;
+            }
+
+            $value = str_ireplace( $replace, $data[$key], $value );
+        }
 
         return $value;
     }
