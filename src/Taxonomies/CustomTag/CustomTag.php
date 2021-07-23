@@ -14,7 +14,7 @@ if ( false === defined( 'ABSPATH' ) )
  *
  * @version	1.0
  * @since  	1.0
- * @package	plugin-sample
+ * @package	{{ plugin_slug }}
  */
 class CustomTag
 {
@@ -39,7 +39,7 @@ class CustomTag
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	{{ plugin_slug }}
      */
     public function __construct()
     {
@@ -55,7 +55,7 @@ class CustomTag
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	{{ plugin_slug }}
      */
     public function init() : void
     {
@@ -73,11 +73,11 @@ class CustomTag
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	{{ plugin_slug }}
      */
     public function set_taxonomy_slug() : void
     {
-        $this->rewrite['slug'] = __( 'custom-tag', 'plugin-sample' );
+        $this->rewrite['slug'] = __( 'custom-tag', '{{ plugin_slug }}' );
     }
 
     /**
@@ -89,29 +89,29 @@ class CustomTag
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	{{ plugin_slug }}
      */
     public function add_custom_taxonomy() : void
     {
         $args = array(
-            'label'  => __( 'Custom Tags', 'plugin-sample' ),
+            'label'  => __( 'Custom Tags', '{{ plugin_slug }}' ),
             'labels' => array(
-                'name'                       => __( 'Custom Tags', 'plugin-sample' ),
-                'singular_name'              => __( 'Custom Tag', 'plugin-sample' ),
-                'menu_name'                  => __( 'Custom Tags', 'plugin-sample' ),
-                'all_items'                  => __( 'All Custom Tags', 'plugin-sample' ),
-                'edit_item'                  => __( 'Edit Custom Tag', 'plugin-sample' ),
-                'view_item'                  => __( 'View Custom Tag', 'plugin-sample' ),
-                'update_item'                => __( 'Update Custom Tag', 'plugin-sample' ),
-                'add_new_item'               => __( 'Add new Custom Tag', 'plugin-sample' ),
-                'new_item_name'              => __( 'New Custom Tag Name', 'plugin-sample' ),
-                'search_items'               => __( 'Search Custom Tags', 'plugin-sample' ),
-                'popular_items'              => __( 'Popular Custom Tags', 'plugin-sample' ),
-                'separate_items_with_commas' => __( 'Separate Custom Tags with Commas', 'plugin-sample' ),
-                'add_or_remove_items'        => __( 'Add or remove Custom Tags', 'plugin-sample' ),
-                'choose_from_most_used'      => __( 'Choose from most used Custom Tags', 'plugin-sample' ),
-                'not_found'                  => __( 'Custom Tags not Found', 'plugin-sample' ),
-                'back_to_items'              => __( 'Back to Custom Tags', 'plugin-sample' ),
+                'name'                       => __( 'Custom Tags', '{{ plugin_slug }}' ),
+                'singular_name'              => __( 'Custom Tag', '{{ plugin_slug }}' ),
+                'menu_name'                  => __( 'Custom Tags', '{{ plugin_slug }}' ),
+                'all_items'                  => __( 'All Custom Tags', '{{ plugin_slug }}' ),
+                'edit_item'                  => __( 'Edit Custom Tag', '{{ plugin_slug }}' ),
+                'view_item'                  => __( 'View Custom Tag', '{{ plugin_slug }}' ),
+                'update_item'                => __( 'Update Custom Tag', '{{ plugin_slug }}' ),
+                'add_new_item'               => __( 'Add new Custom Tag', '{{ plugin_slug }}' ),
+                'new_item_name'              => __( 'New Custom Tag Name', '{{ plugin_slug }}' ),
+                'search_items'               => __( 'Search Custom Tags', '{{ plugin_slug }}' ),
+                'popular_items'              => __( 'Popular Custom Tags', '{{ plugin_slug }}' ),
+                'separate_items_with_commas' => __( 'Separate Custom Tags with Commas', '{{ plugin_slug }}' ),
+                'add_or_remove_items'        => __( 'Add or remove Custom Tags', '{{ plugin_slug }}' ),
+                'choose_from_most_used'      => __( 'Choose from most used Custom Tags', '{{ plugin_slug }}' ),
+                'not_found'                  => __( 'Custom Tags not Found', '{{ plugin_slug }}' ),
+                'back_to_items'              => __( 'Back to Custom Tags', '{{ plugin_slug }}' ),
             ),
             'public'                => true,
             'publicly_queryable'    => true,
@@ -123,7 +123,7 @@ class CustomTag
             'show_tagcloud'         => true,
             'show_in_quick_edit'    => true,
             'show_admin_column'     => false,
-            'description'           => __( 'Custom Tag Description', 'plugin-sample' ),
+            'description'           => __( 'Custom Tag Description', '{{ plugin_slug }}' ),
             'hierarchical'          => false,
             'query_var'             => $this->query_var,
             'rewrite'               => $this->rewrite,
@@ -148,7 +148,7 @@ class CustomTag
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	{{ plugin_slug }}
      */
     public function get_custom_taxonomy_template( string $template ) : string
     {
@@ -167,7 +167,7 @@ class CustomTag
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	{{ plugin_slug }}
      */
     public static function set_roles_capabilities() : void
     {

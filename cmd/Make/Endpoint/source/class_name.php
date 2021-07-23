@@ -1,11 +1,11 @@
 <?php
-namespace PrefixSource\Endpoints\CustomEndpoint;
+namespace PrefixSource\Endpoints\class_name;
 
 if ( false === defined( 'ABSPATH' ) )
     exit;
 
 /**
- * CustomEndpoint
+ * class_name
  *
  * This class provides an example to create a custom endpoint for the WordPress Rest API.
  * For more information, visit the @link https://developer.wordpress.org/reference/functions/register_rest_route/
@@ -14,9 +14,9 @@ if ( false === defined( 'ABSPATH' ) )
  * @since  	1.0
  * @package	{{ plugin_slug }}
  */
-class CustomEndpoint
+class class_name
 {
-    const ROUTE = 'custom-endpoint';
+    const ROUTE = 'class_route';
 
     /**
      * __construct()

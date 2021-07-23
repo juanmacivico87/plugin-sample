@@ -1,13 +1,13 @@
 # Plugin sample
 
-Este repositorio contiene un plugin de muestra para desarrollar otros plugins para WordPress a partir del mismo. El plugin alojado en este repositorio solamente tiene funcionalidades de prueba, las cuales puedes tomar como ejemplo para desarrollar las tuyas propias.
+Este repositorio contiene un boilerplate para desarrollar plugins para WordPress a partir del mismo. El plugin alojado en este repositorio solamente tiene funcionalidades de prueba, las cuales puedes tomar como ejemplo para desarrollar las tuyas propias.
 
 ## Requisitos mínimos
 
 Para poder desarrollar tu propio plugin a partir de este ejemplo, vas a necesitar, como mínimo:
 
-- [WordPress 5.4](https://es.wordpress.org/download/)
-- PHP 7.2
+- [WordPress](https://es.wordpress.org/download/)
+- PHP 7.4
 - [Composer 1.10.7](https://getcomposer.org/download/)
 - Ganas de desarrollar un plugin para WordPress
 
@@ -17,23 +17,23 @@ Para poder desarrollar tu propio plugin a partir de este ejemplo, vas a necesita
 2. Ve a la carpeta plugins de tu instalación de WordPress (preferiblemente, en un entorno de desarrollo).
 3. Abre una consola de comandos en esta ruta y ejecuta el comando "git clone https://github.com/juanmacivico87/plugin-sample.git". Esto creará un clon del plugin de ejemplo en tu carpeta de plugins.
 4. Renombra la carpeta del plugin descargado con el slug que tú le quieras dar, en minúscula y separado por guiones (por ejemplo: "my-custom-plugin").
-5. Entra dentro de la carpeta del plugin y edita el archivo "config.data". En él, tendrás que facilitar la siguiente información:
-    - **COMPOSER_VENDOR_NAME:** Será el nombre del proveedor para el archivo "composer.json" y deberá ir en minúscula y separado por guiones.
+5. Entra dentro de la carpeta del plugin y edita el archivo ".data". En él, tendrás que facilitar la siguiente información:
     - **PLUGIN_NAME:** Especifica cómo se va a llamar el plugin que vas a desarrollar.
     - **PLUGIN_DESCRIPTION:** Escribe una descripción, para que así, los usuarios que instalen tu plugin tengan una referencia de lo que hace.
+    - **PLUGIN_SLUG:** Es el mismo que el nombre que has utilizado para la carpeta del plugin.
     - **PLUGIN_URI:** Si tienes una URL en la que se pueda ver tu plugin, este es el sitio para indicarla. Por favor, respeta el formato del ejemplo, ya que de lo contrario, la configuración fallará.
     - **PLUGIN_AUTHOR:** Un poco de publicidad no viene mal, así que ya que has tenido el detalle de desarrollar el plugin, pon tu nombre o el de tu empresa para que todo el mundo te conozca.
     - **PLUGIN_AUTHOR_URI:** Indica también la URL de tu web o la de tu empresa, para que la gente sepa donde encontrarte.
-    - **PLUGIN_SLUG:** Es el mismo que el nombre que has utilizado para la carpeta del plugin.
+    - **COMPOSER_VENDOR_NAME:** Será el nombre del proveedor para el archivo "composer.json" y deberá ir en minúscula y separado por guiones.
     - **PLUGIN_CONFIG_NAMESPACE:** Escribe el nombre de espacio para las clases que haya en la carpeta "config" del plugin.
     - **PLUGIN_SOURCE_NAMESPACE:** Igual que el punto anterior, pero para las clases de la carpeta "src".
+    - **PLUGIN_COMMAND_NAMESPACE:** Igual que el punto anterior, pero para las clases de la carpeta "cmd".
     - **PLUGIN_VARS_PREFIX:** Con el uso de clases y de nombres de espacio, no es necesario el uso de prefijos en funciones y variables. Pero, sí hay un par de ellas que lo necesitan.
     - **PLUGIN_CONSTANTS_PREFIX:** Se trata del prefijo para las constantes globales del plugin.
-6. Abre la consola de comandos y ejecuta el script "./config.sh".
-7. Una vez que el plugin está configurado, elimina los archivos "config.sh" y "config.data".
-8. Revisa los archivos del plugin para verificar que no queda rastro de las cadenas de ejemplo.
-9. Elimina del archivo ".gitignore" la referencia al archivo "composer.lock".
-10. Guarda todos los cambios que has hecho en todos los archivos.
+6. Abre la consola de comandos y ejecuta el script "composer create-plugin".
+7. Revisa los archivos del plugin para verificar que no queda rastro de las cadenas de ejemplo.
+8. Elimina del archivo ".gitignore" la referencia al archivo "composer.lock".
+9. Guarda todos los cambios que has hecho en todos los archivos.
 
 Y, voilà!!! Ya está todo listo para que empieces a desarrollar tu plugin.
 
@@ -81,17 +81,10 @@ De todas formas, para ayudarte, te hago un resumen de los archivos y carpetas qu
         - **CustomizerSection:** Contiene una sección del personalizador de WordPress, desarrollada a medida. Para crear tu propia sección para el personalizador, duplica o edita esta clase y añade los métodos y las propiedades que necesites.
             - **CustomizerSection.php:** Este es el archivo que contiene los métodos y las propiedades necesarias para desarrollar la sección del personalizador.
     - **Endpoints:** Con la llegada de la API Rest de WordPress, es posible interactuar con nuestra web desde un servicio externo, como puede ser una App o un front hecho con un framework de Javascript. En esta carpeta, podrás crear tus propios endpoints para que devuelvan los datos que necesite tu aplicación externa... o interna.
-        - **CustomEndpoint:** Contiene un endpoint personalizado desarrollado a medida. Para crear tu propio endpoint personalizado, duplica o edita esta clase y añade los métodos y las propiedades que necesites.
-            - **CustomEndpoint.php:** Este es el archivo que contiene los métodos y las propiedades necesarias para desarrollar el endpoint personalizado.
     - **Metaboxes:** Aunque pienses que los campos personalizados a WordPress llegaron gracias a plugins como ACF, he de decirte que no es así. En esta carpeta podrás tener los distintos campos personalizados que necesites tanto para tus contenidos, como para tus usuarios o para la página de opciones del plugin.
         - **CustomMetaboxesGroup:** Contiene un campo personalizado desarrollado a medida. Para crear tu propio campo personalizado, duplica o edita esta clase y añade los métodos y las propiedades que necesites.
             - **CustomMetaboxesGroup.php:** Este es el archivo que contiene los métodos y las propiedades necesarias para desarrollar el campo personalizado.
-    - **PostsTypes:** WordPress trae incluidos en su núcleo una serie de tipos de contenido. Los más conocidos son las páginas y las entradas, pero también lo son los archivos de la biblioteca, los menús, etc. Pero también puedes tener los tuyos propios, como pueden ser para crear fichas de producto (como hace WooCommerce), cursos (como es el caso de Sensei) y todo lo que se te pase por la cabeza. En esta carpeta, podrás tener los tipos de contenido personalizados que desarrolles.
-        - **CustomPostType:** Contiene un tipo de contenido personalizado. Para crear tu propio tipo de contenido personalizado, duplica o edita esta clase y añade los métodos y las propiedades que necesites.
-            - **CustomPostType.php:** Este es el archivo que contiene los métodos y las propiedades necesarias para desarrollar el tipo de contenido personalizado.
-            - **views:** En esta carpeta podrás crear templates para que se rendericen, tanto el listado de entradas de tu tipo de contenido personalizado, como la propia entrada de dicho tipo de contenido.
-                - **archive-sample.php:** Este archivo contiene el template del listado.
-                - **single-sample.php:** Este archivo contiene el template de la entrada.
+    - **PostsTypes:** WordPress trae incluidos en su núcleo una serie de tipos de contenido. Los más conocidos son las páginas y las entradas, pero también lo son los archivos de la biblioteca, los menús, etc. Además, te ofrece la posibilidad de que puedas tener los tuyos propios, como pueden ser para crear fichas de producto (como hace WooCommerce), cursos (como es el caso de Sensei) y todo lo que se te pase por la cabeza. Guarda en esta carpeta todos los tipos de contenido personalizados que desarrolles.
     - **RestApi:** Pese a que los endpoints que trae por defecto la API Rest de WordPress te pueden proporcionar mucha información sobre tu sitio web, hay veces que esta información no es suficiente. Como alternativa a crear tu propio endpoint, WordPress te ofrece la posibilidad de añadir un nuevo campo a los endpoints que ya tiene integrados. En esta carpeta, podrás crear tus campos personalizados e incluirlos en el endpoint que desees.
         - **CustomRestField:** Contiene un campo personalizado para la API Rest desarrollado a medida. Para crear tu propio campo personalizado para la API Rest, duplica o edita esta clase y añade los métodos y las propiedades que necesites.
             - **CustomRestField.php:** Este es el archivo que contiene los métodos y las propiedades necesarias para desarrollar el campo personalizado para la API Rest.
@@ -115,6 +108,38 @@ De todas formas, para ayudarte, te hago un resumen de los archivos y carpetas qu
 - **vendor:** En esta carpeta, se almacenarán todas las dependencias que se instalen en el plugin al ejecutar el comando "composer install".
 - **composer.json:** Este es el archivo de configuración de Composer. En él, encontrarás las librerías y dependencias que el plugin necesita para funcionar. Quizá necesites añadir las tuyas propias en función del plugin que vayas a desarrollar.
 - **composer.lock:** Este archivo contiene las dependencias que se han instalado actualmente en tu plugin a través de composer, así como las versiones de cada una de ellas. Puedes modificar su contenido ejecutando el comando "composer update" en una consola desde la raíz del plugin.
+
+## Comandos para crear nuevas funcionalidades en el plugin
+
+### Crear un nuevo tipo de contenido personalizado
+
+1. Abre la consola de comandos y ejecuta el script "composer make cpt".
+2. Introduce un nombre para la clase de tu tipo de contenido personalizado. Recuerda que el nombre de la clase tiene que tener el formato UpperCamelCase.
+3. Introduce un slug para el nuevo tipo de contenido personalizado. Recuerda que el slug debe estar compuesto por minísculas y separado por guiones.
+4. Introduce un slug para el plural del tipo de contenido personalizado. Recuerda que el slug debe estar compuesto por minísculas y separado por guiones.
+5. Revisa los archivos del nuevo tipo de contenido en la ruta src/PostsTypes/NuevoTipoDeContenido, para verificar que no queda rastro de las cadenas de ejemplo. Si así fuese, por favor, haz los cambios de forma manual y notifícamelo con una incidencia en el repositorio de GitHub para arregarlo.
+6. Guarda todos los cambios que has hecho en todos los archivos.
+
+Una vez que hayas creado tu nuevo tipo de contenido personalizado, tendrás un nuevo directorio con esta estructura:
+
+- **NuevoTipoDeContenido:** Contiene el nuevo tipo de contenido personalizado que acabas de crear.
+    - **NuevoTipoDeContenido.php:** Este es el archivo que contiene los métodos y las propiedades necesarias para desarrollar el tipo de contenido personalizado.
+    - **views:** En esta carpeta podrás crear templates para que se rendericen, tanto el listado de entradas de tu tipo de contenido personalizado, como la propia entrada de dicho tipo de contenido.
+        - **archive-nuevo-tipo-de-contenido.php:** Este archivo contiene el template del listado.
+        - **single-nuevo-tipo-de-contenido.php:** Este archivo contiene el template de la entrada.
+
+### Crear un nuevo endpoint
+
+1. Abre la consola de comandos y ejecuta el script "composer make endpoint".
+2. Introduce un nombre para la clase de tu endpoint personalizado. Recuerda que el nombre de la clase tiene que tener el formato UpperCamelCase.
+3. Introduce una ruta para llamar al controlador del nuevo endpoint. Recuerda que la ruta debe estar compuesta por minísculas y separada por guiones.
+5. Revisa los archivos del nuevo endpoint en la ruta src/Endpoints/NuevoEndpoint, para verificar que no queda rastro de las cadenas de ejemplo. Si así fuese, por favor, haz los cambios de forma manual y notifícamelo con una incidencia en el repositorio de GitHub para arregarlo.
+6. Guarda todos los cambios que has hecho en todos los archivos.
+
+Una vez que hayas creado tu nuevo endpoint personalizado, tendrás un nuevo directorio con esta estructura:
+
+- **NuevoEndpoint:** Contiene el nuevo endpoint que acabas de crear.
+    - **NuevoEndpoint.php:** Este es el archivo que contiene los métodos y las propiedades necesarias para desarrollar el endpoint personalizado.
 
 ## Fin del desarrollo de tu plugin
 

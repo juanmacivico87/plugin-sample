@@ -14,7 +14,7 @@ use PrefixSource\PostsTypes\CustomPostType\CustomPostType;
  *
  * @version	1.0
  * @since  	1.0
- * @package	plugin-sample
+ * @package	{{ plugin_slug }}
  */
 class CustomCategory
 {
@@ -39,7 +39,7 @@ class CustomCategory
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	{{ plugin_slug }}
      */
     public function __construct()
     {
@@ -55,7 +55,7 @@ class CustomCategory
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	{{ plugin_slug }}
      */
     public function init() : void
     {
@@ -73,11 +73,11 @@ class CustomCategory
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	{{ plugin_slug }}
      */
     public function set_taxonomy_slug() : void
     {
-        $this->rewrite['slug'] = __( 'custom-cat', 'plugin-sample' );
+        $this->rewrite['slug'] = __( 'custom-cat', '{{ plugin_slug }}' );
     }
 
     /**
@@ -89,27 +89,27 @@ class CustomCategory
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	{{ plugin_slug }}
      */
     public function add_custom_taxonomy() : void
     {
         $args = array(
-            'label'  => __( 'Custom Categories', 'plugin-sample' ),
+            'label'  => __( 'Custom Categories', '{{ plugin_slug }}' ),
             'labels' => array(
-                'name'                       => __( 'Custom Categories', 'plugin-sample' ),
-                'singular_name'              => __( 'Custom Category', 'plugin-sample' ),
-                'menu_name'                  => __( 'Custom Categories', 'plugin-sample' ),
-                'all_items'                  => __( 'All Custom Categories', 'plugin-sample' ),
-                'edit_item'                  => __( 'Edit Custom Category', 'plugin-sample' ),
-                'view_item'                  => __( 'View Custom Category', 'plugin-sample' ),
-                'update_item'                => __( 'Update Custom Category', 'plugin-sample' ),
-                'add_new_item'               => __( 'Add new Custom Category', 'plugin-sample' ),
-                'new_item_name'              => __( 'New Custom Category Name', 'plugin-sample' ),
-                'parent_item'                => __( 'Parent Custom Category', 'plugin-sample' ),
-                'parent_item_colon'          => __( 'Parent Custom Category:', 'plugin-sample' ),
-                'search_items'               => __( 'Search Custom Categories', 'plugin-sample' ),
-                'not_found'                  => __( 'Custom Categories not Found', 'plugin-sample' ),
-                'back_to_items'              => __( 'Back to Custom Categories', 'plugin-sample' ),
+                'name'                       => __( 'Custom Categories', '{{ plugin_slug }}' ),
+                'singular_name'              => __( 'Custom Category', '{{ plugin_slug }}' ),
+                'menu_name'                  => __( 'Custom Categories', '{{ plugin_slug }}' ),
+                'all_items'                  => __( 'All Custom Categories', '{{ plugin_slug }}' ),
+                'edit_item'                  => __( 'Edit Custom Category', '{{ plugin_slug }}' ),
+                'view_item'                  => __( 'View Custom Category', '{{ plugin_slug }}' ),
+                'update_item'                => __( 'Update Custom Category', '{{ plugin_slug }}' ),
+                'add_new_item'               => __( 'Add new Custom Category', '{{ plugin_slug }}' ),
+                'new_item_name'              => __( 'New Custom Category Name', '{{ plugin_slug }}' ),
+                'parent_item'                => __( 'Parent Custom Category', '{{ plugin_slug }}' ),
+                'parent_item_colon'          => __( 'Parent Custom Category:', '{{ plugin_slug }}' ),
+                'search_items'               => __( 'Search Custom Categories', '{{ plugin_slug }}' ),
+                'not_found'                  => __( 'Custom Categories not Found', '{{ plugin_slug }}' ),
+                'back_to_items'              => __( 'Back to Custom Categories', '{{ plugin_slug }}' ),
             ),
             'public'                => true,
             'publicly_queryable'    => true,
@@ -120,7 +120,7 @@ class CustomCategory
             'rest_base'             => $this->rest_base,
             'show_in_quick_edit'    => true,
             'show_admin_column'     => false,
-            'description'           => __( 'Custom Category Description', 'plugin-sample' ),
+            'description'           => __( 'Custom Category Description', '{{ plugin_slug }}' ),
             'hierarchical'          => true,
             'query_var'             => $this->query_var,
             'rewrite'               => $this->rewrite,
@@ -145,7 +145,7 @@ class CustomCategory
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	{{ plugin_slug }}
      */
     public function get_custom_taxonomy_template( string $template ) : string
     {
@@ -164,7 +164,7 @@ class CustomCategory
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	{{ plugin_slug }}
      */
     public static function set_roles_capabilities() : void
     {

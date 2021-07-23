@@ -12,7 +12,7 @@ if ( false === defined( 'ABSPATH' ) )
  *
  * @version	1.0
  * @since  	1.0
- * @package	plugin-sample
+ * @package	{{ plugin_slug }}
  */
 class CustomRestField
 {
@@ -28,7 +28,7 @@ class CustomRestField
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	{{ plugin_slug }}
      */
     public function __construct()
     {
@@ -44,7 +44,7 @@ class CustomRestField
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	{{ plugin_slug }}
      */
     public function init() : void
     {
@@ -60,7 +60,7 @@ class CustomRestField
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	{{ plugin_slug }}
      */
     public function add_new_rest_field() : void
     {
@@ -80,7 +80,7 @@ class CustomRestField
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	{{ plugin_slug }}
      */
     public function get_rest_field_value() : string
     {

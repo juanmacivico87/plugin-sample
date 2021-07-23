@@ -11,13 +11,13 @@ if ( false === defined( 'ABSPATH' ) )
  *
  * @version	1.0
  * @since  	1.0
- * @package	plugin-sample
+ * @package	{{ plugin_slug }}
  */
 class PluginDependencies
 {
     private static ?array $active_plugins = null;
 
-    public static string $min_php_version   = '7.3.0';
+    public static string $min_php_version   = '7.4.0';
     public static string $min_wp_version    = '5.0';
     public static array $dependencies       = array(
         'Advanced Custom Fields PRO' => 'advanced-custom-fields-pro/acf.php',
@@ -32,7 +32,7 @@ class PluginDependencies
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	{{ plugin_slug }}
      */
     public static function init() : void
     {
@@ -52,7 +52,7 @@ class PluginDependencies
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	{{ plugin_slug }}
      */
     public static function check_dependencies() : bool
     {

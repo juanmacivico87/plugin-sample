@@ -15,7 +15,7 @@ use PrefixSource\Taxonomies\CustomTag\CustomTag;
  *
  * @version	1.0
  * @since  	1.0
- * @package	plugin-sample
+ * @package	{{ plugin_slug }}
  */
 class CustomPostType
 {
@@ -41,7 +41,7 @@ class CustomPostType
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	{{ plugin_slug }}
      */
     public function __construct()
     {
@@ -57,7 +57,7 @@ class CustomPostType
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	{{ plugin_slug }}
      */
     public function init() : void
     {
@@ -76,11 +76,11 @@ class CustomPostType
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	{{ plugin_slug }}
      */
     public function set_custom_post_type_slug() : void
     {
-        $this->rewrite['slug'] = __( 'samples', 'plugin-sample' );
+        $this->rewrite['slug'] = __( 'samples', '{{ plugin_slug }}' );
     }
 
     /**
@@ -92,43 +92,43 @@ class CustomPostType
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	{{ plugin_slug }}
      */
     public function add_custom_post_type() : void
     {
         $args = array(
             'labels' => array(
-                'name'                     => __( 'Samples', 'plugin-sample' ),
-                'singular_name'            => __( 'Sample', 'plugin-sample' ),
-                'add_new'                  => __( 'Add New', 'plugin-sample' ),
-                'add_new_item'             => __( 'Add New Sample', 'plugin-sample' ),
-                'edit_item'                => __( 'Edit Sample', 'plugin-sample' ),
-                'new_item'                 => __( 'New Sample', 'plugin-sample' ),
-                'view_item'                => __( 'View Sample', 'plugin-sample' ),
-                'view_items'               => __( 'View Samples', 'plugin-sample' ),
-                'search_items'             => __( 'Search Samples', 'plugin-sample' ),
-                'not_found'                => __( 'Sample not Found', 'plugin-sample' ),
-                'not_found_in_trash'       => __( 'Sample not Found in Trash', 'plugin-sample' ),
-                'parent_item_colon'        => __( 'Parent Sample:', 'plugin-sample' ),
-                'all_items'                => __( 'All Samples', 'plugin-sample' ),
-                'archives'                 => __( 'Sample Archives', 'plugin-sample' ),
-                'attributes'               => __( 'Sample Attributes', 'plugin-sample' ),
-                'insert_into_item'         => __( 'Insert into Sample', 'plugin-sample' ),
-                'uploaded_to_this_item'    => __( 'Uploaded to this Sample', 'plugin-sample' ),
-                'featured_image'           => __( 'Featured Image', 'plugin-sample' ),
-                'set_featured_image'       => __( 'Set Featured Image', 'plugin-sample' ),
-                'remove_featured_image'    => __( 'Remove Featured Image', 'plugin-sample' ),
-                'use_featured_image'       => __( 'Use Featured Image', 'plugin-sample' ),
-                'menu_name'                => __( 'Samples', 'plugin-sample' ),
-                'filter_items_list'        => __( 'Filter Samples List', 'plugin-sample' ),
-                'items_list_navigation'    => __( 'Samples List Navigation', 'plugin-sample' ),
-                'items_list'               => __( 'Samples List', 'plugin-sample' ),
-                'name_admin_bar'           => __( 'Samples', 'plugin-sample' ),
-                'item_published'           => __( 'Sample Published', 'plugin-sample' ),
-                'item_published_privately' => __( 'Sample Published Privately', 'plugin-sample' ),
-                'item_reverted_to_draft'   => __( 'Sample Reverte to Draft', 'plugin-sample' ),
-                'item_scheduled'           => __( 'Sample Scheduled', 'plugin-sample' ),
-                'item_updated'             => __( 'Sample Updated', 'plugin-sample' ),
+                'name'                     => __( 'Samples', '{{ plugin_slug }}' ),
+                'singular_name'            => __( 'Sample', '{{ plugin_slug }}' ),
+                'add_new'                  => __( 'Add New', '{{ plugin_slug }}' ),
+                'add_new_item'             => __( 'Add New Sample', '{{ plugin_slug }}' ),
+                'edit_item'                => __( 'Edit Sample', '{{ plugin_slug }}' ),
+                'new_item'                 => __( 'New Sample', '{{ plugin_slug }}' ),
+                'view_item'                => __( 'View Sample', '{{ plugin_slug }}' ),
+                'view_items'               => __( 'View Samples', '{{ plugin_slug }}' ),
+                'search_items'             => __( 'Search Samples', '{{ plugin_slug }}' ),
+                'not_found'                => __( 'Sample not Found', '{{ plugin_slug }}' ),
+                'not_found_in_trash'       => __( 'Sample not Found in Trash', '{{ plugin_slug }}' ),
+                'parent_item_colon'        => __( 'Parent Sample:', '{{ plugin_slug }}' ),
+                'all_items'                => __( 'All Samples', '{{ plugin_slug }}' ),
+                'archives'                 => __( 'Sample Archives', '{{ plugin_slug }}' ),
+                'attributes'               => __( 'Sample Attributes', '{{ plugin_slug }}' ),
+                'insert_into_item'         => __( 'Insert into Sample', '{{ plugin_slug }}' ),
+                'uploaded_to_this_item'    => __( 'Uploaded to this Sample', '{{ plugin_slug }}' ),
+                'featured_image'           => __( 'Featured Image', '{{ plugin_slug }}' ),
+                'set_featured_image'       => __( 'Set Featured Image', '{{ plugin_slug }}' ),
+                'remove_featured_image'    => __( 'Remove Featured Image', '{{ plugin_slug }}' ),
+                'use_featured_image'       => __( 'Use Featured Image', '{{ plugin_slug }}' ),
+                'menu_name'                => __( 'Samples', '{{ plugin_slug }}' ),
+                'filter_items_list'        => __( 'Filter Samples List', '{{ plugin_slug }}' ),
+                'items_list_navigation'    => __( 'Samples List Navigation', '{{ plugin_slug }}' ),
+                'items_list'               => __( 'Samples List', '{{ plugin_slug }}' ),
+                'name_admin_bar'           => __( 'Samples', '{{ plugin_slug }}' ),
+                'item_published'           => __( 'Sample Published', '{{ plugin_slug }}' ),
+                'item_published_privately' => __( 'Sample Published Privately', '{{ plugin_slug }}' ),
+                'item_reverted_to_draft'   => __( 'Sample Reverte to Draft', '{{ plugin_slug }}' ),
+                'item_scheduled'           => __( 'Sample Scheduled', '{{ plugin_slug }}' ),
+                'item_updated'             => __( 'Sample Updated', '{{ plugin_slug }}' ),
             ),
             'public'              => true,
             'exclude_from_search' => false,
@@ -181,7 +181,7 @@ class CustomPostType
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	{{ plugin_slug }}
      */
     public function get_post_type_templates( string $template ) : string
     {
@@ -209,7 +209,7 @@ class CustomPostType
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	{{ plugin_slug }}
      */
     public static function set_roles_capabilities() : void
     {

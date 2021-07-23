@@ -14,7 +14,7 @@ use PrefixSource\PostsTypes\CustomPostType\CustomPostType;
  *
  * @version	1.0
  * @since  	1.0
- * @package	plugin-sample
+ * @package	{{ plugin_slug }}
  */
 class CustomBlocksCategory
 {
@@ -30,7 +30,7 @@ class CustomBlocksCategory
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	{{ plugin_slug }}
      */
     public function __construct()
     {
@@ -46,7 +46,7 @@ class CustomBlocksCategory
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	{{ plugin_slug }}
      */
     public function init() : void
     {
@@ -64,7 +64,7 @@ class CustomBlocksCategory
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	{{ plugin_slug }}
      */
     public function add_custom_blocks_category( array $categories, \WP_Post $post ) : array
     {
@@ -78,7 +78,7 @@ class CustomBlocksCategory
             array(
                 array(
                     'slug' => self::BLOCK_CATEGORY_SLUG,
-                    'title' => __( 'Custom Blocks Category', 'plugin-sample' ),
+                    'title' => __( 'Custom Blocks Category', '{{ plugin_slug }}' ),
                     'icon'  => '',
                 ),
             )

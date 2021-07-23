@@ -15,7 +15,7 @@ use PrefixSource\PostsTypes\CustomPostType\CustomPostType;
  *
  * @version	1.0
  * @since  	1.0
- * @package	plugin-sample
+ * @package	{{ plugin_slug }}
  */
 class CustomACFBlock
 {
@@ -32,7 +32,7 @@ class CustomACFBlock
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	{{ plugin_slug }}
      */
     public function __construct()
     {
@@ -48,7 +48,7 @@ class CustomACFBlock
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	{{ plugin_slug }}
      */
     public function init() : void
     {
@@ -65,7 +65,7 @@ class CustomACFBlock
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	{{ plugin_slug }}
      */
     public function add_custom_block() : void
     {
@@ -75,8 +75,8 @@ class CustomACFBlock
         acf_register_block_type(
             array(
                 'name'				=> self::BLOCK_NAME,
-                'title'				=> __( 'Sample Block', 'plugin-sample' ),
-                'description'		=> __( 'A Gutenbetg sample block', 'plugin-sample' ),
+                'title'				=> __( 'Sample Block', '{{ plugin_slug }}' ),
+                'description'		=> __( 'A Gutenbetg sample block', '{{ plugin_slug }}' ),
                 'category'			=> CustomBlocksCategory::BLOCK_CATEGORY_SLUG,
                 'icon'				=> 'admin-comments',
                 'keywords'			=> array( 'sample', 'block' ),
@@ -99,7 +99,7 @@ class CustomACFBlock
                         self::BLOCK_SLUG,
                         array(
                             'name'  => 'sample-custom-style',
-                            'label' => __( 'Sample Custom Style', 'plugin-sample' ),
+                            'label' => __( 'Sample Custom Style', '{{ plugin_slug }}' ),
                         )
                     );
                 },
@@ -117,7 +117,7 @@ class CustomACFBlock
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	{{ plugin_slug }}
      */
     public function add_block_fields() : void
     {
@@ -127,11 +127,11 @@ class CustomACFBlock
         acf_add_local_field_group(
             array(
                 'key' => 'group_5cf76f0e4cde3',
-                'title' => __( 'Sample', 'plugin-sample' ),
+                'title' => __( 'Sample', '{{ plugin_slug }}' ),
                 'fields' => array(
                     array(
                         'key' => 'field_5cf76f15f55e8',
-                        'label' => __( 'Title', 'plugin-sample' ),
+                        'label' => __( 'Title', '{{ plugin_slug }}' ),
                         'name' => 'sample_title',
                         'type' => 'text',
                         'instructions' => '',
@@ -150,7 +150,7 @@ class CustomACFBlock
                     ),
                     array(
                         'key' => 'field_5cf76f28f55e9',
-                        'label' => __( 'Subtitle', 'plugin-sample' ),
+                        'label' => __( 'Subtitle', '{{ plugin_slug }}' ),
                         'name' => 'sample_subtitle',
                         'type' => 'text',
                         'instructions' => '',
@@ -169,7 +169,7 @@ class CustomACFBlock
                     ),
                     array(
                         'key' => 'field_5cf76f3bf55ea',
-                        'label' => __( 'Button', 'plugin-sample' ),
+                        'label' => __( 'Button', '{{ plugin_slug }}' ),
                         'name' => 'sample_button',
                         'type' => 'link',
                         'instructions' => '',

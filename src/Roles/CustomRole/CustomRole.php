@@ -12,7 +12,7 @@ if ( false === defined( 'ABSPATH' ) )
  *
  * @version	1.0
  * @since  	1.0
- * @package	plugin-sample
+ * @package	{{ plugin_slug }}
  */
 class CustomRole
 {
@@ -28,7 +28,7 @@ class CustomRole
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	{{ plugin_slug }}
      */
     public function __construct()
     {
@@ -44,7 +44,7 @@ class CustomRole
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	{{ plugin_slug }}
      */
     public function init() : void
     {
@@ -60,13 +60,13 @@ class CustomRole
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	{{ plugin_slug }}
      */
     public function add_new_role() : void
     {
         add_role(
             self::ROLE_NAME,
-            __( 'Custom role', 'plugin-sample' ),
+            __( 'Custom role', '{{ plugin_slug }}' ),
             array()
         );
     }

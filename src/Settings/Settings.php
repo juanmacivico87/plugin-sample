@@ -12,12 +12,12 @@ if ( false === defined( 'ABSPATH' ) )
  *
  * @version	1.0
  * @since  	1.0
- * @package	plugin-sample
+ * @package	{{ plugin_slug }}
  */
 class Settings
 {
-    const MENU_SLUG     = 'plugin-sample-settings';
-    const FIELDS_GROUP  = 'plugin-sample-settings-group';
+    const MENU_SLUG     = '{{ plugin_slug }}-settings';
+    const FIELDS_GROUP  = '{{ plugin_slug }}-settings-group';
 
     /**
      * __construct()
@@ -29,7 +29,7 @@ class Settings
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	{{ plugin_slug }}
      */
     public function __construct()
     {
@@ -45,7 +45,7 @@ class Settings
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	{{ plugin_slug }}
      */
     public function init() : void
     {
@@ -62,13 +62,13 @@ class Settings
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	{{ plugin_slug }}
      */
     public function add_settings_page() : void
     {
         add_menu_page(
-            __( '{{ plugin_name }} Settings', 'plugin-sample' ),
-            __( '{{ plugin_name }} Settings', 'plugin-sample' ),
+            __( '{{ plugin_name }} Settings', '{{ plugin_slug }}' ),
+            __( '{{ plugin_name }} Settings', '{{ plugin_slug }}' ),
             'manage_options',
             self::MENU_SLUG,
             array( $this, 'render_settings_page' ),
@@ -86,7 +86,7 @@ class Settings
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	{{ plugin_slug }}
      */
     public function register_settings() : void
     {
@@ -102,27 +102,27 @@ class Settings
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	{{ plugin_slug }}
      */
     public function render_settings_page() : void
     {
         $field = get_option( '_plugin_sample_field' ) ?: null; ?>
 
         <div class="wrap">
-            <h1><?php _e( '{{ plugin_name }}', 'plugin-sample' ) ?></h1>
-            <h2><?php _e( 'Settings', 'plugin-sample' ) ?></h2>
+            <h1><?php _e( '{{ plugin_name }}', '{{ plugin_slug }}' ) ?></h1>
+            <h2><?php _e( 'Settings', '{{ plugin_slug }}' ) ?></h2>
             <form method="post" action="options.php">
                 <?php settings_fields( self::FIELDS_GROUP );
                 do_settings_sections( self::FIELDS_GROUP ); ?>
                 <table class="form-table">
                     <tr valign="top">
-                        <th scope="row"><?php _e( 'Field', 'plugin-sample' ) ?></th>
+                        <th scope="row"><?php _e( 'Field', '{{ plugin_slug }}' ) ?></th>
                         <td>
                             <input type="text" class="regular-text" name="_plugin_sample_field" value="<?php echo null !== $field ? esc_attr( $field ) : '' ?>" />
                         </td>
                     </tr>
                 </table>
-                <?php submit_button( __( 'Save Settings', 'plugin-sample' ), 'primary', 'save_dapda_vehicles_settings', true, array() ) ?>
+                <?php submit_button( __( 'Save Settings', '{{ plugin_slug }}' ), 'primary', 'save_dapda_vehicles_settings', true, array() ) ?>
             </form>
         </div><?php
     }
