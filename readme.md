@@ -86,8 +86,6 @@ De todas formas, para ayudarte, te hago un resumen de los archivos y carpetas qu
             - **CustomMetaboxesGroup.php:** Este es el archivo que contiene los métodos y las propiedades necesarias para desarrollar el campo personalizado.
     - **PostsTypes:** WordPress trae incluidos en su núcleo una serie de tipos de contenido. Los más conocidos son las páginas y las entradas, pero también lo son los archivos de la biblioteca, los menús, etc. Además, te ofrece la posibilidad de que puedas tener los tuyos propios, como pueden ser para crear fichas de producto (como hace WooCommerce), cursos (como es el caso de Sensei) y todo lo que se te pase por la cabeza. Guarda en esta carpeta todos los tipos de contenido personalizados que desarrolles.
     - **RestApi:** Pese a que los endpoints que trae por defecto la API Rest de WordPress te pueden proporcionar mucha información sobre tu sitio web, hay veces que esta información no es suficiente. Como alternativa a crear tu propio endpoint, WordPress te ofrece la posibilidad de añadir un nuevo campo a los endpoints que ya tiene integrados. En esta carpeta, podrás crear tus campos personalizados e incluirlos en el endpoint que desees.
-        - **CustomRestField:** Contiene un campo personalizado para la API Rest desarrollado a medida. Para crear tu propio campo personalizado para la API Rest, duplica o edita esta clase y añade los métodos y las propiedades que necesites.
-            - **CustomRestField.php:** Este es el archivo que contiene los métodos y las propiedades necesarias para desarrollar el campo personalizado para la API Rest.
     - **Roles:** WordPress, por defecto, incorpora cinco tipos de roles, con sus respectivas restricciones, pero, ¿qué ocurre si necesitas un sexto tipo de rol con unas restricciones específicas? En esta carpeta, podrás crear tus roles personalizados para asignárselos a los usuarios que desees.
         - **CustomRole:** Contiene un rol personalizado desarrollado a medida. Para crear tu propio rol personalizado, duplica o edita esta clase y añade los métodos y las propiedades que necesites.
             - **CustomRole.php:** Este es el archivo que contiene los métodos y las propiedades necesarias para desarrollar el rol personalizado.
@@ -140,6 +138,18 @@ Una vez que hayas creado tu nuevo endpoint personalizado, tendrás un nuevo dire
 
 - **NuevoEndpoint:** Contiene el nuevo endpoint que acabas de crear.
     - **NuevoEndpoint.php:** Este es el archivo que contiene los métodos y las propiedades necesarias para desarrollar el endpoint personalizado.
+
+### Crear un nuevo campo para la API Rest
+
+1. Abre la consola de comandos y ejecuta el script "composer make rest-api-field".
+2. Introduce un nombre para la clase de tu campo personalizado para la API Rest. Recuerda que el nombre de la clase tiene que tener el formato UpperCamelCase.
+3. Revisa los archivos del nuevo campo personalizado para la API Rest en la ruta src/RestApi/NuevoCampoApiRest, para verificar que no queda rastro de las cadenas de ejemplo. Si así fuese, por favor, haz los cambios de forma manual y notifícamelo con una incidencia en el repositorio de GitHub para arregarlo.
+6. Guarda todos los cambios que has hecho en todos los archivos.
+
+Una vez que hayas creado tu nuevo campo personalizado para la API Rest, tendrás un nuevo directorio con esta estructura:
+
+- **NuevoCampoApiRest:** Contiene un campo personalizado para la API Rest desarrollado a medida.
+    - **NuevoCampoApiRest.php:** Este es el archivo que contiene los métodos y las propiedades necesarias para desarrollar el campo personalizado para la API Rest.
 
 ## Fin del desarrollo de tu plugin
 

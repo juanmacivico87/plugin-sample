@@ -6,12 +6,13 @@ use Composer\Installer\PackageEvent;
 use Exception;
 use PrefixCmd\Make\CustomPostType\CustomPostType;
 use PrefixCmd\Make\Endpoint\Endpoint;
+use PrefixCmd\Make\RestApi\RestApi;
 
 class Make
 {
     public static function make( Event $event ) : void
     {
-        $options = array( 'block', 'block-category', 'cpt', 'customizer', 'endpoint', 'metabox', 'rest-api', 'role', 'shortcode', 'taxonomy' );
+        $options = array( 'block', 'block-category', 'cpt', 'customizer', 'endpoint', 'metabox', 'rest-api-field', 'role', 'shortcode', 'taxonomy' );
         $args    = $event->getArguments();
 
         if ( false !== empty( $args ) )
@@ -41,8 +42,9 @@ class Make
             case 'metabox':
                 $event->getIO()->write( 'This is a group of metaboxes' );
                 break;
-            case 'rest-api':
-                $event->getIO()->write( 'This is a custom field for the Rest API' );
+            case 'rest-api-field':
+                $rest_api = new RestApi( $event );
+                $rest_api::create_custom_rest_api_field();
                 break;
             case 'role':
                 $event->getIO()->write( 'This is a role' );
