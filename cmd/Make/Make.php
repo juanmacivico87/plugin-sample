@@ -2,8 +2,8 @@
 namespace PrefixCmd\Make;
 
 use Composer\Script\Event;
-use Composer\Installer\PackageEvent;
 use Exception;
+use PrefixCmd\Make\BlocksCategory\BlocksCategory;
 use PrefixCmd\Make\CustomPostType\CustomPostType;
 use PrefixCmd\Make\Endpoint\Endpoint;
 use PrefixCmd\Make\RestApi\RestApi;
@@ -12,7 +12,7 @@ class Make
 {
     public static function make( Event $event ) : void
     {
-        $options = array( 'block', 'block-category', 'cpt', 'customizer', 'endpoint', 'metabox', 'rest-api-field', 'role', 'shortcode', 'taxonomy' );
+        $options = array( 'block', 'blocks-category', 'cpt', 'customizer', 'endpoint', 'metabox', 'rest-api-field', 'role', 'shortcode', 'taxonomy' );
         $args    = $event->getArguments();
 
         if ( false !== empty( $args ) )
@@ -25,8 +25,9 @@ class Make
             case 'block':
                 $event->getIO()->write( 'This is a block' );
                 break;
-            case 'block-category':
-                $event->getIO()->write( 'This is a category of blocks' );
+            case 'blocks-category':
+                $blocks_category = new BlocksCategory( $event );
+                $blocks_category::create_custom_blocks_category();
                 break;
             case 'cpt':
                 $cpt = new CustomPostType( $event );

@@ -75,8 +75,6 @@ De todas formas, para ayudarte, te hago un resumen de los archivos y carpetas qu
             - **views:** En esta carpeta podrás crear un template con el HTML que quieras que se renderice desde el front, o desde el editor de tu web, así como las funciones de WordPress que creas necesarias, como si se tratase de un template-part de un tema.
                 - **template-acf-block.php:** Este archivo contiene el template del bloque.
     - **BlocksCategories:** Al igual que los tipos de contenido, los bloques pueden organizarse en categorías. En esta carpeta, podrás tener las clases de tus propias categorías para los bloques que desarrolles.
-        - **CustomBlocksCategory:** Contiene una categoría de bloques personalizada. Para crear tu propia categoría de bloques, duplica o edita esta clase y añade los métodos y las propiedades que necesites.
-            - **CustomBlocksCategory.php:** Este es el archivo que contiene los métodos y las propiedades necesarias para desarrollar la categoría de bloques personalizada.
     - **Customizer:** WordPress, en la opción "Apariencia" de su menú, contiene una opción desde la que permite personalizar el aspecto o funcionalidades de la web, como puede ser añadir un favicon identificativo a las pestañas del navegador. En esta carpeta, puedes añadir secciones personalizadas para poder realizar configuraciones, como por ejemplo, un campo para introducir el código de GTM de tu web y, en esta carpeta, podrás tener las secciones que desarrolles.
         - **CustomizerSection:** Contiene una sección del personalizador de WordPress, desarrollada a medida. Para crear tu propia sección para el personalizador, duplica o edita esta clase y añade los métodos y las propiedades que necesites.
             - **CustomizerSection.php:** Este es el archivo que contiene los métodos y las propiedades necesarias para desarrollar la sección del personalizador.
@@ -108,6 +106,19 @@ De todas formas, para ayudarte, te hago un resumen de los archivos y carpetas qu
 - **composer.lock:** Este archivo contiene las dependencias que se han instalado actualmente en tu plugin a través de composer, así como las versiones de cada una de ellas. Puedes modificar su contenido ejecutando el comando "composer update" en una consola desde la raíz del plugin.
 
 ## Comandos para crear nuevas funcionalidades en el plugin
+
+### Crear una nueva categoría para los bloques personalizados
+
+1. Abre la consola de comandos y ejecuta el script "composer make blocks-category".
+2. Introduce un nombre para la clase de tu categoría de bloques personalizados. Recuerda que el nombre de la clase tiene que tener el formato UpperCamelCase.
+3. Introduce un slug para la nueva categoría de bloques personalizados. Recuerda que el slug debe estar compuesto por minísculas y separado por guiones.
+4. Revisa los archivos de la nueva categoría en la ruta src/BlocksCategories/NuevaCategoriaDeBloques, para verificar que no queda rastro de las cadenas de ejemplo. Si así fuese, por favor, haz los cambios de forma manual y notifícamelo con una incidencia en el repositorio de GitHub para arregarlo.
+6. Guarda todos los cambios que has hecho en todos los archivos.
+
+Una vez que hayas creado tu nueva categoría de bloques personalizados, tendrás un nuevo directorio con esta estructura:
+
+- **NuevaCategoriaDeBloques:** Contiene una categoría de bloques personalizada.
+    - **NuevaCategoriaDeBloques.php:** Este es el archivo que contiene los métodos y las propiedades necesarias para desarrollar la categoría de bloques personalizada.
 
 ### Crear un nuevo tipo de contenido personalizado
 
