@@ -85,13 +85,9 @@ De todas formas, para ayudarte, te hago un resumen de los archivos y carpetas qu
     - **PostsTypes:** WordPress trae incluidos en su núcleo una serie de tipos de contenido. Los más conocidos son las páginas y las entradas, pero también lo son los archivos de la biblioteca, los menús, etc. Además, te ofrece la posibilidad de que puedas tener los tuyos propios, como pueden ser para crear fichas de producto (como hace WooCommerce), cursos (como es el caso de Sensei) y todo lo que se te pase por la cabeza. Guarda en esta carpeta todos los tipos de contenido personalizados que desarrolles.
     - **RestApi:** Pese a que los endpoints que trae por defecto la API Rest de WordPress te pueden proporcionar mucha información sobre tu sitio web, hay veces que esta información no es suficiente. Como alternativa a crear tu propio endpoint, WordPress te ofrece la posibilidad de añadir un nuevo campo a los endpoints que ya tiene integrados. En esta carpeta, podrás crear tus campos personalizados e incluirlos en el endpoint que desees.
     - **Roles:** WordPress, por defecto, incorpora cinco tipos de roles, con sus respectivas restricciones, pero, ¿qué ocurre si necesitas un sexto tipo de rol con unas restricciones específicas? En esta carpeta, podrás crear tus roles personalizados para asignárselos a los usuarios que desees.
-        - **CustomRole:** Contiene un rol personalizado desarrollado a medida. Para crear tu propio rol personalizado, duplica o edita esta clase y añade los métodos y las propiedades que necesites.
-            - **CustomRole.php:** Este es el archivo que contiene los métodos y las propiedades necesarias para desarrollar el rol personalizado.
     - **Settings:** La mayoría de plugins o temas incorporan una página de ajustes en la que poder configurar parámetros, incluir claves,... En esta carpeta, podrás crear tu propia página de ajustes y asignarle los campos y opciones que creas necesarios para tu plugin. Por defecto, la página de ajustes está creada con las funciones nativas de WordPress. Sin embargo, con la ayuda de la función "acf_add_options_page" que incorpora la versión PRO del plugin Advanced Custom Fields también puedes crear una página de ajustes, así que si deseas utilizar este formato, elimina el archivo "Settings.php" y renombra el archivo "SettingsACF.php" como "Settings.php".
         - **Settings.php:** Este es el archivo que contiene los métodos y las propiedades necesarias para desarrollar tu propia página de ajustes.
     - **Shortcodes:** Antes de la llegada de la era de los bloques a WordPress, si querías incluir un contenido específico en varias páginas, sin tener que duplicar su código, tenías que hacerlo con este tipo de componentes. A día de hoy, la gran mayoría de shortcodes están siendo migrados a bloques, pero aún hay proyectos en los que son necesarios. En esta carpeta, podrás crear tus shortcodes personalizados e insertarlos en las páginas o entradas en las que quieras renderizar su contenido.
-        - **CustomShortcode:** Contiene un shortcode personalizado desarrollado a medida. Para crear tu propio shortcode personalizado, duplica o edita esta clase y añade los métodos y las propiedades que necesites.
-            - **CustomShortcode.php:** Este es el archivo que contiene los métodos y las propiedades necesarias para desarrollar el shortcode personalizado.
     - **Taxonomies:** WordPress también trae incluidas en su núcleo taxonomías, que te permiten clasificar los contenidos de un tipo concreto o de varios tipos. Algunas de estas taxonomías permiten una jerarquía, como es el caso de las categorías de una entrada, que dan la posibilidad de crear sub-categorías. Otras, por el contrario, no permiten dicha jerarquía, como es el caso de las etiquetas de una entrada. En esta carpeta podrás tener todas las taxonomías personalizadas que necesites.
         - **CustomCategory:** Contiene una taxonomía personalizada, con jerarquía. Para crear tu propia taxonomía con jerarquía, duplica o edita esta clase y añade los métodos y las propiedades que necesites.
             - **CustomCategory.php:** Este es el archivo que contiene los métodos y las propiedades necesarias para desarrollar la taxonomía con jerarquía.
@@ -107,60 +103,12 @@ De todas formas, para ayudarte, te hago un resumen de los archivos y carpetas qu
 
 ## Comandos para crear nuevas funcionalidades en el plugin
 
-### Crear una nueva categoría para los bloques personalizados
-
-1. Abre la consola de comandos y ejecuta el script "composer make blocks-category".
-2. Introduce un nombre para la clase de tu categoría de bloques personalizados. Recuerda que el nombre de la clase tiene que tener el formato UpperCamelCase.
-3. Introduce un slug para la nueva categoría de bloques personalizados. Recuerda que el slug debe estar compuesto por minísculas y separado por guiones.
-4. Revisa los archivos de la nueva categoría en la ruta src/BlocksCategories/NuevaCategoriaDeBloques, para verificar que no queda rastro de las cadenas de ejemplo. Si así fuese, por favor, haz los cambios de forma manual y notifícamelo con una incidencia en el repositorio de GitHub para arregarlo.
-6. Guarda todos los cambios que has hecho en todos los archivos.
-
-Una vez que hayas creado tu nueva categoría de bloques personalizados, tendrás un nuevo directorio con esta estructura:
-
-- **NuevaCategoriaDeBloques:** Contiene una categoría de bloques personalizada.
-    - **NuevaCategoriaDeBloques.php:** Este es el archivo que contiene los métodos y las propiedades necesarias para desarrollar la categoría de bloques personalizada.
-
-### Crear un nuevo tipo de contenido personalizado
-
-1. Abre la consola de comandos y ejecuta el script "composer make cpt".
-2. Introduce un nombre para la clase de tu tipo de contenido personalizado. Recuerda que el nombre de la clase tiene que tener el formato UpperCamelCase.
-3. Introduce un slug para el nuevo tipo de contenido personalizado. Recuerda que el slug debe estar compuesto por minísculas y separado por guiones.
-4. Introduce un slug para el plural del tipo de contenido personalizado. Recuerda que el slug debe estar compuesto por minísculas y separado por guiones.
-5. Revisa los archivos del nuevo tipo de contenido en la ruta src/PostsTypes/NuevoTipoDeContenido, para verificar que no queda rastro de las cadenas de ejemplo. Si así fuese, por favor, haz los cambios de forma manual y notifícamelo con una incidencia en el repositorio de GitHub para arregarlo.
-6. Guarda todos los cambios que has hecho en todos los archivos.
-
-Una vez que hayas creado tu nuevo tipo de contenido personalizado, tendrás un nuevo directorio con esta estructura:
-
-- **NuevoTipoDeContenido:** Contiene el nuevo tipo de contenido personalizado que acabas de crear.
-    - **NuevoTipoDeContenido.php:** Este es el archivo que contiene los métodos y las propiedades necesarias para desarrollar el tipo de contenido personalizado.
-    - **views:** En esta carpeta podrás crear templates para que se rendericen, tanto el listado de entradas de tu tipo de contenido personalizado, como la propia entrada de dicho tipo de contenido.
-        - **archive-nuevo-tipo-de-contenido.php:** Este archivo contiene el template del listado.
-        - **single-nuevo-tipo-de-contenido.php:** Este archivo contiene el template de la entrada.
-
-### Crear un nuevo endpoint
-
-1. Abre la consola de comandos y ejecuta el script "composer make endpoint".
-2. Introduce un nombre para la clase de tu endpoint personalizado. Recuerda que el nombre de la clase tiene que tener el formato UpperCamelCase.
-3. Introduce una ruta para llamar al controlador del nuevo endpoint. Recuerda que la ruta debe estar compuesta por minísculas y separada por guiones.
-5. Revisa los archivos del nuevo endpoint en la ruta src/Endpoints/NuevoEndpoint, para verificar que no queda rastro de las cadenas de ejemplo. Si así fuese, por favor, haz los cambios de forma manual y notifícamelo con una incidencia en el repositorio de GitHub para arregarlo.
-6. Guarda todos los cambios que has hecho en todos los archivos.
-
-Una vez que hayas creado tu nuevo endpoint personalizado, tendrás un nuevo directorio con esta estructura:
-
-- **NuevoEndpoint:** Contiene el nuevo endpoint que acabas de crear.
-    - **NuevoEndpoint.php:** Este es el archivo que contiene los métodos y las propiedades necesarias para desarrollar el endpoint personalizado.
-
-### Crear un nuevo campo para la API Rest
-
-1. Abre la consola de comandos y ejecuta el script "composer make rest-api-field".
-2. Introduce un nombre para la clase de tu campo personalizado para la API Rest. Recuerda que el nombre de la clase tiene que tener el formato UpperCamelCase.
-3. Revisa los archivos del nuevo campo personalizado para la API Rest en la ruta src/RestApi/NuevoCampoApiRest, para verificar que no queda rastro de las cadenas de ejemplo. Si así fuese, por favor, haz los cambios de forma manual y notifícamelo con una incidencia en el repositorio de GitHub para arregarlo.
-6. Guarda todos los cambios que has hecho en todos los archivos.
-
-Una vez que hayas creado tu nuevo campo personalizado para la API Rest, tendrás un nuevo directorio con esta estructura:
-
-- **NuevoCampoApiRest:** Contiene un campo personalizado para la API Rest desarrollado a medida.
-    - **NuevoCampoApiRest.php:** Este es el archivo que contiene los métodos y las propiedades necesarias para desarrollar el campo personalizado para la API Rest.
+- [Blocks Category][cmd/BlocksCategory/readme.md]
+- [Custom Post Type][cmd/CustomPostType/readme.md]
+- [Endpoint][cmd/Endpoint/readme.md]
+- [Rest API Field][cmd/RestApi/readme.md]
+- [Role][cmd/Role/readme.md]
+- [Shortcode][cmd/Shortcode/readme.md]
 
 ## Fin del desarrollo de tu plugin
 

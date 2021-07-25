@@ -8,6 +8,7 @@ use PrefixCmd\Make\CustomPostType\CustomPostType;
 use PrefixCmd\Make\Endpoint\Endpoint;
 use PrefixCmd\Make\RestApi\RestApi;
 use PrefixCmd\Make\Role\Role;
+use PrefixCmd\Make\Shortcode\Shortcode;
 
 class Make
 {
@@ -53,7 +54,8 @@ class Make
                 $role::create_custom_role();
                 break;
             case 'shortcode':
-                $event->getIO()->write( 'This is a shortcode' );
+                $shortcode = new Shortcode( $event );
+                $shortcode::create_custom_shortcode();
                 break;
             case 'taxonomy':
                 $event->getIO()->write( 'This is a custom taxonomy' );
