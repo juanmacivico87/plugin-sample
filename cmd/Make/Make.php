@@ -7,6 +7,7 @@ use PrefixCmd\Make\BlocksCategory\BlocksCategory;
 use PrefixCmd\Make\CustomPostType\CustomPostType;
 use PrefixCmd\Make\Endpoint\Endpoint;
 use PrefixCmd\Make\RestApi\RestApi;
+use PrefixCmd\Make\Role\Role;
 
 class Make
 {
@@ -48,7 +49,8 @@ class Make
                 $rest_api::create_custom_rest_api_field();
                 break;
             case 'role':
-                $event->getIO()->write( 'This is a role' );
+                $role = new Role( $event );
+                $role::create_custom_role();
                 break;
             case 'shortcode':
                 $event->getIO()->write( 'This is a shortcode' );
