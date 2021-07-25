@@ -103,12 +103,12 @@ De todas formas, para ayudarte, te hago un resumen de los archivos y carpetas qu
 
 ## Comandos para crear nuevas funcionalidades en el plugin
 
-- [Blocks Category](cmd/BlocksCategory/readme.md)
-- [Custom Post Type](cmd/CustomPostType/readme.md)
-- [Endpoint](cmd/Endpoint/readme.md)
-- [Rest API Field](cmd/RestApi/readme.md)
-- [Role](cmd/Role/readme.md)
-- [Shortcode](cmd/Shortcode/readme.md)
+- [Blocks Category](cmd/Make/BlocksCategory/readme.md)
+- [Custom Post Type](cmd/Make/CustomPostType/readme.md)
+- [Endpoint](cmd/Make/Endpoint/readme.md)
+- [Rest API Field](cmd/Make/RestApi/readme.md)
+- [Role](cmd/Make/Role/readme.md)
+- [Shortcode](cmd/Make/Shortcode/readme.md)
 
 ## Fin del desarrollo de tu plugin
 
