@@ -16,7 +16,7 @@ if ( false === defined( 'ABSPATH' ) )
  */
 class class_name
 {
-    const SHORTCODE_TAG = 'class_shortcode_tag';
+    const SHORTCODE_TAG = 'class_tag';
     /**
      * __construct()
      *
@@ -68,7 +68,7 @@ class class_name
         
         ob_start();
 
-        include PREFIX_PLUGIN_DIR . 'src/Shortcodes/class_name/views/template-class_shortcode_tag.php';
+        include PREFIX_PLUGIN_DIR . 'src/Shortcodes/class_name/views/template-class_tag.php';
 
         $render = ob_get_contents();
         ob_get_clean();

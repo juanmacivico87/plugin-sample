@@ -19,7 +19,7 @@ class Shortcode extends MakerBase
             throw new Exception( 'You haven\'t entered a tag for the shortcode' );
 
         $data['name'] = self::sanitize_name( $data['name'] );
-        $data['tag'] = self::sanitize_shortcode_tag( $data['tag'] );
+        $data['tag'] = self::sanitize_tag( $data['tag'] );
 
         var_dump( $data );
 

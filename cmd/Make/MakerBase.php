@@ -107,7 +107,7 @@ abstract class MakerBase
         return preg_replace( array_keys( $utf8 ), array_values( $utf8 ), $slug );
     }
 
-    public static function sanitize_shortcode_tag( string $tag ) : ?string
+    public static function sanitize_tag( string $tag ) : ?string
     {
         $utf8 = array(
             '/[ ]/'         => '',
@@ -140,7 +140,7 @@ abstract class MakerBase
             'name'                => 'class_name',
             'slug'                => 'class_slug',
             'route'               => 'class_route',
-            'tag'                 => 'class_shortcode_tag',
+            'tag'                 => 'class_tag',
             'singular_lower_name' => 'class_singular_lower_name',
             'singular_upper_name' => 'class_singular_upper_name',
             'plural_lower_name'   => 'class_plural_lower_name',
