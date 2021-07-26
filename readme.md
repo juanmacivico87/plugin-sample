@@ -67,13 +67,6 @@ De todas formas, para ayudarte, te hago un resumen de los archivos y carpetas qu
     - **PluginDependencies.php:** En este archivo se establece una clase con las dependencias que necesita el plugin para funcionar, como pueden ser la versión mínima de PHP, la versión mínima de WordPress o si están activos algunos plugins de terceros.
 - **src (Source)::** Contiene las clases de PHP que desarrollarás para añadir las funcionalidades de tu plugin a la web en la que se instale el mismo.
     - **Blocks:** Desde la versión 5.0 de WordPress, el editor clásico fue sustituido por un editor de bloques (Gutenberg), que te permite contribuir tus sitios web de una forma más dinámica y visual. En esta carpeta, podrás crear clases con bloques personalizados que necesites para tus desarrollos.
-        - **CustomACFBlock:** Contiene un bloque personalizado desarrollado gracias a la función "acf_register_block_type()" de ACF (muy útil para aquellos que no sabemos desarrollar bloques con React). Necesitarás disponer de una licencia PRO de ACF para poder desarrollar bloques de esta manera. Para crear tu propio bloque personalizado, duplica o edita esta clase y añade los métodos y las propiedades que necesites.
-            - **CustomACFBlock.php:** Este es el archivo que contiene los métodos y las propiedades necesarias para desarrollar la funcionalidad del bloque.
-            - **css:** En este archivo, podrás definir propiedades de CSS propias de este bloque, las cuales solamente se cargarán en el sistema cuando el bloque se haya contribuido.
-            - **js:** En este archivo, podrás definir funciones de Javascript propias de este bloque, las cuales solamente se cargarán en el sistema cuando el bloque se haya contribuido.
-            - **json:** Los bloques pueden tener campos de ACF para contribuir la información que en ellos se renderizará. En esta carpeta puedes guardar un JSON con los campos para poder editarlos cada vez que lo necesites, sin necesidad de tenerlos almacenados en la base de datos.
-            - **views:** En esta carpeta podrás crear un template con el HTML que quieras que se renderice desde el front, o desde el editor de tu web, así como las funciones de WordPress que creas necesarias, como si se tratase de un template-part de un tema.
-                - **template-acf-block.php:** Este archivo contiene el template del bloque.
     - **BlocksCategories:** Al igual que los tipos de contenido, los bloques pueden organizarse en categorías. En esta carpeta, podrás tener las clases de tus propias categorías para los bloques que desarrolles.
     - **Customizer:** WordPress, en la opción "Apariencia" de su menú, contiene una opción desde la que permite personalizar el aspecto o funcionalidades de la web, como puede ser añadir un favicon identificativo a las pestañas del navegador. En esta carpeta, puedes añadir secciones personalizadas para poder realizar configuraciones, como por ejemplo, un campo para introducir el código de GTM de tu web y, en esta carpeta, podrás tener las secciones que desarrolles.
         - **CustomizerSection:** Contiene una sección del personalizador de WordPress, desarrollada a medida. Para crear tu propia sección para el personalizador, duplica o edita esta clase y añade los métodos y las propiedades que necesites.
@@ -103,6 +96,7 @@ De todas formas, para ayudarte, te hago un resumen de los archivos y carpetas qu
 
 ## Comandos para crear nuevas funcionalidades en el plugin
 
+- [Block](cmd/Make/Block/readme.md)
 - [Blocks Category](cmd/Make/BlocksCategory/readme.md)
 - [Custom Post Type](cmd/Make/CustomPostType/readme.md)
 - [Endpoint](cmd/Make/Endpoint/readme.md)

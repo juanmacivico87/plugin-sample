@@ -3,6 +3,7 @@ namespace PrefixCmd\Make;
 
 use Composer\Script\Event;
 use Exception;
+use PrefixCmd\Make\Block\Block;
 use PrefixCmd\Make\BlocksCategory\BlocksCategory;
 use PrefixCmd\Make\CustomPostType\CustomPostType;
 use PrefixCmd\Make\Endpoint\Endpoint;
@@ -25,7 +26,8 @@ class Make
 
         switch( $args[0] ) {
             case 'block':
-                $event->getIO()->write( 'This is a block' );
+                $block = new Block( $event );
+                $block::create_custom_block();
                 break;
             case 'blocks-category':
                 $blocks_category = new BlocksCategory( $event );
