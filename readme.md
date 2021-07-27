@@ -69,8 +69,6 @@ De todas formas, para ayudarte, te hago un resumen de los archivos y carpetas qu
     - **Blocks:** Desde la versión 5.0 de WordPress, el editor clásico fue sustituido por un editor de bloques (Gutenberg), que te permite contribuir tus sitios web de una forma más dinámica y visual. En esta carpeta, podrás crear clases con bloques personalizados que necesites para tus desarrollos.
     - **BlocksCategories:** Al igual que los tipos de contenido, los bloques pueden organizarse en categorías. En esta carpeta, podrás tener las clases de tus propias categorías para los bloques que desarrolles.
     - **Customizer:** WordPress, en la opción "Apariencia" de su menú, contiene una opción desde la que permite personalizar el aspecto o funcionalidades de la web, como puede ser añadir un favicon identificativo a las pestañas del navegador. En esta carpeta, puedes añadir secciones personalizadas para poder realizar configuraciones, como por ejemplo, un campo para introducir el código de GTM de tu web y, en esta carpeta, podrás tener las secciones que desarrolles.
-        - **CustomizerSection:** Contiene una sección del personalizador de WordPress, desarrollada a medida. Para crear tu propia sección para el personalizador, duplica o edita esta clase y añade los métodos y las propiedades que necesites.
-            - **CustomizerSection.php:** Este es el archivo que contiene los métodos y las propiedades necesarias para desarrollar la sección del personalizador.
     - **Endpoints:** Con la llegada de la API Rest de WordPress, es posible interactuar con nuestra web desde un servicio externo, como puede ser una App o un front hecho con un framework de Javascript. En esta carpeta, podrás crear tus propios endpoints para que devuelvan los datos que necesite tu aplicación externa... o interna.
     - **Metaboxes:** Aunque pienses que los campos personalizados a WordPress llegaron gracias a plugins como ACF, he de decirte que no es así. En esta carpeta podrás tener los distintos campos personalizados que necesites tanto para tus contenidos, como para tus usuarios o para la página de opciones del plugin.
         - **CustomMetaboxesGroup:** Contiene un campo personalizado desarrollado a medida. Para crear tu propio campo personalizado, duplica o edita esta clase y añade los métodos y las propiedades que necesites.
@@ -99,6 +97,7 @@ De todas formas, para ayudarte, te hago un resumen de los archivos y carpetas qu
 - [Block](cmd/Make/Block/readme.md)
 - [Blocks Category](cmd/Make/BlocksCategory/readme.md)
 - [Custom Post Type](cmd/Make/CustomPostType/readme.md)
+- [Customizer](cmd/Make/Customizer/readme.md)
 - [Endpoint](cmd/Make/Endpoint/readme.md)
 - [Rest API Field](cmd/Make/RestApi/readme.md)
 - [Role](cmd/Make/Role/readme.md)

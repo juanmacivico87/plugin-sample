@@ -4,6 +4,7 @@ namespace PrefixCmd\Make\Customizer;
 use Composer\Script\Event;
 use Exception;
 use PrefixCmd\Make\Customizer\Panel\Panel;
+use PrefixCmd\Make\Customizer\Section\Section;
 
 class Customizer
 {
@@ -24,7 +25,8 @@ class Customizer
                 $panel::create_customizer_panel();
                 break;
             case 'section':
-                $event->getIO()->write( 'This is a section of the customizer' );
+                $section = new Section( $event );
+                $section::create_customizer_section();
                 break;
             case 'control':
                 $event->getIO()->write( 'This is a control of the customizer' );
