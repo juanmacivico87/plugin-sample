@@ -3,6 +3,7 @@ namespace PrefixCmd\Make\Customizer;
 
 use Composer\Script\Event;
 use Exception;
+use PrefixCmd\Make\Customizer\Control\Control;
 use PrefixCmd\Make\Customizer\Panel\Panel;
 use PrefixCmd\Make\Customizer\Section\Section;
 
@@ -29,7 +30,8 @@ class Customizer
                 $section::create_customizer_section();
                 break;
             case 'control':
-                $event->getIO()->write( 'This is a control of the customizer' );
+                $control = new Control( $event );
+                $control::create_customizer_control();
                 break;
         }
     }
