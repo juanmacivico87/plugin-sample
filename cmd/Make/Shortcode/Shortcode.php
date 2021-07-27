@@ -21,8 +21,6 @@ class Shortcode extends MakerBase
         $data['name'] = self::sanitize_name( $data['name'] );
         $data['tag'] = self::sanitize_tag( $data['tag'] );
 
-        var_dump( $data );
-
         self::$event->getIO()->write( sprintf( 'The name of your new shortcode class is %s', $data['name'] ) );
 
         $source_dir      = 'cmd/Make/Shortcode/source';
