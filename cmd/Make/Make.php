@@ -5,6 +5,7 @@ use Composer\Script\Event;
 use Exception;
 use PrefixCmd\Make\Block\Block;
 use PrefixCmd\Make\BlocksCategory\BlocksCategory;
+use PrefixCmd\Make\Customizer\Customizer;
 use PrefixCmd\Make\CustomPostType\CustomPostType;
 use PrefixCmd\Make\Endpoint\Endpoint;
 use PrefixCmd\Make\RestApi\RestApi;
@@ -38,7 +39,9 @@ class Make
                 $cpt::create_custom_post_type();
                 break;
             case 'customizer':
-                $event->getIO()->write( 'This is a section of the customizer' );
+                $flag = false !== isset( $args[1] ) ? $args[1] : null;
+                $customizer = new Customizer();
+                $customizer::make( $event, $flag );
                 break;
             case 'endpoint':
                 $endpoint = new Endpoint( $event );
