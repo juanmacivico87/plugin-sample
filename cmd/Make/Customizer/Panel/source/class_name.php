@@ -1,8 +1,9 @@
 <?php
 namespace PrefixSource\Customizer\Panels\class_name;
 
-if ( false === defined( 'ABSPATH' ) )
+if ( false === defined( 'ABSPATH' ) ) {
     exit;
+}
 
 /**
  * class_name
@@ -46,9 +47,9 @@ class class_name
      * @since  	1.0
      * @package	{{ plugin_slug }}
      */
-    public function init() : void
+    public function init(): void
     {
-        add_action( 'customize_register', array( $this, 'add_new_customizer_panel' ) );
+        add_action( 'customize_register', [ $this, 'add_new_customizer_panel' ] );
     }
 
     /**
@@ -62,17 +63,17 @@ class class_name
      * @since  	1.0
      * @package	{{ plugin_slug }}
      */
-    public function add_new_customizer_panel() : void
+    public function add_new_customizer_panel(): void
     {
         global $wp_customize;
 
         $wp_customize->add_panel( 
             self::PANEL_NAME, 
-            array(
+            [
                 'priority'       => 1,
                 'capability'     => 'edit_pages',
                 'title'          => __( 'class_singular_upper_name', '{{ plugin_slug }}' ),
-            )
+            ]
         );
     }
 }

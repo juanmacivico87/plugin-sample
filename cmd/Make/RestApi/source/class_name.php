@@ -1,8 +1,9 @@
 <?php
 namespace PrefixSource\RestApi\class_name;
 
-if ( false === defined( 'ABSPATH' ) )
+if ( false === defined( 'ABSPATH' ) ) {
     exit;
+}
 
 /**
  * class_name
@@ -16,7 +17,7 @@ if ( false === defined( 'ABSPATH' ) )
  */
 class class_name
 {
-    const POST_TYPES = array();
+    const POST_TYPES = [];
 
     /**
      * __construct()
@@ -46,9 +47,9 @@ class class_name
      * @since  	1.0
      * @package	{{ plugin_slug }}
      */
-    public function init() : void
+    public function init(): void
     {
-        add_action( 'rest_api_init', array( $this, 'add_new_rest_field' ) );
+        add_action( 'rest_api_init', [ $this, 'add_new_rest_field' ] );
     }
 
     /**
@@ -62,11 +63,11 @@ class class_name
      * @since  	1.0
      * @package	{{ plugin_slug }}
      */
-    public function add_new_rest_field() : void
+    public function add_new_rest_field(): void
     {
-        $args = array(
-            'get_callback' => array( $this, 'get_rest_field_value' ),
-        );
+        $args = [
+            'get_callback' => [ $this, 'get_rest_field_value' ],
+        ];
     
         register_rest_field( self::POST_TYPES, 'custom-rest-field', $args );
     }
@@ -82,7 +83,7 @@ class class_name
      * @since  	1.0
      * @package	{{ plugin_slug }}
      */
-    public function get_rest_field_value() : string
+    public function get_rest_field_value(): string
     {
         return 'Some value';
     }

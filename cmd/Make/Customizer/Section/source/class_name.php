@@ -1,8 +1,9 @@
 <?php
 namespace PrefixSource\Customizer\Sections\class_name;
 
-if ( false === defined( 'ABSPATH' ) )
+if ( false === defined( 'ABSPATH' ) ) {
     exit;
+}
 
 /**
  * class_name
@@ -46,9 +47,9 @@ class class_name
      * @since  	1.0
      * @package	{{ plugin_slug }}
      */
-    public function init() : void
+    public function init(): void
     {
-        add_action( 'customize_register', array( $this, 'add_new_customizer_section' ), 15 );
+        add_action( 'customize_register', [ $this, 'add_new_customizer_section' ], 15 );
     }
 
     /**
@@ -62,19 +63,19 @@ class class_name
      * @since  	1.0
      * @package	{{ plugin_slug }}
      */
-    public function add_new_customizer_section() : void
+    public function add_new_customizer_section(): void
     {
         global $wp_customize;
 
         $wp_customize->add_section( 
             self::SECTION_NAME,
-            array(
+            [
                 'title'         => __( 'class_singular_upper_name', '{{ plugin_slug }}' ),
                 'priority'      => 1,
                 'description'   => __( '', '{{ plugin_slug }}' ),
                 'capability'    => 'edit_pages',
                 'panel'         => '', // CustomizerPanelClass::PANEL_NAME
-            )
+            ]
         );
     }
 }

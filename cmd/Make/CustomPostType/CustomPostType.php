@@ -1,28 +1,30 @@
 <?php
 namespace PrefixCmd\Make\CustomPostType;
 
-use Composer\Script\Event;
 use Exception;
 use PrefixCmd\Make\MakerBase;
 
 class CustomPostType extends MakerBase
 {
-    public static function create_custom_post_type() : void
+    public static function create_custom_post_type(): void
     {
         $data['name'] = self::$event->getIO()->ask( 'Please, enter a name for your new custom post type [For example: MyAwesomeCpt]: ' );
 
-        if ( null === $data['name'] )
+        if ( null === $data['name'] ) {
             throw new Exception( 'You haven\'t entered a name for the custom post type' );
+        }
 
         $data['slug'] = self::$event->getIO()->ask( 'Please, enter a slug for your new custom post type [For example: my-awesome-cpt]: ' );
 
-        if ( null === $data['slug'] )
+        if ( null === $data['slug'] ) {
             throw new Exception( 'You haven\'t entered a slug for the custom post type' );
+        }
 
         $data['slug_for_plural'] = self::$event->getIO()->ask( 'Please, enter a slug for plural of your new custom post type [For example: my-awesomes-cpts]: ' );
 
-        if ( null === $data['slug_for_plural'] )
+        if ( null === $data['slug_for_plural'] ) {
             throw new Exception( 'You haven\'t entered a slug for plural of the custom post type' );
+        }
 
         $data['name'] = self::sanitize_name( $data['name'] );
         $data['slug'] = self::sanitize_slug( $data['slug'] );

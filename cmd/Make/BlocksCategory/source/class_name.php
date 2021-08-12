@@ -1,8 +1,9 @@
 <?php
 namespace PrefixSource\BlocksCategories\class_name;
 
-if ( false === defined( 'ABSPATH' ) )
+if ( false === defined( 'ABSPATH' ) ) {
     exit;
+}
 
 /**
  * class_name
@@ -46,9 +47,9 @@ class class_name
      * @since  	1.0
      * @package	{{ plugin_slug }}
      */
-    public function init() : void
+    public function init(): void
     {
-        add_filter( 'block_categories', array( $this, 'add_custom_blocks_category' ), 10, 2 );
+        add_filter( 'block_categories', [ $this, 'add_custom_blocks_category' ], 10, 2 );
     }
 
     /**
@@ -64,22 +65,23 @@ class class_name
      * @since  	1.0
      * @package	{{ plugin_slug }}
      */
-    public function add_custom_blocks_category( array $categories, \WP_Post $post ) : array
+    public function add_custom_blocks_category( array $categories, \WP_Post $post ): array
     {
-        $allowed_posts_types = array();
+        $allowed_posts_types = [];
         
-        if ( false === in_array( $post->post_type, $allowed_posts_types ) )
+        if ( false === in_array( $post->post_type, $allowed_posts_types ) ) {
             return $categories;
+        }
 
         return array_merge(
             $categories,
-            array(
-                array(
+            [
+                [
                     'slug' => self::BLOCK_CATEGORY_SLUG,
-                    'title' => __( 'Custom Blocks Category', '{{ plugin_slug }}' ),
+                    'title' => __( 'class_singular_upper_name', '{{ plugin_slug }}' ),
                     'icon'  => '',
-                ),
-            )
+                ],
+            ]
         );
     }
 }

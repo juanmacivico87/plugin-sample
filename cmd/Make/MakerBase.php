@@ -13,17 +13,20 @@ abstract class MakerBase
         self::$event = $event;
     }
 
-    public static function create_files( array $data, string $source_dir, string $destiny_dir, array $source_contents ) : void
+    public static function create_files( array $data, string $source_dir, string $destiny_dir, array $source_contents ): void
     {
-        if ( false !== empty( $source_contents ) )
+        if ( false !== empty( $source_contents ) ) {
             throw new Exception( sprintf( 'No content found in %s directory', $source_dir ) );
+        }
 
-        if ( false === file_exists( $destiny_dir ) )
+        if ( false === file_exists( $destiny_dir ) ) {
             mkdir( $destiny_dir, 0700, true );
+        }
 
         foreach( $source_contents as $key => $content ) {
-            if ( 0 === $key || 1 === $key )
+            if ( 0 === $key || 1 === $key ) {
                 continue;
+            }
             
             $new_content = $source_dir . '/' . $content;
             $new_destiny = self::sanitize_value( $data, $destiny_dir . '/' . $content );
@@ -39,22 +42,24 @@ abstract class MakerBase
 
             $file_content = file_get_contents( $new_content );
 
-            if ( false === $file_content )
+            if ( false === $file_content ) {
                 throw new Exception( sprintf( 'Couldn\'t get %s file', $new_destiny ) );
+            }
 
             $file_content = self::sanitize_value( $data, $file_content );
             $is_created   = file_put_contents( $new_destiny, $file_content );
 
-            if ( false !== $is_created )
+            if ( false !== $is_created ) {
                 self::$event->getIO()->write( sprintf( 'File %s has been created', $new_destiny ) );
+            }
         }
     }
 
-    public static function sanitize_name( string $name ) : ?string
+    public static function sanitize_name( string $name ): ?string
     {
         $name = ucwords( $name );
 
-        $utf8 = array(
+        $utf8 = [
             '/[ ]/'         => '',
             '/[áàâãªä]/u'   => 'a',
             '/[ÁÀÂÃÄ]/u'    => 'A',
@@ -74,14 +79,14 @@ abstract class MakerBase
             '/[’‘‹›‚]/u'    => '',
             '/[“”«»„]/u'    => '',
             '/ /'           => '',
-        );
+        ];
 
         return preg_replace( array_keys( $utf8 ), array_values( $utf8 ), $name );
     }
 
-    public static function sanitize_slug( string $slug ) : ?string
+    public static function sanitize_slug( string $slug ): ?string
     {
-        $utf8 = array(
+        $utf8 = [
             '/[ ]/'         => '',
             '/[áàâãªä]/u'   => 'a',
             '/[ÁÀÂÃÄ]/u'    => 'a',
@@ -102,14 +107,14 @@ abstract class MakerBase
             '/[’‘‹›‚]/u'    => '',
             '/[“”«»„]/u'    => '',
             '/ /'           => '',
-        );
+        ];
 
         return preg_replace( array_keys( $utf8 ), array_values( $utf8 ), $slug );
     }
 
-    public static function sanitize_tag( string $tag ) : ?string
+    public static function sanitize_tag( string $tag ): ?string
     {
-        $utf8 = array(
+        $utf8 = [
             '/[ ]/'         => '',
             '/[áàâãªä]/u'   => 'a',
             '/[ÁÀÂÃÄ]/u'    => 'a',
@@ -129,14 +134,14 @@ abstract class MakerBase
             '/[’‘‹›‚]/u'    => '',
             '/[“”«»„]/u'    => '',
             '/ /'           => '',
-        );
+        ];
 
         return preg_replace( array_keys( $utf8 ), array_values( $utf8 ), $tag );
     }
 
-    public static function sanitize_value( array $data, string $value ) : string
+    public static function sanitize_value( array $data, string $value ): string
     {
-        $replaces = array(
+        $replaces = [
             'name'                => 'class_name',
             'slug'                => 'class_slug',
             'route'               => 'class_route',
@@ -145,7 +150,7 @@ abstract class MakerBase
             'singular_upper_name' => 'class_singular_upper_name',
             'plural_lower_name'   => 'class_plural_lower_name',
             'plural_upper_name'   => 'class_plural_upper_name',
-        );
+        ];
 
         foreach( $replaces as $key => $replace ) {
             if ( false === isset( $data[$key] ) ) {

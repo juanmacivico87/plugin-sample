@@ -1,18 +1,18 @@
 <?php
 namespace PrefixCmd\Make\RestApi;
 
-use Composer\Script\Event;
 use Exception;
 use PrefixCmd\Make\MakerBase;
 
 class RestApi extends MakerBase
 {
-    public static function create_custom_rest_api_field() : void
+    public static function create_custom_rest_api_field(): void
     {
         $data['name'] = self::$event->getIO()->ask( 'Please, enter a name for your new Rest API field class [For example: MyAwesomeRestApiField]: ' );
 
-        if ( null === $data['name'] )
+        if ( null === $data['name'] ) {
             throw new Exception( 'You haven\'t entered a name for the custom Rest API field class' );
+        }
 
         $data['name'] = self::sanitize_name( $data['name'] );
 

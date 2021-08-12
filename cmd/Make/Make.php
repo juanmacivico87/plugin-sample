@@ -15,16 +15,18 @@ use PrefixCmd\Make\Shortcode\Shortcode;
 
 class Make
 {
-    public static function make( Event $event ) : void
+    public static function make( Event $event ): void
     {
-        $options = array( 'block', 'blocks-category', 'cpt', 'customizer', 'endpoint', 'metabox', 'rest-api-field', 'role', 'shortcode', 'taxonomy' );
+        $options = [ 'block', 'blocks-category', 'cpt', 'customizer', 'endpoint', 'metabox', 'rest-api-field', 'role', 'shortcode', 'taxonomy' ];
         $args    = $event->getArguments();
 
-        if ( false !== empty( $args ) )
+        if ( false !== empty( $args ) ) {
             throw new Exception( 'No arguments found for make command' );
+        }
 
-        if ( false === in_array( $args[0], $options ) )
+        if ( false === in_array( $args[0], $options ) ) {
             throw new Exception( sprintf( 'The %s option is not set for the make command', $args[0] ) );
+        }
 
         switch( $args[0] ) {
             case 'block':

@@ -1,8 +1,9 @@
 <?php
 namespace PrefixSource\Endpoints\class_name;
 
-if ( false === defined( 'ABSPATH' ) )
+if ( false === defined( 'ABSPATH' ) ) {
     exit;
+}
 
 /**
  * class_name
@@ -46,9 +47,9 @@ class class_name
      * @since  	1.0
      * @package	{{ plugin_slug }}
      */
-    public function init() : void
+    public function init(): void
     {
-        add_action( 'rest_api_init', array( $this, 'create_new_endpoint' ) );
+        add_action( 'rest_api_init', [ $this, 'create_new_endpoint' ] );
     }
 
     /**
@@ -63,13 +64,13 @@ class class_name
      * @since  	1.0
      * @package	{{ plugin_slug }}
      */
-    public function create_new_endpoint() : void
+    public function create_new_endpoint(): void
     {
-        register_rest_route( PREFIX_PLUGIN_ENDPOINTS_NAMESPACE, SELF::ROUTE, array(
+        register_rest_route( PREFIX_PLUGIN_ENDPOINTS_NAMESPACE, SELF::ROUTE, [
             'methods'               => \WP_REST_Server::READABLE,
-            'callback'              => array( $this, 'controller' ),
+            'callback'              => [ $this, 'controller' ],
             'permission_callback'   => '__return_true',
-        ) );
+        ] );
     }
 
     /**
@@ -85,15 +86,16 @@ class class_name
      */
     public function controller()
     {
-        if ( is_wp_error( '' ) )
-            return new \WP_Error( 'custom_error', __( 'Message of custom error', '{{ plugin_slug }}' ), array( 'status' => 400 ) );
+        if ( is_wp_error( '' ) ) {
+            return new \WP_Error( 'custom_error', __( 'Message of custom error', '{{ plugin_slug }}' ), [ 'status' => 400 ] );
+        }
 
-        return new \WP_REST_Response( array(
+        return new \WP_REST_Response( [
             'code'		=> 'custom_response',
             'message'	=> __( 'Message of custom response', '{{ plugin_slug }}' ),
-            'data'		=> array(
+            'data'		=> [
                 'status' => 200,
-            )
-        ) );
+            ]
+        ] );
     }
 }

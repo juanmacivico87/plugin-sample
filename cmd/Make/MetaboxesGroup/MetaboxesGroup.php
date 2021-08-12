@@ -10,13 +10,15 @@ class MetaboxesGroup extends MakerBase
     {
         $data['name'] = self::$event->getIO()->ask( 'Please, enter a name for your new group of metaboxes [For example: MyAwesomeMetaboxesGroup]: ' );
 
-        if ( null === $data['name'] )
+        if ( null === $data['name'] ) {
             throw new Exception( 'You haven\'t entered a name for the group of metaboxes' );
+        }
 
         $data['tag'] = self::$event->getIO()->ask( 'Please, enter a tag for your new group of metaboxes [For example: my_awesome_metaboxes_group]: ' );
 
-        if ( null === $data['tag'] )
+        if ( null === $data['tag'] ) {
             throw new Exception( 'You haven\'t entered a tag for the group of metaboxes' );
+        }
 
         $data['name'] = self::sanitize_name( $data['name'] );
         $data['tag'] = self::sanitize_tag( $data['tag'] );

@@ -1,8 +1,9 @@
 <?php
 namespace PrefixSource\Customizer\Controls\class_name;
 
-if ( false === defined( 'ABSPATH' ) )
+if ( false === defined( 'ABSPATH' ) ) {
     exit;
+}
 
 /**
  * class_name
@@ -46,9 +47,9 @@ class class_name
      * @since  	1.0
      * @package	{{ plugin_slug }}
      */
-    public function init() : void
+    public function init(): void
     {
-        add_action( 'customize_register', array( $this, 'add_new_customizer_control' ), 20 );
+        add_action( 'customize_register', [ $this, 'add_new_customizer_control' ], 20 );
     }
 
     /**
@@ -62,29 +63,29 @@ class class_name
      * @since  	1.0
      * @package	{{ plugin_slug }}
      */
-    public function add_new_customizer_control() : void
+    public function add_new_customizer_control(): void
     {
         global $wp_customize;
 
         $wp_customize->add_setting(
             self::CONTROL_NAME,
-            array(
+            [
                 'default'       => '',
                 'type'          => 'option',
                 'capability'    => 'edit_pages',
                 'transport'     => 'refresh',
-            )
+            ]
         );
 
         $wp_customize->add_control(
             self::CONTROL_NAME,
-            array(
+            [
                 'label'       => __( 'class_singular_upper_name', '{{ plugin_slug }}' ),
                 'description' => __( '', '{{ plugin_slug }}' ),
                 'section'     => '', // CustomizerSectionClass::SECTION_NAME
                 'priority'    => 1,
                 'type'        => 'text',
-            )
+            ]
         );
     }
 }

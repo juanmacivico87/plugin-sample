@@ -6,17 +6,19 @@ use PrefixCmd\Make\MakerBase;
 
 class Panel extends MakerBase
 {
-    public static function create_customizer_panel() : void
+    public static function create_customizer_panel(): void
     {
         $data['name'] = self::$event->getIO()->ask( 'Please, enter a name for your new customizer panel class [For example: MyAwesomePanel]: ' );
 
-        if ( null === $data['name'] )
+        if ( null === $data['name'] ) {
             throw new Exception( 'You haven\'t entered a name for the customizer panel class' );
+        }
 
         $data['slug'] = self::$event->getIO()->ask( 'Please, enter a slug for your new customizer panel [For example: my-awesome-panel]: ' );
 
-        if ( null === $data['slug'] )
+        if ( null === $data['slug'] ) {
             throw new Exception( 'You haven\'t entered a slug for the customizer panel' );
+        }
 
         $data['name'] = self::sanitize_name( $data['name'] );
         $data['slug'] = self::sanitize_slug( $data['slug'] );

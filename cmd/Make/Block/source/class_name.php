@@ -1,8 +1,9 @@
 <?php
 namespace PrefixSource\Blocks\class_name;
 
-if ( false === defined( 'ABSPATH' ) )
+if ( false === defined( 'ABSPATH' ) ) {
     exit;
+}
 
 /**
  * class_name
@@ -18,7 +19,7 @@ class class_name
 {
     const BLOCK_NAME = 'class_tag';
     const BLOCK_SLUG = 'acf/class_slug';
-    const POST_TYPES = array();
+    const POST_TYPES = [];
 
     /**
      * __construct()
@@ -48,10 +49,10 @@ class class_name
      * @since  	1.0
      * @package	{{ plugin_slug }}
      */
-    public function init() : void
+    public function init(): void
     {
-        add_action( 'acf/init', array( $this, 'add_custom_block' ) );
-        add_action( 'init', array( $this, 'add_block_fields' ) );
+        add_action( 'acf/init', [ $this, 'add_custom_block' ] );
+        add_action( 'init', [ $this, 'add_block_fields' ] );
     }
     
     /**
@@ -65,41 +66,41 @@ class class_name
      * @since  	1.0
      * @package	{{ plugin_slug }}
      */
-    public function add_custom_block() : void
+    public function add_custom_block(): void
     {
-        if ( false === function_exists( 'acf_register_block_type' ) )
+        if ( false === function_exists( 'acf_register_block_type' ) ) {
             return;
+        }
 
         acf_register_block_type(
-            array(
+            [
                 'name'				=> self::BLOCK_NAME,
                 'title'				=> __( 'class_singular_upper_name', '{{ plugin_slug }}' ),
                 'description'		=> __( '', '{{ plugin_slug }}' ),
                 'category'			=> '',
                 'icon'				=> 'admin-comments',
-                'keywords'			=> array( 'block' ),
-                'post_types'        => array( self::POST_TYPES ),
+                'keywords'			=> [ 'block' ],
+                'post_types'        => [ self::POST_TYPES ],
                 'mode'              => 'edit',
                 'render_template'   => PREFIX_PLUGIN_DIR . 'src/Blocks/class_name/views/template-class_tag.php',
-                'supports'          => array( 'mode' => false ),
+                'supports'          => [ 'mode' => false ],
                 'enqueue_assets'    => function() {
-                    if ( !is_admin() )
-                    {
-                        wp_enqueue_style( 'class_slug', PREFIX_PLUGIN_URL . 'src/Blocks/class_name/css/styles.css', array(), '1.0' );
-                        wp_enqueue_script( 'class_slug', PREFIX_PLUGIN_URL . 'src/Blocks/class_name/js/scripts.js', array(), '1.0', true );
-                        $args = array();
+                    if ( !is_admin() ) {
+                        wp_enqueue_style( 'class_slug', PREFIX_PLUGIN_URL . 'src/Blocks/class_name/css/styles.css', [], '1.0' );
+                        wp_enqueue_script( 'class_slug', PREFIX_PLUGIN_URL . 'src/Blocks/class_name/js/scripts.js', [], '1.0', true );
+                        $args = [];
                         wp_localize_script( 'class_slug', 'blockObject', $args );
                     }
                     // CSS class: .is-style-class_slug-style
                     register_block_style(
                         self::BLOCK_SLUG,
-                        array(
+                        [
                             'name'  => 'class_slug-style',
                             'label' => __( 'class_singular_upper_name Style', '{{ plugin_slug }}' ),
-                        )
+                        ]
                     );
                 },
-            )
+            ]
         );
     }
 
@@ -115,11 +116,12 @@ class class_name
      * @since  	1.0
      * @package	{{ plugin_slug }}
      */
-    public function add_block_fields() : void
+    public function add_block_fields(): void
     {
-        if ( false === function_exists( 'acf_add_local_field_group' ) )
+        if ( false === function_exists( 'acf_add_local_field_group' ) ) {
             return;
+        }
 
-        acf_add_local_field_group( array() );
+        acf_add_local_field_group( [] );
     }
 }

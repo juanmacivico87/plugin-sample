@@ -6,17 +6,19 @@ use PrefixCmd\Make\MakerBase;
 
 class Shortcode extends MakerBase
 {
-    public static function create_custom_shortcode() : void
+    public static function create_custom_shortcode(): void
     {
         $data['name'] = self::$event->getIO()->ask( 'Please, enter a name for your new shortcode class [For example: MyAwesomeShortcode]: ' );
 
-        if ( null === $data['name'] )
+        if ( null === $data['name'] ) {
             throw new Exception( 'You haven\'t entered a name for the shortcode class' );
+        }
 
         $data['tag'] = self::$event->getIO()->ask( 'Please, enter a tag for your new shortcode [For example: my_awesome_shortcode]: ' );
 
-        if ( null === $data['tag'] )
+        if ( null === $data['tag'] ) {
             throw new Exception( 'You haven\'t entered a tag for the shortcode' );
+        }
 
         $data['name'] = self::sanitize_name( $data['name'] );
         $data['tag'] = self::sanitize_tag( $data['tag'] );

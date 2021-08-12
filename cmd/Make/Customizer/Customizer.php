@@ -9,16 +9,17 @@ use PrefixCmd\Make\Customizer\Section\Section;
 
 class Customizer
 {
-    public static function make( Event $event, ?string $flag ) : void
+    public static function make( Event $event, ?string $flag ): void
     {
-        $options = array( 'panel', 'section', 'control' );
+        $options = [ 'panel', 'section', 'control' ];
 
         if ( null === $flag ) {
             throw new Exception( sprintf( 'The flag is not allow to be null. Options are: %s', implode( ', ', $options ) ) );
         }
 
-        if ( false === in_array( $flag, $options ) )
+        if ( false === in_array( $flag, $options ) ) {
             throw new Exception( sprintf( 'The %s option is not set for the customizer command', $flag ) );
+        }
 
         switch( $flag ) {
             case 'panel':

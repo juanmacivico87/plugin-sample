@@ -1,8 +1,9 @@
 <?php
 namespace PrefixSource\Metaboxes\class_name;
 
-if ( false === defined( 'ABSPATH' ) )
+if ( false === defined( 'ABSPATH' ) ) {
     exit;
+}
 
 /**
  * class_name
@@ -18,7 +19,7 @@ class class_name
 {
     const METABOXES_GROUP = 'class_tag';
 
-    private array $metaboxes = array();
+    private array $metaboxes = [];
 
     /**
      * __construct()
@@ -48,14 +49,14 @@ class class_name
      * @since  	1.0
      * @package	{{ plugin_slug }}
      */
-    public function init() : void
+    public function init(): void
     {
-        $this->metaboxes = array(
+        $this->metaboxes = [
             '_class_tag' => __( 'class_singular_upper_name', '{{ plugin_slug }}' ),
-        );
+        ];
 
-        add_action( 'add_meta_boxes', array( $this, 'add_metaboxes_group' ), 10, 2 );
-        add_action( 'save_post', array( $this, 'save_metaboxes_group' ) );
+        add_action( 'add_meta_boxes', [ $this, 'add_metaboxes_group' ], 10, 2 );
+        add_action( 'save_post', [ $this, 'save_metaboxes_group' ] );
     }
 
     /**
@@ -71,12 +72,12 @@ class class_name
      * @since  	1.0
      * @package	{{ plugin_slug }}
      */
-    public function add_metaboxes_group( string $post_type, \WP_Post $post ) : void
+    public function add_metaboxes_group( string $post_type, \WP_Post $post ): void
     {
         add_meta_box(
             self::METABOXES_GROUP,
             __( 'class_singular_upper_name', '{{ plugin_slug }}' ),
-            array( $this, 'render_metaboxes_group' ),
+            [ $this, 'render_metaboxes_group' ],
             '', // CustomPostType::POST_TYPE_NAME,
             'side',
             'default'
@@ -95,7 +96,7 @@ class class_name
      * @since  	1.0
      * @package	{{ plugin_slug }}
      */
-    public function render_metaboxes_group( \WP_Post $post ) : void
+    public function render_metaboxes_group( \WP_Post $post ): void
     {
         foreach( $this->metaboxes as $key => $label ) {
             $value = get_post_meta( $post->ID, $key, true ) ?: ''; ?>
@@ -120,7 +121,7 @@ class class_name
      * @since  	1.0
      * @package	{{ plugin_slug }}
      */
-    public function save_metaboxes_group( int $post_id ) : void
+    public function save_metaboxes_group( int $post_id ): void
     {
         foreach( $this->metaboxes as $key => $label ) {
             if ( false === array_key_exists( $key, $_POST ) || false !== empty( $_POST[$key] ) ) {

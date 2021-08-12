@@ -1,8 +1,9 @@
 <?php
 namespace PrefixSource\Shortcodes\class_name;
 
-if ( false === defined( 'ABSPATH' ) )
+if ( false === defined( 'ABSPATH' ) ) {
     exit;
+}
 
 /**
  * class_name
@@ -45,9 +46,9 @@ class class_name
      * @since  	1.0
      * @package	{{ plugin_slug }}
      */
-    public function init() : void
+    public function init(): void
     {
-        add_shortcode( self::SHORTCODE_TAG, array( $this, 'render_shortcode' ) );
+        add_shortcode( self::SHORTCODE_TAG, [ $this, 'render_shortcode' ] );
     }
 
     /**
@@ -62,7 +63,7 @@ class class_name
      * @since  	1.0
      * @package	{{ plugin_slug }}
      */
-    public function render_shortcode( array $args ) : string
+    public function render_shortcode( array $args ): string
     {
         $sample_arg = isset( $args['sample'] ) ? $args['sample'] : null;
         

@@ -6,17 +6,19 @@ use PrefixCmd\Make\MakerBase;
 
 class Section extends MakerBase
 {
-    public static function create_customizer_section() : void
+    public static function create_customizer_section(): void
     {
         $data['name'] = self::$event->getIO()->ask( 'Please, enter a name for your new customizer section class [For example: MyAwesomeSection]: ' );
 
-        if ( null === $data['name'] )
+        if ( null === $data['name'] ) {
             throw new Exception( 'You haven\'t entered a name for the customizer section class' );
+        }
 
         $data['slug'] = self::$event->getIO()->ask( 'Please, enter a slug for your new customizer section [For example: my-awesome-section]: ' );
 
-        if ( null === $data['slug'] )
+        if ( null === $data['slug'] ) {
             throw new Exception( 'You haven\'t entered a slug for the customizer section' );
+        }
 
         $data['name'] = self::sanitize_name( $data['name'] );
         $data['slug'] = self::sanitize_slug( $data['slug'] );

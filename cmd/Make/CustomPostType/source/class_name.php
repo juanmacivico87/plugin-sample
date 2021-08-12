@@ -1,8 +1,9 @@
 <?php
 namespace PrefixSource\PostsTypes\class_name;
 
-if ( false === defined( 'ABSPATH' ) )
+if ( false === defined( 'ABSPATH' ) ) {
     exit;
+}
 
 /**
  * class_name
@@ -19,14 +20,14 @@ class class_name
     const POST_TYPE_NAME    = 'class_singular_lower_name';
     const POST_TYPE_PLURAL  = 'class_plural_lower_name';
 
-    private array $support    = array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'trackbacks', 'custom-fields', 'comments', 'revisions', 'page-attributes', 'post-formats' );
-    private array $taxonomies = array();
-    private array $rewrite    = array( 
+    private array $support    = [ 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'trackbacks', 'custom-fields', 'comments', 'revisions', 'page-attributes', 'post-formats' ];
+    private array $taxonomies = [];
+    private array $rewrite    = [ 
         'slug'       => '',
         'with_front' => false,
         'feeds'      => false,
         'pages'      => true,
-    );
+    ];
 
     /**
      * __construct()
@@ -56,12 +57,12 @@ class class_name
      * @since  	1.0
      * @package	{{ plugin_slug }}
      */
-    public function init() : void
+    public function init(): void
     {
-        add_action( 'init', array( $this, 'set_custom_post_type_slug' ), 5 );
-        add_action( 'init', array( $this, 'add_custom_post_type' ) );
-        add_filter( 'archive_template', array( $this, 'get_post_type_templates' ) );
-        add_filter( 'single_template', array( $this, 'get_post_type_templates' ) );
+        add_action( 'init', [ $this, 'set_custom_post_type_slug' ], 5 );
+        add_action( 'init', [ $this, 'add_custom_post_type' ] );
+        add_filter( 'archive_template', [ $this, 'get_post_type_templates' ] );
+        add_filter( 'single_template', [ $this, 'get_post_type_templates' ] );
     }
 
     /**
@@ -75,7 +76,7 @@ class class_name
      * @since  	1.0
      * @package	{{ plugin_slug }}
      */
-    public function set_custom_post_type_slug() : void
+    public function set_custom_post_type_slug(): void
     {
         $this->rewrite['slug'] = __( 'class_slug', '{{ plugin_slug }}' );
     }
@@ -91,10 +92,10 @@ class class_name
      * @since  	1.0
      * @package	{{ plugin_slug }}
      */
-    public function add_custom_post_type() : void
+    public function add_custom_post_type(): void
     {
-        $args = array(
-            'labels' => array(
+        $args = [
+            'labels' => [
                 'name'                     => __( 'class_plural_upper_name', '{{ plugin_slug }}' ),
                 'singular_name'            => __( 'class_singular_upper_name', '{{ plugin_slug }}' ),
                 'add_new'                  => __( 'Add New', '{{ plugin_slug }}' ),
@@ -126,7 +127,7 @@ class class_name
                 'item_reverted_to_draft'   => __( 'class_singular_upper_name Reverte to Draft', '{{ plugin_slug }}' ),
                 'item_scheduled'           => __( 'class_singular_upper_name Scheduled', '{{ plugin_slug }}' ),
                 'item_updated'             => __( 'class_singular_upper_name Updated', '{{ plugin_slug }}' ),
-            ),
+            ],
             'public'              => true,
             'exclude_from_search' => false,
             'publicly_queryable'  => true,
@@ -145,8 +146,8 @@ class class_name
             'delete_with_user'    => false,
             'show_in_rest'        => true,
             'map_meta_cap'        => true,
-            'capability_type'     => array( self::POST_TYPE_NAME, self::POST_TYPE_PLURAL ),
-            'capabilities'        => array(
+            'capability_type'     => [ self::POST_TYPE_NAME, self::POST_TYPE_PLURAL ],
+            'capabilities'        => [
                 'edit_class_singular_lower_name'              => 'edit_class_singular_lower_name', 
                 'read_class_singular_lower_name'              => 'read_class_singular_lower_name', 
                 'delete_class_singular_lower_name'            => 'delete_class_singular_lower_name', 
@@ -161,8 +162,8 @@ class class_name
                 'delete_others_class_plural_lower_name'    => 'delete_others_class_plural_lower_name',
                 'edit_private_class_plural_lower_name'     => 'edit_private_class_plural_lower_name',
                 'edit_published_class_plural_lower_name'   => 'edit_published_class_plural_lower_name',
-            ),
-        );
+            ],
+        ];
 
         register_post_type( self::POST_TYPE_NAME, $args );
         flush_rewrite_rules();
@@ -180,10 +181,11 @@ class class_name
      * @since  	1.0
      * @package	{{ plugin_slug }}
      */
-    public function get_post_type_templates( string $template ) : string
+    public function get_post_type_templates( string $template ): string
     {
-        if ( get_post_type() !== self::POST_TYPE_NAME )
+        if ( get_post_type() !== self::POST_TYPE_NAME ) {
             return $template;
+        }
 
         switch( true ) {
             case is_archive() && !is_tax():
@@ -208,16 +210,17 @@ class class_name
      * @since  	1.0
      * @package	{{ plugin_slug }}
      */
-    public static function set_roles_capabilities() : void
+    public static function set_roles_capabilities(): void
     {
         global $wp_roles;
 
         $is_set_capabilities = get_option( '__prefix_set_class_singular_lower_name_capabilities' );
 
-        if ( $is_set_capabilities )
+        if ( $is_set_capabilities ) {
             return;
+        }
 
-        $map_meta_cap = array(
+        $map_meta_cap = [
             'edit_post'              => 'edit_class_singular_lower_name', 
             'read_post'              => 'read_class_singular_lower_name', 
             'delete_post'            => 'delete_class_singular_lower_name', 
@@ -231,14 +234,15 @@ class class_name
             'delete_others_posts'    => 'delete_others_class_plural_lower_name',
             'edit_private_posts'     => 'edit_private_class_plural_lower_name',
             'edit_published_posts'   => 'edit_published_class_plural_lower_name',
-        );
+        ];
         
         foreach( $wp_roles->roles as $role => $args ) {
             $current_role = get_role( $role );
 
             foreach( $map_meta_cap as $post_cap => $capability ) {
-                if ( isset( $args['capabilities'][$post_cap] ) && false !== $args['capabilities'][$post_cap] )
+                if ( isset( $args['capabilities'][$post_cap] ) && false !== $args['capabilities'][$post_cap] ) {
                     $current_role->add_cap( $capability );
+                }
             }
         }
 

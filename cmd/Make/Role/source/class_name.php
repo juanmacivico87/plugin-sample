@@ -1,8 +1,9 @@
 <?php
 namespace PrefixSource\Roles\class_name;
 
-if ( false === defined( 'ABSPATH' ) )
+if ( false === defined( 'ABSPATH' ) ) {
     exit;
+}
 
 /**
  * class_name
@@ -46,9 +47,9 @@ class class_name
      * @since  	1.0
      * @package	{{ plugin_slug }}
      */
-    public function init() : void
+    public function init(): void
     {
-        add_action( 'init', array( $this, 'add_new_role' ) );
+        add_action( 'init', [ $this, 'add_new_role' ] );
     }
     
     /**
@@ -62,12 +63,12 @@ class class_name
      * @since  	1.0
      * @package	{{ plugin_slug }}
      */
-    public function add_new_role() : void
+    public function add_new_role(): void
     {
         add_role(
             self::ROLE_NAME,
             __( 'Custom role', '{{ plugin_slug }}' ),
-            array()
+            [] // Capabilities
         );
     }
 }
