@@ -8,6 +8,7 @@ use PrefixCmd\Make\BlocksCategory\BlocksCategory;
 use PrefixCmd\Make\Customizer\Customizer;
 use PrefixCmd\Make\CustomPostType\CustomPostType;
 use PrefixCmd\Make\Endpoint\Endpoint;
+use PrefixCmd\Make\MetaboxesGroup\MetaboxesGroup;
 use PrefixCmd\Make\RestApi\RestApi;
 use PrefixCmd\Make\Role\Role;
 use PrefixCmd\Make\Shortcode\Shortcode;
@@ -48,7 +49,8 @@ class Make
                 $endpoint::create_custom_endpoint();
                 break;
             case 'metabox':
-                $event->getIO()->write( 'This is a group of metaboxes' );
+                $metaboxes_group = new MetaboxesGroup( $event );
+                $metaboxes_group::create_custom_metaboxes_group();
                 break;
             case 'rest-api-field':
                 $rest_api = new RestApi( $event );
