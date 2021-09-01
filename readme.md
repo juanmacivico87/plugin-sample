@@ -78,14 +78,6 @@ De todas formas, para ayudarte, te hago un resumen de los archivos y carpetas qu
         - **Settings.php:** Este es el archivo que contiene los métodos y las propiedades necesarias para desarrollar tu propia página de ajustes.
     - **Shortcodes:** Antes de la llegada de la era de los bloques a WordPress, si querías incluir un contenido específico en varias páginas, sin tener que duplicar su código, tenías que hacerlo con este tipo de componentes. A día de hoy, la gran mayoría de shortcodes están siendo migrados a bloques, pero aún hay proyectos en los que son necesarios. En esta carpeta, podrás crear tus shortcodes personalizados e insertarlos en las páginas o entradas en las que quieras renderizar su contenido.
     - **Taxonomies:** WordPress también trae incluidas en su núcleo taxonomías, que te permiten clasificar los contenidos de un tipo concreto o de varios tipos. Algunas de estas taxonomías permiten una jerarquía, como es el caso de las categorías de una entrada, que dan la posibilidad de crear sub-categorías. Otras, por el contrario, no permiten dicha jerarquía, como es el caso de las etiquetas de una entrada. En esta carpeta podrás tener todas las taxonomías personalizadas que necesites.
-        - **CustomCategory:** Contiene una taxonomía personalizada, con jerarquía. Para crear tu propia taxonomía con jerarquía, duplica o edita esta clase y añade los métodos y las propiedades que necesites.
-            - **CustomCategory.php:** Este es el archivo que contiene los métodos y las propiedades necesarias para desarrollar la taxonomía con jerarquía.
-            - **views:** En esta carpeta podrás crear un template para que renderice el listado de entradas de tu taxonomía con jerarquía.
-                - **taxonomy-category.php:** Este archivo contiene el template del listado de entradas de tu taxonomía con jerarquía.
-        - **CustomTag:** Contiene una taxonomía personalizada, sin jerarquía. Para crear tu propia taxonomía con jerarquía, duplica o edita esta clase y añade los métodos y las propiedades que necesites.
-            - **CustomTag.php:** Este es el archivo que contiene los métodos y las propiedades necesarias para desarrollar la taxonomía sin jerarquía.
-            - **views:** En esta carpeta podrás crear un template para que renderice el listado de entradas de tu taxonomía sin jerarquía.
-                - **taxonomy-tag.php:** Este archivo contiene el template del listado de entradas de tu taxonomía sin jerarquía.
 - **vendor:** En esta carpeta, se almacenarán todas las dependencias que se instalen en el plugin al ejecutar el comando "composer install".
 - **composer.json:** Este es el archivo de configuración de Composer. En él, encontrarás las librerías y dependencias que el plugin necesita para funcionar. Quizá necesites añadir las tuyas propias en función del plugin que vayas a desarrollar.
 - **composer.lock:** Este archivo contiene las dependencias que se han instalado actualmente en tu plugin a través de composer, así como las versiones de cada una de ellas. Puedes modificar su contenido ejecutando el comando "composer update" en una consola desde la raíz del plugin.
@@ -101,6 +93,7 @@ De todas formas, para ayudarte, te hago un resumen de los archivos y carpetas qu
 - [Rest API Field](cmd/Make/RestApi/readme.md)
 - [Role](cmd/Make/Role/readme.md)
 - [Shortcode](cmd/Make/Shortcode/readme.md)
+- [Taxonomies](cmd/Make/Taxonomies/readme.md)
 
 ## Fin del desarrollo de tu plugin
 

@@ -12,6 +12,7 @@ use PrefixCmd\Make\MetaboxesGroup\MetaboxesGroup;
 use PrefixCmd\Make\RestApi\RestApi;
 use PrefixCmd\Make\Role\Role;
 use PrefixCmd\Make\Shortcode\Shortcode;
+use PrefixCmd\Make\Taxonomies\Taxonomies;
 
 class Make
 {
@@ -67,7 +68,9 @@ class Make
                 $shortcode::create_custom_shortcode();
                 break;
             case 'taxonomy':
-                $event->getIO()->write( 'This is a custom taxonomy' );
+                $flag = false !== isset( $args[1] ) ? $args[1] : null;
+                $taxonomy = new Taxonomies();
+                $taxonomy::make( $event, $flag );
                 break;
         }
     }
