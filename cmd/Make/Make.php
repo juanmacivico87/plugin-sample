@@ -11,6 +11,7 @@ use PrefixCmd\Make\Endpoint\Endpoint;
 use PrefixCmd\Make\MetaboxesGroup\MetaboxesGroup;
 use PrefixCmd\Make\RestApi\RestApi;
 use PrefixCmd\Make\Role\Role;
+use PrefixCmd\Make\Settings\Settings;
 use PrefixCmd\Make\Shortcode\Shortcode;
 use PrefixCmd\Make\Taxonomies\Taxonomies;
 
@@ -18,7 +19,7 @@ class Make
 {
     public static function make( Event $event ): void
     {
-        $options = [ 'block', 'blocks-category', 'cpt', 'customizer', 'endpoint', 'metabox', 'rest-api-field', 'role', 'shortcode', 'taxonomy' ];
+        $options = [ 'block', 'blocks-category', 'cpt', 'customizer', 'endpoint', 'metabox', 'rest-api-field', 'role', 'settings', 'shortcode', 'taxonomy' ];
         $args    = $event->getArguments();
 
         if ( false !== empty( $args ) ) {
@@ -63,6 +64,11 @@ class Make
                 $role = new Role( $event );
                 $role::create_custom_role();
                 break;
+            case 'settings':
+                    $flag = false !== isset( $args[1] ) ? $args[1] : null;
+                    $settings = new Settings;
+                    $settings::make( $event, $flag );
+                    break;
             case 'shortcode':
                 $shortcode = new Shortcode( $event );
                 $shortcode::create_custom_shortcode();
