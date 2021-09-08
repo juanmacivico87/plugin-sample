@@ -9,7 +9,7 @@ use PrefixSource\Blocks\CustomACFBlock\CustomACFBlock;
 use PrefixSource\BlocksCategories\CustomBlocksCategory\CustomBlocksCategory;
 use PrefixSource\Customizer\CustomizerSection\CustomizerSection;
 use PrefixSource\Endpoints\CustomEndpoint\CustomEndpoint;
-use PrefixSource\Metaboxes\CustomMetaboxesGroup\CustomMetaboxesGroup;
+use PrefixSource\MetaBoxes\CustomMetaboxesGroup\CustomMetaboxesGroup;
 use PrefixSource\PostsTypes\CustomPostType\CustomPostType;
 use PrefixSource\RestApi\CustomRestField\CustomRestField;
 use PrefixSource\Roles\CustomRole\CustomRole;
