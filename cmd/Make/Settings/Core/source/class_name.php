@@ -65,26 +65,31 @@ class Settings
                 'label' => __( 'Text Field', '{{ plugin_slug }}' ),
                 'name'  => '_plugin_sample_text_field',
                 'type'  => 'text',
+                'help'  => __( 'Description Text Field', '{{ plugin_slug }}' ),
             ],
             [
                 'label' => __( 'Password Field', '{{ plugin_slug }}' ),
                 'name'  => '_plugin_sample_password_field',
                 'type'  => 'password',
+                'help'  => __( 'Description Password Field', '{{ plugin_slug }}' ),
             ],
             [
                 'label' => __( 'Email Field', '{{ plugin_slug }}' ),
                 'name'  => '_plugin_sample_email_field',
                 'type'  => 'email',
+                'help'  => __( 'Description Email Field', '{{ plugin_slug }}' ),
             ],
             [
                 'label' => __( 'Phone Field', '{{ plugin_slug }}' ),
                 'name'  => '_plugin_sample_phone_field',
                 'type'  => 'tel',
+                'help'  => __( 'Description Phone Field', '{{ plugin_slug }}' ),
             ],
             [
                 'label' => __( 'URL Field', '{{ plugin_slug }}' ),
                 'name'  => '_plugin_sample_url_field',
                 'type'  => 'url',
+                'help'  => __( 'Description URL Field', '{{ plugin_slug }}' ),
             ],
             [
                 'label' => __( 'Textarea Field', '{{ plugin_slug }}' ),
@@ -92,11 +97,25 @@ class Settings
                 'type'  => 'textarea',
                 'rows'  => 5,
                 'cols'  => 30,
+                'help'  => __( 'Description Textarea Field', '{{ plugin_slug }}' ),
             ],
             [
-                'label' => __( 'Checkbox Field', '{{ plugin_slug }}' ),
-                'name'  => '_plugin_sample_checkbox_field',
+                'label' => __( 'Checkbox Group', '{{ plugin_slug }}' ),
                 'type'  => 'checkbox',
+                'name'  => '_plugin_sample_checkbox_group',
+                'options'   => [
+                    [
+                        'name'  => '_plugin_sample_checkbox_field',
+                        'label' => __( 'Checkbox Field', '{{ plugin_slug }}' ),
+                        'value' => 'value',
+                    ],
+                    [
+                        'name'  => '_plugin_sample_checkbox_field_2',
+                        'label' => __( 'Checkbox Field 2', '{{ plugin_slug }}' ),
+                        'value' => 'value2',
+                    ],
+                ],
+                'help'  => __( 'Description Checkbox Group', '{{ plugin_slug }}' ),
             ],
             [
                 'label'     => __( 'Radio Group', '{{ plugin_slug }}' ),
@@ -105,6 +124,7 @@ class Settings
                 'options'   => [
                     'value' => __( 'Radio Field', '{{ plugin_slug }}' ),
                 ],
+                'help'      => __( 'Description Radio Group', '{{ plugin_slug }}' ),
             ],
             [
                 'label' => __( 'Hidden Field', '{{ plugin_slug }}' ),
@@ -112,29 +132,13 @@ class Settings
                 'type'  => 'hidden',
             ],
             [
-                'label' => __( 'Color Field', '{{ plugin_slug }}' ),
-                'name'  => '_plugin_sample_color_field',
-                'type'  => 'color',
-            ],
-            [
-                'label' => __( 'Date Field', '{{ plugin_slug }}' ),
-                'name'  => '_plugin_sample_date_field',
-                'type'  => 'date',
-            ],
-            [
-                'label' => __( 'Time Field', '{{ plugin_slug }}' ),
-                'name'  => '_plugin_sample_time_field',
-                'type'  => 'time',
-            ],
-            [
-                'label' => __( 'Datetime Field', '{{ plugin_slug }}' ),
-                'name'  => '_plugin_sample_datetime_field',
-                'type'  => 'datetime',
-            ],
-            [
                 'label' => __( 'Number Field', '{{ plugin_slug }}' ),
                 'name'  => '_plugin_sample_number_field',
                 'type'  => 'number',
+                'min'   => 0,
+                'max'   => 100,
+                'step'  => 1,
+                'help'  => __( 'Description Number Field', '{{ plugin_slug }}' ),
             ],
             [
                 'label' => __( 'Range Field', '{{ plugin_slug }}' ),
@@ -142,8 +146,8 @@ class Settings
                 'type'  => 'range',
                 'min'   => 0,
                 'max'   => 100,
-                'value' => 0,
                 'step'  => 1,
+                'help'  => __( 'Description Range Field', '{{ plugin_slug }}' ),
             ],
             [
                 'label'     => __( 'Select Field', '{{ plugin_slug }}' ),
@@ -151,7 +155,32 @@ class Settings
                 'type'      => 'select',
                 'options'   => [
                     'value' => __( 'Label', '{{ plugin_slug }}' )
-                ]
+                ],
+                'help'      => __( 'Description Select Field', '{{ plugin_slug }}' ),
+            ],
+            [
+                'label' => __( 'Date Field', '{{ plugin_slug }}' ),
+                'name'  => '_plugin_sample_date_field',
+                'type'  => 'date',
+                'min'   => '2021-05-01',
+                'max'   => '2021-10-31',
+                'step'  => 1,
+                'help'  => __( 'Description Date Field', '{{ plugin_slug }}' ),
+            ],
+            [
+                'label' => __( 'Time Field', '{{ plugin_slug }}' ),
+                'name'  => '_plugin_sample_time_field',
+                'type'  => 'time',
+                'min'   => '08:00',
+                'max'   => '14:00',
+                'step'  => 60,
+                'help'  => __( 'Description Time Field', '{{ plugin_slug }}' ),
+            ],
+            [
+                'label' => __( 'Color Field', '{{ plugin_slug }}' ),
+                'name'  => '_plugin_sample_color_field',
+                'type'  => 'color',
+                'help'  => __( 'Description Color Field', '{{ plugin_slug }}' ),
             ],
         ];
     }
@@ -226,7 +255,7 @@ class Settings
                                 <?php break;
                             case 'text':
                             case 'email':
-                            case 'phone':
+                            case 'tel':
                             case 'url':
                             case 'password':
                                 $value = get_option( $field['name'] ) ?: ''; ?>
@@ -234,6 +263,20 @@ class Settings
                                     <th scope="row"><label for="<?php echo esc_attr( $field['name'] ) ?>"><?php echo esc_attr( $field['label'] ) ?></label></th>
                                     <td>
                                         <input type="<?php echo esc_attr( $field['type'] ) ?>" class="regular-text" name="<?php echo esc_attr( $field['name'] ) ?>" value="<?php echo esc_attr( $value ) ?>" />
+                                        <p class="description"><?php echo esc_attr( $field['help'] ) ?></p>
+                                    </td>
+                                </tr>
+                                <?php break;
+                            case 'number':
+                            case 'range':
+                            case 'date':
+                            case 'time':
+                                $value = get_option( $field['name'] ) ?: ''; ?>
+                                <tr valign="top">
+                                    <th scope="row"><label for="<?php echo esc_attr( $field['name'] ) ?>"><?php echo esc_attr( $field['label'] ) ?></label></th>
+                                    <td>
+                                        <input type="<?php echo esc_attr( $field['type'] ) ?>" class="regular-text" name="<?php echo esc_attr( $field['name'] ) ?>" value="<?php echo esc_attr( $value ) ?>" step="<?php echo esc_attr( $field['step'] ) ?>" min="<?php echo esc_attr( $field['min'] ) ?>" max="<?php echo esc_attr( $field['max'] ) ?>" />
+                                        <p class="description"><?php echo esc_attr( $field['help'] ) ?></p>
                                     </td>
                                 </tr>
                                 <?php break;
@@ -242,25 +285,46 @@ class Settings
                                 <tr valign="top">
                                     <th scope="row"><label for="<?php echo esc_attr( $field['name'] ) ?>"><?php echo esc_attr( $field['label'] ) ?></label></th>
                                     <td>
-                                        <textarea name="<?php echo esc_attr( $field['name'] ) ?>" rows="<?php echo esc_attr( $field['rows'] ) ?>" cols="<?php echo esc_attr( $field['cols'] ) ?>">
+                                        <textarea class="regular-text" name="<?php echo esc_attr( $field['name'] ) ?>" rows="<?php echo esc_attr( $field['rows'] ) ?>" cols="<?php echo esc_attr( $field['cols'] ) ?>">
                                             <?php echo esc_attr( $value ) ?>
                                         </textarea>
+                                        <p class="description"><?php echo esc_attr( $field['help'] ) ?></p>
+                                    </td>
+                                </tr>
+                                <?php break;
+                            case 'checkbox':
+                                $checked = get_option( $field['name'] ); ?>
+                                <tr>
+                                    <th scope="row"><?php echo esc_attr( $field['label'] ) ?></th>
+                                    <td>
+	                                    <fieldset>
+                                            <legend class="screen-reader-text"><span><?php echo esc_attr( $field['label'] ) ?></span></legend>
+                                            <?php foreach( $field['options'] as $option ) : ?>
+                                                <label for="<?php echo esc_attr( $option['name'] ) ?>">
+                                                    <input type="checkbox" name="<?php echo esc_attr( $option['name'] ) ?>" value="<?php echo esc_attr( $option['value'] ) ?>" <?php checked( $checked, $value ); ?>>
+                                                    <span class="date-time-text"><?php echo esc_attr( $option['label'] ) ?></span>
+                                                </label><br>
+                                            <?php endforeach ?>
+                                        </fieldset>
+                                        <p class="description"><?php echo esc_attr( $field['help'] ) ?></p>
                                     </td>
                                 </tr>
                                 <?php break;
                             case 'radio':
-                                ?><tr>
+                                $checked = get_option( $field['name'] ) ?: null; ?>
+                                <tr>
                                     <th scope="row"><?php echo esc_attr( $field['label'] ) ?></th>
                                     <td>
 	                                    <fieldset>
                                             <legend class="screen-reader-text"><span><?php echo esc_attr( $field['label'] ) ?></span></legend>
                                             <?php foreach( $field['options'] as $value => $label ) : ?>
                                                 <label>
-                                                    <input type="radio" name="<?php echo esc_attr( $field['name'] ) ?>" value="<?php echo esc_attr( $value ) ?>">
+                                                    <input type="radio" name="<?php echo esc_attr( $field['name'] ) ?>" value="<?php echo esc_attr( $value ) ?>" <?php checked( $checked, $value ); ?>>
                                                     <span class="date-time-text"><?php echo esc_attr( $label ) ?></span>
                                                 </label><br>
                                             <?php endforeach ?>
                                         </fieldset>
+                                        <p class="description"><?php echo esc_attr( $field['help'] ) ?></p>
                                     </td>
                                 </tr>
                                 <?php break;
@@ -276,6 +340,17 @@ class Settings
                                                 </option>
                                             <?php endforeach ?>
                                         </select>
+                                        <p class="description"><?php echo esc_attr( $field['help'] ) ?></p>
+                                    </td>
+                                </tr>
+                                <?php break;
+                            case 'color':
+                                $value = get_option( $field['name'] ) ?: ''; ?>
+                                <tr valign="top">
+                                    <th scope="row"><label for="<?php echo esc_attr( $field['name'] ) ?>"><?php echo esc_attr( $field['label'] ) ?></label></th>
+                                    <td>
+                                        <input type="<?php echo esc_attr( $field['type'] ) ?>" class="small-text" name="<?php echo esc_attr( $field['name'] ) ?>" value="<?php echo esc_attr( $value ) ?>" />
+                                        <p class="description"><?php echo esc_attr( $field['help'] ) ?></p>
                                     </td>
                                 </tr>
                                 <?php break;
