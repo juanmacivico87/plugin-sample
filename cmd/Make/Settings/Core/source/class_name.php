@@ -6,7 +6,7 @@ if ( false === defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Settings
+ * class_name
  *
  * This class provides an example to create a new options page in WordPress.
  * For more information, visit the @link https://developer.wordpress.org/plugins/settings/settings-api/
@@ -15,10 +15,10 @@ if ( false === defined( 'ABSPATH' ) ) {
  * @since  	1.0
  * @package	{{ plugin_slug }}
  */
-class Settings
+class class_name
 {
-    const MENU_SLUG     = '{{ plugin_slug }}-settings';
-    const FIELDS_GROUP  = '{{ plugin_slug }}-settings-group';
+    const MENU_SLUG     = '{{ plugin_slug }}-class_tag';
+    const FIELDS_GROUP  = '{{ plugin_slug }}-class_tag-group';
 
     private array $fields = [];
 
