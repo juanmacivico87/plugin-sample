@@ -3,6 +3,7 @@ namespace PrefixCmd\Make\Settings;
 
 use Composer\Script\Event;
 use Exception;
+use PrefixCmd\Make\Settings\ACF\ACF;
 use PrefixCmd\Make\Settings\Core\Core;
 
 class Settings
@@ -23,6 +24,10 @@ class Settings
             case 'core':
                 $core = new Core( $event );
                 $core::create_settings_page();
+                break;
+            case 'acf':
+                $acf = new ACF( $event );
+                $acf::create_settings_page();
                 break;
         }
     }
