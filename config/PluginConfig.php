@@ -30,6 +30,21 @@ use PrefixSource\Taxonomies\CustomTag\CustomTag;
  */
 class PluginConfig
 {
+    const PLUGIN_CLASSES = [
+        Settings::class,
+        CustomACFBlock::class,
+        CustomBlocksCategory::class,
+        CustomizerSection::class,
+        CustomEndpoint::class,
+        CustomMetaboxesGroup::class,
+        CustomPostType::class,
+        CustomRestField::class,
+        CustomRole::class,
+        CustomShortcode::class,
+        CustomCategory::class,
+        CustomTag::class,
+    ];
+
     /**
      * __construct()
      *
@@ -82,39 +97,9 @@ class PluginConfig
      */
     public function load_sources() : void
     {
-        /** Settings */
-        new Settings();
-
-        /** Customizer sections */
-        new CustomizerSection();
-
-        /** Taxonomies */
-        new CustomCategory();
-        new CustomTag;
-
-        /** Post types */
-        new CustomPostType();
-
-        /** Blocks categories */
-        new CustomBlocksCategory();
-
-        /** Blocks */
-        new CustomACFBlock();
-
-        /** Shortcodes */
-        new CustomShortcode();
-
-        /** Metaboxes */
-        new CustomMetaboxesGroup();
-
-        /** Endpoints */
-        new CustomEndpoint();
-
-        /** RestApi */
-        new CustomRestField();
-
-        /** Roles */
-        new CustomRole();
+        foreach(self::PLUGIN_CLASSES as $class) {
+            new $class();
+        }
     }
 
     /**
