@@ -1,8 +1,9 @@
 <?php
 namespace PrefixConfig;
 
-if ( false === defined( 'ABSPATH' ) )
+if ( false === defined( 'ABSPATH' ) ) {
     exit;
+}
 
 use PrefixSource\Settings\Settings;
 use PrefixSource\Blocks\CustomACFBlock\CustomACFBlock;
@@ -59,10 +60,12 @@ class PluginConfig
      */
     public function __construct()
     {
-        if ( false === PluginDependencies::check_dependencies() )
+        if ( false === PluginDependencies::check_dependencies() ) {
             add_action( 'admin_notices', array( $this, 'render_dependencies_not_found_notice' ) );
-        else
-            $this->init();
+            return;
+        }
+        
+        $this->init();
     }
 
     /**
@@ -76,12 +79,12 @@ class PluginConfig
      * @since  	1.0
      * @package	{{ plugin_slug }}
      */
-    public function init() : void
+    public function init(): void
     {
-        add_action( 'plugins_loaded', array( $this, 'load_sources' ) );
-        add_action( 'plugins_loaded', array( $this, 'load_textdomain' ) );
-        add_action( 'wp_enqueue_scripts', array( $this, 'load_front_end_assets' ) );
-        add_action( 'admin_enqueue_scripts', array( $this, 'load_admin_assets' ) );
+        add_action( 'plugins_loaded', [ $this, 'load_sources' ] );
+        add_action( 'plugins_loaded', [ $this, 'load_textdomain' ] );
+        add_action( 'wp_enqueue_scripts', [ $this, 'load_front_end_assets' ] );
+        add_action( 'admin_enqueue_scripts', [ $this, 'load_admin_assets' ] );
     }
 
     /**
@@ -95,7 +98,7 @@ class PluginConfig
      * @since  	1.0
      * @package	{{ plugin_slug }}
      */
-    public function load_sources() : void
+    public function load_sources(): void
     {
         foreach(self::PLUGIN_CLASSES as $class) {
             new $class();
@@ -113,7 +116,7 @@ class PluginConfig
      * @since  	1.0
      * @package	{{ plugin_slug }}
      */
-    public function load_textdomain() : void
+    public function load_textdomain(): void
     {
         load_plugin_textdomain( '{{ plugin_slug }}', false, PREFIX_LANG_DIR );
     }
@@ -129,10 +132,10 @@ class PluginConfig
      * @since  	1.0
      * @package	{{ plugin_slug }}
      */
-    public function load_front_end_assets() : void
+    public function load_front_end_assets(): void
     {
-        wp_enqueue_script( '{{ plugin_slug }}-front', PREFIX_PLUGIN_ASSETS . '/js/scripts.js', array(), '1.0', true );
-        wp_enqueue_style( '{{ plugin_slug }}-front', PREFIX_PLUGIN_ASSETS . '/css/styles.css', array(), '1.0' );
+        wp_enqueue_script( '{{ plugin_slug }}-front', PREFIX_PLUGIN_ASSETS . '/js/scripts.js', [], '1.0', true );
+        wp_enqueue_style( '{{ plugin_slug }}-front', PREFIX_PLUGIN_ASSETS . '/css/styles.css', [], '1.0' );
     }
 
     /**
@@ -147,10 +150,10 @@ class PluginConfig
      * @since  	1.0
      * @package	{{ plugin_slug }}
      */
-    public function load_admin_assets() : void
+    public function load_admin_assets(): void
     {
-        wp_enqueue_script( '{{ plugin_slug }}-admin', PREFIX_PLUGIN_ADMIN_ASSETS . '/js/scripts.js', array(), '1.0', true );
-        wp_enqueue_style( '{{ plugin_slug }}-admin', PREFIX_PLUGIN_ADMIN_ASSETS . '/css/styles.css', array(), '1.0' );
+        wp_enqueue_script( '{{ plugin_slug }}-admin', PREFIX_PLUGIN_ADMIN_ASSETS . '/js/scripts.js', [], '1.0', true );
+        wp_enqueue_style( '{{ plugin_slug }}-admin', PREFIX_PLUGIN_ADMIN_ASSETS . '/css/styles.css', [], '1.0' );
     }
 
     /**
@@ -165,7 +168,7 @@ class PluginConfig
      * @since  	1.0
      * @package	{{ plugin_slug }}
      */
-    public function render_dependencies_not_found_notice() : void
+    public function render_dependencies_not_found_notice(): void
     {
         $dependencies = PluginDependencies::$dependencies;
         ?><div class="notice notice-error is-dismissible">
