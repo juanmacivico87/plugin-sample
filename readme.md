@@ -95,6 +95,8 @@ De todas formas, para ayudarte, te hago un resumen de los archivos y carpetas qu
 - [Shortcode](cmd/Make/Shortcode/readme.md)
 - [Taxonomies](cmd/Make/Taxonomies/readme.md)
 
+Una vez hayas creado tu nueva clase, no olvides añadirla a la constante PLUGIN_CLASSES, de la clase PluginConfig.php para que pueda instanciarse. Para añadir la clase, tan solo tienes que añadir un nuevo elemento al array con el formato NoombreDeTuClase::class.
+
 ## Fin del desarrollo de tu plugin
 
 Una vez que hayas desarrollado tu plugin para WordPress, elimina todas aquellas clases, métodos y propiedades que no hayas utilizado, así como los ejemplos que te proporciono, para dejar tu código lo más limpio posible.

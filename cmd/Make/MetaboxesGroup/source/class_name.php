@@ -1,5 +1,5 @@
 <?php
-namespace PrefixSource\Metaboxes\class_name;
+namespace PrefixSource\MetaBoxes\class_name;
 
 if ( false === defined( 'ABSPATH' ) ) {
     exit;

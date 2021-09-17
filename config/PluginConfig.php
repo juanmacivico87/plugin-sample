@@ -5,19 +5,6 @@ if ( false === defined( 'ABSPATH' ) ) {
     exit;
 }
 
-use PrefixSource\Settings\Settings;
-use PrefixSource\Blocks\CustomACFBlock\CustomACFBlock;
-use PrefixSource\BlocksCategories\CustomBlocksCategory\CustomBlocksCategory;
-use PrefixSource\Customizer\CustomizerSection\CustomizerSection;
-use PrefixSource\Endpoints\CustomEndpoint\CustomEndpoint;
-use PrefixSource\MetaBoxes\CustomMetaboxesGroup\CustomMetaboxesGroup;
-use PrefixSource\PostsTypes\CustomPostType\CustomPostType;
-use PrefixSource\RestApi\CustomRestField\CustomRestField;
-use PrefixSource\Roles\CustomRole\CustomRole;
-use PrefixSource\Shortcodes\CustomShortcode\CustomShortcode;
-use PrefixSource\Taxonomies\CustomCategory\CustomCategory;
-use PrefixSource\Taxonomies\CustomTag\CustomTag;
-
 /**
  * PluginConfig
  *
@@ -31,20 +18,7 @@ use PrefixSource\Taxonomies\CustomTag\CustomTag;
  */
 class PluginConfig
 {
-    const PLUGIN_CLASSES = [
-        Settings::class,
-        CustomACFBlock::class,
-        CustomBlocksCategory::class,
-        CustomizerSection::class,
-        CustomEndpoint::class,
-        CustomMetaboxesGroup::class,
-        CustomPostType::class,
-        CustomRestField::class,
-        CustomRole::class,
-        CustomShortcode::class,
-        CustomCategory::class,
-        CustomTag::class,
-    ];
+    const PLUGIN_CLASSES = [];
 
     /**
      * __construct()
