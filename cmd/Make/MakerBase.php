@@ -20,7 +20,7 @@ abstract class MakerBase
         }
 
         if ( false === file_exists( $destiny_dir ) ) {
-            mkdir( $destiny_dir, 0700, true );
+            mkdir( $destiny_dir, 0755, true );
         }
 
         foreach( $source_contents as $key => $content ) {
