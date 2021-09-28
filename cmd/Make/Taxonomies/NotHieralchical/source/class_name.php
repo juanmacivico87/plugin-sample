@@ -61,6 +61,7 @@ class class_name
     {
         add_action( 'init', [ $this, 'set_taxonomy_slug' ], 5 );
         add_action( 'init', [ $this, 'add_custom_taxonomy' ] );
+        add_action( 'admin_init', [ $this, 'set_roles_capabilities' ] );
         add_filter( 'taxonomy_template', [ $this, 'get_custom_taxonomy_template' ] );
     }
 
