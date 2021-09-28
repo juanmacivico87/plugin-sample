@@ -1,21 +1,9 @@
 <?php
 namespace PrefixConfig;
 
-if ( false === defined( 'ABSPATH' ) )
+if ( false === defined( 'ABSPATH' ) ) {
     exit;
-
-use PrefixSource\Settings\Settings;
-use PrefixSource\Blocks\CustomACFBlock\CustomACFBlock;
-use PrefixSource\BlocksCategories\CustomBlocksCategory\CustomBlocksCategory;
-use PrefixSource\Customizer\CustomizerSection\CustomizerSection;
-use PrefixSource\Endpoints\CustomEndpoint\CustomEndpoint;
-use PrefixSource\Metaboxes\CustomMetaboxesGroup\CustomMetaboxesGroup;
-use PrefixSource\PostsTypes\CustomPostType\CustomPostType;
-use PrefixSource\RestApi\CustomRestField\CustomRestField;
-use PrefixSource\Roles\CustomRole\CustomRole;
-use PrefixSource\Shortcodes\CustomShortcode\CustomShortcode;
-use PrefixSource\Taxonomies\CustomCategory\CustomCategory;
-use PrefixSource\Taxonomies\CustomTag\CustomTag;
+}
 
 /**
  * PluginConfig
@@ -26,10 +14,12 @@ use PrefixSource\Taxonomies\CustomTag\CustomTag;
  *
  * @version	1.0
  * @since  	1.0
- * @package	plugin-sample
+ * @package	{{ plugin_slug }}
  */
 class PluginConfig
 {
+    const PLUGIN_CLASSES = [];
+
     /**
      * __construct()
      *
@@ -40,14 +30,16 @@ class PluginConfig
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	{{ plugin_slug }}
      */
     public function __construct()
     {
-        if ( false === PluginDependencies::check_dependencies() )
+        if ( false === PluginDependencies::check_dependencies() ) {
             add_action( 'admin_notices', array( $this, 'render_dependencies_not_found_notice' ) );
-        else
-            $this->init();
+            return;
+        }
+        
+        $this->init();
     }
 
     /**
@@ -59,14 +51,14 @@ class PluginConfig
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	{{ plugin_slug }}
      */
-    public function init() : void
+    public function init(): void
     {
-        add_action( 'plugins_loaded', array( $this, 'load_sources' ) );
-        add_action( 'plugins_loaded', array( $this, 'load_textdomain' ) );
-        add_action( 'wp_enqueue_scripts', array( $this, 'load_front_end_assets' ) );
-        add_action( 'admin_enqueue_scripts', array( $this, 'load_admin_assets' ) );
+        add_action( 'plugins_loaded', [ $this, 'load_sources' ] );
+        add_action( 'plugins_loaded', [ $this, 'load_textdomain' ] );
+        add_action( 'wp_enqueue_scripts', [ $this, 'load_front_end_assets' ] );
+        add_action( 'admin_enqueue_scripts', [ $this, 'load_admin_assets' ] );
     }
 
     /**
@@ -78,43 +70,13 @@ class PluginConfig
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	{{ plugin_slug }}
      */
-    public function load_sources() : void
+    public function load_sources(): void
     {
-        /** Settings */
-        new Settings();
-
-        /** Customizer sections */
-        new CustomizerSection();
-
-        /** Taxonomies */
-        new CustomCategory();
-        new CustomTag;
-
-        /** Post types */
-        new CustomPostType();
-
-        /** Blocks categories */
-        new CustomBlocksCategory();
-
-        /** Blocks */
-        new CustomACFBlock();
-
-        /** Shortcodes */
-        new CustomShortcode();
-
-        /** Metaboxes */
-        new CustomMetaboxesGroup();
-
-        /** Endpoints */
-        new CustomEndpoint();
-
-        /** RestApi */
-        new CustomRestField();
-
-        /** Roles */
-        new CustomRole();
+        foreach(self::PLUGIN_CLASSES as $class) {
+            new $class();
+        }
     }
 
     /**
@@ -126,11 +88,11 @@ class PluginConfig
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	{{ plugin_slug }}
      */
-    public function load_textdomain() : void
+    public function load_textdomain(): void
     {
-        load_plugin_textdomain( 'plugin-sample', false, PREFIX_LANG_DIR );
+        load_plugin_textdomain( '{{ plugin_slug }}', false, PREFIX_LANG_DIR );
     }
 
     /**
@@ -142,12 +104,12 @@ class PluginConfig
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	{{ plugin_slug }}
      */
-    public function load_front_end_assets() : void
+    public function load_front_end_assets(): void
     {
-        wp_enqueue_script( 'plugin-sample-front', PREFIX_PLUGIN_ASSETS . '/js/scripts.js', array(), '1.0', true );
-        wp_enqueue_style( 'plugin-sample-front', PREFIX_PLUGIN_ASSETS . '/css/styles.css', array(), '1.0' );
+        wp_enqueue_script( '{{ plugin_slug }}-front', PREFIX_PLUGIN_ASSETS . '/js/scripts.js', [], '1.0', true );
+        wp_enqueue_style( '{{ plugin_slug }}-front', PREFIX_PLUGIN_ASSETS . '/css/styles.css', [], '1.0' );
     }
 
     /**
@@ -160,12 +122,12 @@ class PluginConfig
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	{{ plugin_slug }}
      */
-    public function load_admin_assets() : void
+    public function load_admin_assets(): void
     {
-        wp_enqueue_script( 'plugin-sample-admin', PREFIX_PLUGIN_ADMIN_ASSETS . '/js/scripts.js', array(), '1.0', true );
-        wp_enqueue_style( 'plugin-sample-admin', PREFIX_PLUGIN_ADMIN_ASSETS . '/css/styles.css', array(), '1.0' );
+        wp_enqueue_script( '{{ plugin_slug }}-admin', PREFIX_PLUGIN_ADMIN_ASSETS . '/js/scripts.js', [], '1.0', true );
+        wp_enqueue_style( '{{ plugin_slug }}-admin', PREFIX_PLUGIN_ADMIN_ASSETS . '/css/styles.css', [], '1.0' );
     }
 
     /**
@@ -178,18 +140,18 @@ class PluginConfig
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	{{ plugin_slug }}
      */
-    public function render_dependencies_not_found_notice() : void
+    public function render_dependencies_not_found_notice(): void
     {
         $dependencies = PluginDependencies::$dependencies;
         ?><div class="notice notice-error is-dismissible">
-            <p><?php _e( 'In order to activate the "{{ plugin_name }}" plugin, you have to meet the next requirements:', 'plugin-sample' ); ?></p>
+            <p><?php _e( 'In order to activate the "{{ plugin_name }}" plugin, you have to meet the next requirements:', '{{ plugin_slug }}' ); ?></p>
             <ul>
-                <li><?php echo sprintf( __( 'PHP version: %s', 'plugin-sample' ), PluginDependencies::$min_php_version ) ?></li>
-                <li><?php echo sprintf( __( 'WordPress version: %s', 'plugin-sample' ), PluginDependencies::$min_wp_version ) ?></li>
+                <li><?php echo sprintf( __( 'PHP version: %s', '{{ plugin_slug }}' ), PluginDependencies::$min_php_version ) ?></li>
+                <li><?php echo sprintf( __( 'WordPress version: %s', '{{ plugin_slug }}' ), PluginDependencies::$min_wp_version ) ?></li>
                 <?php foreach( $dependencies as $name => $plugin ) : ?>
-                    <li><?php echo sprintf( __( 'Activate plugin: %s', 'plugin-sample' ), $name ) ?></li>
+                    <li><?php echo sprintf( __( 'Activate plugin: %s', '{{ plugin_slug }}' ), $name ) ?></li>
                 <?php endforeach ?>
             </ul>
         </div><?php

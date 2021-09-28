@@ -8,7 +8,7 @@ Author: {{ plugin_author }}
 Author URI: {{ plugin_author_uri }}
 License: GPLv2 or later
 License URI:  https://www.gnu.org/licenses/gpl-2.0.html
-Text Domain:  plugin-sample
+Text Domain:  {{ plugin_slug }}
 Domain Path:  /languages
 
 {{ plugin_name }} is free software: you can redistribute it and/or modify
@@ -25,8 +25,9 @@ You should have received a copy of the GNU General Public License
 along with {{ plugin_name }}. If not, see https://www.gnu.org/licenses/gpl-2.0.html
 */
 
-if ( false === defined( 'ABSPATH' ) )
+if ( false === defined( 'ABSPATH' ) ) {
     exit;
+}
 
 require_once 'vendor/autoload.php';
 
@@ -39,8 +40,4 @@ define( 'PREFIX_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'PREFIX_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'PREFIX_PLUGIN_ASSETS', PREFIX_PLUGIN_URL . '/assets' );
 define( 'PREFIX_PLUGIN_ADMIN_ASSETS', PREFIX_PLUGIN_URL . '/admin' );
-define( 'PREFIX_PLUGIN_ENDPOINTS_NAMESPACE', 'plugin-sample' );
-
-register_activation_hook( PREFIX_PLUGIN_FILE, array( 'PrefixSource\PostsTypes\CustomPostType\CustomPostType', 'set_roles_capabilities' ) );
-register_activation_hook( PREFIX_PLUGIN_FILE, array( 'PrefixSource\Taxonomies\CustomCategory\CustomCategory', 'set_roles_capabilities' ) );
-register_activation_hook( PREFIX_PLUGIN_FILE, array( 'PrefixSource\Taxonomies\CustomTag\CustomTag', 'set_roles_capabilities' ) );
+define( 'PREFIX_PLUGIN_ENDPOINTS_NAMESPACE', '{{ plugin_slug }}' );

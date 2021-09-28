@@ -1,8 +1,9 @@
 <?php
 namespace PrefixConfig;
 
-if ( false === defined( 'ABSPATH' ) )
+if ( false === defined( 'ABSPATH' ) ) {
     exit;
+}
 
 /**
  * PluginDependencies
@@ -11,17 +12,17 @@ if ( false === defined( 'ABSPATH' ) )
  *
  * @version	1.0
  * @since  	1.0
- * @package	plugin-sample
+ * @package	{{ plugin_slug }}
  */
 class PluginDependencies
 {
     private static ?array $active_plugins = null;
 
-    public static string $min_php_version   = '7.3.0';
+    public static string $min_php_version   = '7.4.0';
     public static string $min_wp_version    = '5.0';
-    public static array $dependencies       = array(
+    public static array $dependencies       = [
         'Advanced Custom Fields PRO' => 'advanced-custom-fields-pro/acf.php',
-    );
+    ];
 
     /**
      * init()
@@ -32,14 +33,15 @@ class PluginDependencies
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	{{ plugin_slug }}
      */
-    public static function init() : void
+    public static function init(): void
     {
-		self::$active_plugins = get_option( 'active_plugins', array() );
+		self::$active_plugins = get_option( 'active_plugins', [] );
 
-		if ( is_multisite() )
-			self::$active_plugins = array_merge( self::$active_plugins, get_site_option( 'active_sitewide_plugins', array() ) );
+		if ( false !== is_multisite() ) {
+            self::$active_plugins = array_merge( self::$active_plugins, get_site_option( 'active_sitewide_plugins', [] ) );
+        }
 	}
 
     /**
@@ -52,9 +54,9 @@ class PluginDependencies
      * @access 	public
      * @version	1.0
      * @since  	1.0
-     * @package	plugin-sample
+     * @package	{{ plugin_slug }}
      */
-    public static function check_dependencies() : bool
+    public static function check_dependencies(): bool
     {
         global $wp_version;
         
