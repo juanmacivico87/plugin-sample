@@ -22,11 +22,24 @@ class class_name
 
     private array $support    = [ 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'trackbacks', 'custom-fields', 'comments', 'revisions', 'page-attributes', 'post-formats' ];
     private array $taxonomies = [];
-    private array $rewrite    = [ 
+    private array $rewrite    = [
         'slug'       => '',
         'with_front' => false,
         'feeds'      => false,
         'pages'      => true,
+    ];
+    private array $capabilities = [
+        'edit_posts'             => 'edit_class_plural_lower_name',
+        'edit_others_posts'      => 'edit_others_class_plural_lower_name',
+        'delete_posts'           => 'delete_class_plural_lower_name',
+        'publish_posts'          => 'publish_class_plural_lower_name',
+        'read_private_posts'     => 'read_private_class_plural_lower_name',
+        'read'                   => 'read',
+        'delete_private_posts'   => 'delete_private_class_plural_lower_name',
+        'delete_published_posts' => 'delete_published_class_plural_lower_name',
+        'delete_others_posts'    => 'delete_others_class_plural_lower_name',
+        'edit_private_posts'     => 'edit_private_class_plural_lower_name',
+        'edit_published_posts'   => 'edit_published_class_plural_lower_name',
     ];
 
     /**
@@ -61,6 +74,7 @@ class class_name
     {
         add_action( 'init', [ $this, 'set_custom_post_type_slug' ], 5 );
         add_action( 'init', [ $this, 'add_custom_post_type' ] );
+        add_action( 'admin_init', [ $this, 'set_roles_capabilities' ] );
         add_filter( 'archive_template', [ $this, 'get_post_type_templates' ] );
         add_filter( 'single_template', [ $this, 'get_post_type_templates' ] );
     }
@@ -146,23 +160,7 @@ class class_name
             'delete_with_user'    => false,
             'show_in_rest'        => true,
             'map_meta_cap'        => true,
-            'capability_type'     => [ self::POST_TYPE_NAME, self::POST_TYPE_PLURAL ],
-            'capabilities'        => [
-                'edit_class_singular_lower_name'              => 'edit_class_singular_lower_name', 
-                'read_class_singular_lower_name'              => 'read_class_singular_lower_name', 
-                'delete_class_singular_lower_name'            => 'delete_class_singular_lower_name', 
-                'edit_class_plural_lower_name'             => 'edit_class_plural_lower_name', 
-                'edit_others_class_plural_lower_name'      => 'edit_others_class_plural_lower_name',
-                'delete_class_plural_lower_name'           => 'delete_class_plural_lower_name', 
-                'publish_class_plural_lower_name'          => 'publish_class_plural_lower_name',       
-                'read_private_class_plural_lower_name'     => 'read_private_class_plural_lower_name',
-                'read'                     => 'read',
-                'delete_private_class_plural_lower_name'   => 'delete_private_class_plural_lower_name',
-                'delete_published_class_plural_lower_name' => 'delete_published_class_plural_lower_name',
-                'delete_others_class_plural_lower_name'    => 'delete_others_class_plural_lower_name',
-                'edit_private_class_plural_lower_name'     => 'edit_private_class_plural_lower_name',
-                'edit_published_class_plural_lower_name'   => 'edit_published_class_plural_lower_name',
-            ],
+            'capabilities'        => $this->capabilities,
         ];
 
         register_post_type( self::POST_TYPE_NAME, $args );
@@ -210,37 +208,21 @@ class class_name
      * @since  	1.0
      * @package	{{ plugin_slug }}
      */
-    public static function set_roles_capabilities(): void
+    public function set_roles_capabilities(): void
     {
         global $wp_roles;
 
-        $is_set_capabilities = get_option( '__prefix_set_class_singular_lower_name_capabilities' );
+        $is_set_capabilities = get_option( '__prefix_set_class_singular_lower_name_capabilities' ) ?: false;
 
-        if ( $is_set_capabilities ) {
+        if ( false !== $is_set_capabilities ) {
             return;
         }
 
-        $map_meta_cap = [
-            'edit_post'              => 'edit_class_singular_lower_name', 
-            'read_post'              => 'read_class_singular_lower_name', 
-            'delete_post'            => 'delete_class_singular_lower_name', 
-            'edit_posts'             => 'edit_class_plural_lower_name', 
-            'edit_others_posts'      => 'edit_others_class_plural_lower_name',
-            'delete_posts'           => 'delete_class_plural_lower_name', 
-            'publish_posts'          => 'publish_class_plural_lower_name',       
-            'read_private_posts'     => 'read_private_class_plural_lower_name',
-            'delete_private_posts'   => 'delete_private_class_plural_lower_name',
-            'delete_published_posts' => 'delete_published_class_plural_lower_name',
-            'delete_others_posts'    => 'delete_others_class_plural_lower_name',
-            'edit_private_posts'     => 'edit_private_class_plural_lower_name',
-            'edit_published_posts'   => 'edit_published_class_plural_lower_name',
-        ];
-        
         foreach( $wp_roles->roles as $role => $args ) {
             $current_role = get_role( $role );
 
-            foreach( $map_meta_cap as $post_cap => $capability ) {
-                if ( isset( $args['capabilities'][$post_cap] ) && false !== $args['capabilities'][$post_cap] ) {
+            foreach( $this->capabilities as $post_cap => $capability ) {
+                if ( false !== isset( $args['capabilities'][$post_cap] ) && false !== $args['capabilities'][$post_cap] ) {
                     $current_role->add_cap( $capability );
                 }
             }
